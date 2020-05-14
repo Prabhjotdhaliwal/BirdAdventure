@@ -1,18 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:text="      BIRDS ADVENTURE"
+    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+    android:textColor="#FFFFFF"
+    android:textIsSelectable="false"
+    android:textStyle="bold"/>
+</LinearLayout>
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+<Button
+    android:id="@+id/login"
+    android:layout_width="wrap_content"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="20dp"
+    android:text="LOGIN"
+    android:layout_height="match_parent"
+    android:layout_weight="1"/>
+<Button
+    android:id="@+id/signup"
+    android:layout_width="wrap_content"
+    android:layout_marginLeft="50dp"
+    android:text="SIGNUP"
+    android:layout_marginRight="20dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"   />
+</LinearLayout>
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="488dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    >
+
+</EditText>
+</LinearLayout>
+<LinearLayout
+android:layout_width="match_parent"
+android:orientation="vertical"
+android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/logintext"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_weight="1"
+        android:text="If you already sign up please click here"
+        android:textColor="#FFFFFF"
+        android:gravity="center_horizontal" />
+    <Button
+        android:id="@+id/Login1"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="30dp"
+        android:text="LOGIN"
+        android:layout_height="match_parent"
+        android:layout_weight="1"   />
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/signuptext"
+        android:layout_width="242dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_weight="1"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="If you have not already sign up please click here"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/signp1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_weight="1"
+        android:text="SIGNUP" />
+</LinearLayout>
+<Button
+    android:layout_width="wrap_content"
+    android:text="CEGEP"
+    android:layout_height="wrap_content"></Button>
+</LinearLayout>
+</LinearLayout>
