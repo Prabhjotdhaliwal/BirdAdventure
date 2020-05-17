@@ -24,7 +24,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         txtAddress = findViewById(R.id.txtAddressSignUp);
         txtConfirmPassword = findViewById(R.id.txtConfirmPassword);
 
-        btnSignUp = findViewById(R.id.btnLogin);
+        btnSignUp = findViewById(R.id.btnSignUp);
 
         btnSignUp.setOnClickListener(this);
 
