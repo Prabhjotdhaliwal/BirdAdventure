@@ -3,4 +3,10 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!--    Custom Modifications -->
+    <color name="backgroundColor">#A5FF5722</color>
+    <color name="btnColor">#D6D3D3</color>
+    <color name="txtColor">#000000</color>
+    <color name="btnTxtColor">#000000</color>
 </resources>

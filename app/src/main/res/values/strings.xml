@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">BirdsAdventure</string>
+    <string name="app_name">Birds Adventure</string>
+
+    <string name="welcome">"Welcome !"</string>
+    <string name="txt_home_welcome">    WELCOME TO BIRDS ADVENTURE APP</string>
+
+    <!-- Login & Register -->
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_sign_up">Sign Up</string>
+    <string name="title_activity_main">Welcome</string>
+    <string name="prompt_name">Name</string>
+    <string name="prompt_phone">Phone</string>
+    <string name="prompt_address">Address</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_confirm_password">Confirm Password</string>
+    <string name="prompt_login">Please Login to continue.</string>
+    <string name="prompt_sign_up">Not registered? Please sign up.</string>
+    <string name="action_login">Login</string>
+    <string name="action_register">Sign Up</string>
+    <string name="invalid_email">Email not valid</string>
+    <string name="invalid_password">Password must be >6 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <!-- Media -->
+    <string name="action_images">Images</string>
+    <string name="action_videos">Videos</string>
+    <string name="action_sounds">Sounds</string>
+
 </resources>
