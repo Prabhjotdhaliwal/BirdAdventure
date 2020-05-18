@@ -33,7 +33,7 @@ To run this project, install it locally using Android Studio:
 
 ## Collaborators
 
-* 1896506 Prabhjot kaur Dhaliwal
+*  Prabhjot kaur Dhaliwal (1896506)
 * Sandeep Kumar (1896182) 
 * Ujjal Singh Pawra (1895419) 
 * Arshpreet Singh (1896249) 
