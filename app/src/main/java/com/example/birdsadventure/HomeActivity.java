@@ -48,7 +48,8 @@ getSupportFragmentManager().beginTransaction().replace(R.id.frame_space, selecte
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.top_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 }

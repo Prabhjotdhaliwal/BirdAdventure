@@ -2,7 +2,37 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_more"
+        android:title="Profile"
+        />
 
+    <item
+        android:id="@+id/featured_bird"
+        android:icon="@drawable/ic_more"
+        android:title="Featured Bird"
+        />
+    <item
+        android:id="@+id/news"
+        android:icon="@drawable/ic_more"
+        android:title="News"
+        />
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_more"
+        android:title="Settings"
+        />
+    <item
+        android:id="@+id/notifications"
+        android:icon="@drawable/ic_more"
+        android:title="Notifications"
+        />
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_more"
+        android:title="Logout"
+        />
 
 
 </menu>
