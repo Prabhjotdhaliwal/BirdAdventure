@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1003036972947",
+    "firebase_url": "https://birdsadventure-781db.firebaseio.com",
+    "project_id": "birdsadventure-781db",
+    "storage_bucket": "birdsadventure-781db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003036972947:android:499ea9fa60925e28bb3a66",
+        "android_client_info": {
+          "package_name": "com.example.birdsadventure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1003036972947-a3qg7v0kjre07bbgstobg49hmovrnor1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.birdsadventure",
+            "certificate_hash": "4b2687d1ea6bd09523f1e6a929a97244d849d456"
+          }
+        },
+        {
+          "client_id": "1003036972947-k256cnm4ahsl6n37kbqqb1eeu3irflpd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKqSHzKgvj4EjFWj2lz8pZBJCdTaiQJpM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1003036972947-k256cnm4ahsl6n37kbqqb1eeu3irflpd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
