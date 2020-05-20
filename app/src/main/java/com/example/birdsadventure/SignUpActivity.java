@@ -66,6 +66,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+
 //Register user Using Firebase Authentication
     private  void registerUser() {
 
@@ -78,7 +79,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         confirmpasswordstr = txtConfirmPassword.getText ().toString ();
 
 
-//check if the fields are empty
+        //check if the fields are empty
         if (TextUtils.isEmpty(namestr))
         {
             txtName.setError("Name is Required ");
@@ -111,16 +112,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         {
             txtPassword.setError("Password must be >= 6 Characters");
         }
-        if (TextUtils.isEmpty(confirmpasswordstr))
+        if (TextUtils.isEmpty(confirmpasswordstr)|| !confirmpasswordstr.equals (passwordstr))
         {
-            txtConfirmPassword.setError("Name is Required ");
+            txtConfirmPassword.setError("Confirm Password  is not matched with password ");
         }
 
-if (!confirmpasswordstr.equals (passwordstr) || confirmpasswordstr ==null)
-{
-    txtConfirmPassword.setError("Confirm Password  is not matched with password ");
-
-}
         else {
             //create the user with email and password
             fireBaseAuth.createUserWithEmailAndPassword(emailstr, passwordstr)
