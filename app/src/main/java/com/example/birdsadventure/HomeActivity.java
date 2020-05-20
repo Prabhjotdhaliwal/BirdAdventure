@@ -1,6 +1,8 @@
 package com.example.birdsadventure;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -43,4 +45,10 @@ getSupportFragmentManager().beginTransaction().replace(R.id.frame_space, selecte
          return true;
      }
  };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        return super.onCreateOptionsMenu(menu);
+    }
 }
