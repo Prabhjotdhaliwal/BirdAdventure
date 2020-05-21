@@ -11,7 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,14 +23,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     EditText txtEmail, txtPassword;
     Button btnLogin;
-    FirebaseAuth firebaseAuth ;
+    FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
 //Initialize the firebaseAuth
-        firebaseAuth= FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         txtEmail = findViewById(R.id.txtEmailLogin);
         txtPassword = findViewById(R.id.txtPasswordLogin);
@@ -41,26 +44,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onStart() {
-        super.onStart ();
-      //  FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        super.onStart();
+        //  FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         //System.out.println (currentUser);
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnLogin) {
-          //  btnLoginClick();
-LoginUser ();        }
+            //  btnLoginClick();
+            LoginUser();
+        }
     }
 
-    private void btnLoginClick()
-    {
+    private void btnLoginClick() {
 
     }
 
 
     //SignInUser with firebase
-    public  void  LoginUser() {
+    public void LoginUser() {
         final String usernameStr, passwordStr;
 
         usernameStr = txtEmail.getText().toString();
@@ -78,23 +81,38 @@ LoginUser ();        }
             txtPassword.setError("Password must be >= 6 Characters");
         } else {
             //Authenticate the user
-            firebaseAuth.signInWithEmailAndPassword(usernameStr, passwordStr).addOnCompleteListener(new OnCompleteListener< AuthResult > () {
+            firebaseAuth.signInWithEmailAndPassword(usernameStr, passwordStr)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            Toast.makeText(LoginActivity.this, "hello", Toast.LENGTH_SHORT).show();
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), "User has successfully logged in", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(LoginActivity.this, HomeActivity.class);
+                                i.putExtra("currentuserk", usernameStr);
+                                startActivity(i);
+
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Authentication failed check your Email & Password", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }
+
+                    }).addOnFailureListener(new OnFailureListener() {
                 @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(), "User has successfully logged in", Toast.LENGTH_SHORT).show();
-                        Intent i=new Intent (LoginActivity.this,HomeActivity.class);
-                        i.putExtra("currentuserk", usernameStr);
-                        startActivity (i);
-
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Authentication failed check your Email & Password", Toast.LENGTH_SHORT).show();
-
-                    }
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(LoginActivity.this, "hello i am an exception", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "prabhjot is stupid, why? ANs -> " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
-
+            })
+            .addOnCanceledListener(new OnCanceledListener() {
+                @Override
+                public void onCanceled() {
+                    Toast.makeText(LoginActivity.this, "hello cancel", Toast.LENGTH_SHORT).show();
+                }
             });
+            ;
 
         }
     }
