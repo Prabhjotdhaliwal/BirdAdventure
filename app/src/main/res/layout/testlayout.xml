@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
-    android:orientation="vertical"
-
-    tools:context=".MainActivity">
+    android:background="@color/backgroundColor">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/welcometxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="61dp"
         android:layout_weight="1"
         android:text="@string/txt_home_welcome"
         android:textAlignment="center"
@@ -23,7 +21,6 @@
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,12 +31,11 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="146dp"
         android:layout_marginLeft="146dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="37dp"
         android:layout_marginEnd="146dp"
         android:layout_marginRight="146dp"
         android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcometxt"
         app:srcCompat="@mipmap/birdimage1" />
@@ -69,23 +65,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/playSoundSample"
         app:layout_constraintTop_toBottomOf="@+id/birdImageSample" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/birdNameSample"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="205dp"
-        android:layout_marginLeft="205dp"
-        android:layout_marginTop="244dp"
-        android:layout_marginEnd="206dp"
-        android:layout_marginRight="206dp"
-        android:gravity="start"
-        android:textColor="@color/txtColor"
-        android:textSize="@dimen/txt_normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/playVideoSample"
@@ -150,11 +129,13 @@
         android:layout_width="266dp"
         android:layout_height="29dp"
         android:layout_marginTop="40dp"
+        android:layout_marginBottom="83dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="@string/prompt_sign_up"
         android:textColor="@color/txtColor"
         android:textSize="@dimen/txt_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnSignUpHome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
@@ -166,12 +147,14 @@
         android:layout_marginTop="21dp"
         android:layout_marginEnd="29dp"
         android:layout_marginRight="29dp"
+        android:layout_marginBottom="75dp"
         android:layout_weight="2"
         android:background="@color/btnColor"
         android:text="@string/action_register"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/btnTxtColor"
         android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/appCompatTextView2"
         app:layout_constraintTop_toBottomOf="@+id/btnLoginHome" />
