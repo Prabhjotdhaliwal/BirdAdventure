@@ -52,36 +52,34 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnLogin) {
-            //  btnLoginClick();
             LoginUser();
         }
     }
 
-    private void btnLoginClick() {
 
-    }
 
 
     //SignInUser with firebase
     public void LoginUser() {
-        final String usernameStr, passwordStr;
+         String username;
+         String password;
 
-        usernameStr = txtEmail.getText().toString();
-        passwordStr = txtPassword.getText().toString();
+        username = txtEmail.getText().toString();
+        password = txtPassword.getText().toString();
 
-        if (TextUtils.isEmpty(usernameStr)) {
+        if (TextUtils.isEmpty(username)) {
             txtEmail.setError("Email is Required ");
 
         }
-        if (TextUtils.isEmpty(passwordStr)) {
+        if (TextUtils.isEmpty(password)) {
             txtPassword.setError("Password is Required ");
 
         }
-        if (passwordStr.length() < 8) {
+        if (password.length() < 8) {
             txtPassword.setError("Password must be >= 6 Characters");
         } else {
             //Authenticate the user
-            firebaseAuth.signInWithEmailAndPassword(usernameStr, passwordStr)
+            firebaseAuth.signInWithEmailAndPassword(username, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -89,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             if (task.isSuccessful()) {
                                 Toast.makeText(getApplicationContext(), "User has successfully logged in", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(LoginActivity.this, HomeActivity.class);
-                                i.putExtra("currentuserk", usernameStr);
+                               // i.putExtra("currentuserk", username);
                                 startActivity(i);
 
 

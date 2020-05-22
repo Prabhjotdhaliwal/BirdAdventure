@@ -24,11 +24,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 
-public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener
+{
     private FirebaseAuth fireBaseAuth;
-    //FirebaseFirestore fstore;
     EditText txtName, txtEmail, txtPassword, txtPhone, txtAddress, txtConfirmPassword;
-    Button btnSignUp,newSIgnupbtn;
+    Button btnSignUp;
 
 
     @Override
@@ -48,97 +48,93 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         fireBaseAuth = FirebaseAuth.getInstance();
         btnSignUp = findViewById (R.id.btnSignUp);
 
+        //SignUp Button
         btnSignUp.setOnClickListener (this);
 
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId () == R.id.btnSignUp) {
-           // btnSignUpClick ();
+        if (v.getId () == R.id.btnSignUp)
+        {
             registerUser ();
         }
     }
 
-    private void btnSignUpClick() {
 
-
-
-    }
 
 
 //Register user Using Firebase Authentication
     private  void registerUser() {
 
-        String namestr, emailstr, phonestr, addressstr, passwordstr, confirmpasswordstr;
-        namestr = txtName.getText ().toString ().trim ();
-        emailstr = txtEmail.getText ().toString ().trim ();
-        phonestr = txtPhone.getText ().toString ().trim ();
-        addressstr = txtAddress.getText ().toString ();
-        passwordstr = txtPassword.getText ().toString ().trim ();
-        confirmpasswordstr = txtConfirmPassword.getText ().toString ();
+       final String name, email, phone, address;
+       String password, confirmpassword;
+        name = txtName.getText ().toString ().trim ();
+        email = txtEmail.getText ().toString ().trim ();
+        phone = txtPhone.getText ().toString ().trim ();
+        address = txtAddress.getText ().toString ();
+        password = txtPassword.getText ().toString ().trim ();
+        confirmpassword = txtConfirmPassword.getText ().toString ();
 
 
         //check if the fields are empty
-        if (TextUtils.isEmpty(namestr))
+        if (TextUtils.isEmpty(name))
         {
             txtName.setError("Name is Required ");
         }
-        if (TextUtils.isEmpty(emailstr))
+        if (TextUtils.isEmpty(email))
         {
             txtEmail.setError("Email is Required ");
 
         }
-        if (!Patterns.EMAIL_ADDRESS.matcher(emailstr).matches())
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
         {
             txtEmail.setError("Enter a valid Email");
 
         }
-        if (TextUtils.isEmpty(phonestr))
+        if (TextUtils.isEmpty(phone))
         {
             txtPhone.setError("Phone is Required ");
 
         }
-        if (TextUtils.isEmpty(addressstr))
+        if (TextUtils.isEmpty(address))
         {
             txtAddress.setError("Name is Required ");
         }
-        if (TextUtils.isEmpty(passwordstr))
+        if (TextUtils.isEmpty(password))
         {
             txtPassword.setError("Password is Required ");
 
         }
-        if (passwordstr.length() < 8)
+        if (password.length() < 8)
         {
             txtPassword.setError("Password must be >= 6 Characters");
         }
-        if (TextUtils.isEmpty(confirmpasswordstr)|| !confirmpasswordstr.equals (passwordstr))
+        if (TextUtils.isEmpty(confirmpassword)|| !confirmpassword.equals (password))
         {
             txtConfirmPassword.setError("Confirm Password  is not matched with password ");
         }
 
         else {
             //create the user with email and password
-            fireBaseAuth.createUserWithEmailAndPassword(emailstr, passwordstr)
+            fireBaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("TAG", "createUserWithEmail:success");
-                                Toast.makeText(getApplicationContext(), "User Created", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "User has Registered", Toast.LENGTH_SHORT).show();
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                                String name=txtName.getText().toString();
-                                String Email=txtEmail.getText().toString();
-                                String address=txtAddress.getText ().toString ();
-                                String phone=txtPhone.getText().toString();
 
-                                HashMap<String,String> user=new HashMap<>();
-                                user.put("name",name);
-                                user.put("Email",Email);
-                                user.put ("address",address);
-                                user.put("phone",phone);
+                                User user = new User();
+                                user.setName (name);
+                                user.setEmail (email);
+                                user.setPhone (phone);
+                                user.setAddress (address);
+                                user.setStatus (true);
+
 
                                 db.collection("Users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>()
                                 {
