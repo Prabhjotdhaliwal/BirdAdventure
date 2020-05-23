@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,26 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="221dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="39dp"
-            android:gravity="center_horizontal"
-            android:text="Welcome back : "
-            android:textAlignment="textEnd"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/username"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="RtlCompat" />
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="221dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="Welcome back : "
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/username"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlCompat" />
 
-        <Button
+    <Button
             android:id="@+id/myprofile"
             android:layout_width="100dp"
             android:layout_height="59dp"
@@ -50,22 +47,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="187dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="39dp"
-            android:gravity="center_horizontal"
-            android:text="username"
-            android:textAlignment="textStart"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/text1"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="RtlCompat" />
 
-        <TextView
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="187dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="username"
+        android:textAlignment="textStart"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlCompat" />
+
+    <TextView
             android:id="@+id/text2"
             android:layout_width="418dp"
             android:layout_height="29dp"
@@ -215,194 +213,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mylibrary" />
 
-        <LinearLayout
-            android:id="@+id/ll1"
-            android:layout_width="match_parent"
-            android:layout_height="164dp"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view2">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+        
 
-                    <TextView
-                        android:id="@+id/birdtext1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/bird1"
-                        android:layout_centerHorizontal="true"
-                        android:text="bird name" />
-
-                    <ImageView
-                        android:id="@+id/bird1"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="5dp"
-                        android:src="@drawable/ic_wallpaper_black_24dp" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/birdname2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/bird2"
-                        android:layout_centerHorizontal="true"
-                        android:text="Bird name" />
-
-                    <ImageView
-                        android:id="@+id/bird2"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="5dp"
-                        android:src="@drawable/ic_wallpaper_black_24dp" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:id="@+id/ll2"
-            android:layout_height="164dp"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll1">
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:id="@+id/birdtext3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/bird3"
-                        android:layout_centerHorizontal="true"
-                        android:text="bird name" />
-                    <ImageView
-                        android:id="@+id/bird3"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="5dp"
-                        android:src="@drawable/ic_wallpaper_black_24dp" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:id="@+id/birdname4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/bird4"
-                        android:layout_centerHorizontal="true"
-                        android:text="Bird name" />
-                    <ImageView
-                        android:id="@+id/bird4"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="5dp"
-                        android:src="@drawable/ic_wallpaper_black_24dp" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:id="@+id/ll3"
-            android:layout_height="164dp"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll2">
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:id="@+id/birdtext5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/bird5"
-                        android:layout_centerHorizontal="true"
-                        android:text="bird name" />
-                    <ImageView
-                        android:id="@+id/bird5"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="5dp"
-                        android:src="@drawable/ic_wallpaper_black_24dp" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:id="@+id/birdname6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/bird6"
-                        android:layout_centerHorizontal="true"
-                        android:text="Bird name" />
-                    <ImageView
-                        android:id="@+id/bird6"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="5dp"
-                        android:src="@drawable/ic_wallpaper_black_24dp" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.core.widget.NestedScrollView>
