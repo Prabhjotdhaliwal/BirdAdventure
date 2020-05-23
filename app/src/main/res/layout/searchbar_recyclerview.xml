@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <androidx.cardview.widget.CardView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="10dp"
+       android:elevation="1dp">
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/search">
+
+           <ImageView
+               android:id="@+id/searchimage"
+               android:layout_width="150dp"
+
+               android:layout_height="150dp"
+               tools:srcCompat="@drawable/ic_wallpaper_black_24dp" />
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/searchname"
+               android:hint="bird name"
+               android:textSize="20sp"
+               android:textStyle="bold"
+               android:layout_margin="5dp"
+               android:layout_toRightOf="@+id/searchimage"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/searchlocation"
+               android:layout_margin="5dp"
+               android:hint="location"
+               android:textStyle="bold"
+               android:textSize="20sp"
+               android:layout_below="@+id/searchname"
+               android:layout_toRightOf="@+id/searchimage"/>
+
+           <TextView
+               android:id="@+id/searchdescription"
+               android:layout_width="235dp"
+               android:layout_height="71dp"
+               android:layout_margin="5dp"
+               android:layout_below="@+id/searchlocation"
+          android:textStyle="bold"
+               android:layout_toRightOf="@+id/searchimage"
+               android:hint="Description"
+               android:textSize="15sp" />
+       </RelativeLayout>
+   </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
