@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnSignUpHome, btnLoginHome;
+    Button btnSignUpHome, btnLoginHome, btnGuest;
     TextView birdNameSample;
 
     @Override
@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         birdNameSample = findViewById(R.id.birdNameSample);
         btnLoginHome = findViewById(R.id.btnLoginHome);
         btnSignUpHome = findViewById(R.id.btnSignUpHome);
+        btnGuest = findViewById(R.id.btnGuest);
 
         btnLoginHome.setOnClickListener(this);
         btnSignUpHome.setOnClickListener(this);
@@ -37,6 +38,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnSignUpHome:
                 startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+                break;
+            case R.id.btnGuest:
+                startActivity(new Intent(getApplicationContext(), GuestHome.class));
                 break;
             default:
                 break;

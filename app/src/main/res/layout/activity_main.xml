@@ -80,6 +80,7 @@
         android:gravity="start"
         android:textColor="@color/txtColor"
         android:textSize="@dimen/txt_normal"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/birdImageSample" />
 
