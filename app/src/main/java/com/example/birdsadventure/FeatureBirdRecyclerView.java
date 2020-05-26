@@ -13,8 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class FeatureBirdRecyclerView extends RecyclerView.Adapter<FeatureBirdRecyclerView.FeaturedBirdViewHolder> {
 
-
-   private String[] items;
+    private String[] items;
 
     public FeatureBirdRecyclerView(String[] items) {
         this.items = items;
@@ -22,12 +21,13 @@ public class FeatureBirdRecyclerView extends RecyclerView.Adapter<FeatureBirdRec
 
     @Override
     public FeaturedBirdViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+
+        return  null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FeaturedBirdViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull FeaturedBirdViewHolder holder, int position)
+    {
     }
 
 
@@ -44,7 +44,7 @@ public class FeatureBirdRecyclerView extends RecyclerView.Adapter<FeatureBirdRec
         public FeaturedBirdViewHolder(@NonNull View itemView) {
             super(itemView);
             featuredbirdname = (TextView) itemView.findViewById(R.id.featuredbirdname);
-            featuredbirdimage = (ImageView) itemView.findViewById(R.id.featuredbirdimage);
+           featuredbirdimage = (ImageView) itemView.findViewById(R.id.featuredbirdimage);
         }
     }
 }
