@@ -155,7 +155,7 @@
             android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/btnColor"
+            android:background="@drawable/rounded"
             android:enabled="true"
             android:text="@string/action_register"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"

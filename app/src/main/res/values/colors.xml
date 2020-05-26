@@ -6,6 +6,7 @@
 
     <!--    Custom Modifications -->
     <color name="backgroundColor">#A5FF5722</color>
+    <color name="buttonbackgroundColor">#959595</color>
     <color name="btnColor">#D6D3D3</color>
     <color name="txtColor">#000000</color>
     <color name="btnTxtColor">#000000</color>
