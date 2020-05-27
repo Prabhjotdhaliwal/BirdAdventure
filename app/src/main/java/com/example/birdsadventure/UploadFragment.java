@@ -1,8 +1,11 @@
 package com.example.birdsadventure;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.service.media.MediaBrowserService;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,8 @@ import androidx.fragment.app.Fragment;
 
 public class UploadFragment extends Fragment {
     public static final int CAMERA_CODE = 007;
+    public static final int CAMERA_REQUEST = 006;
+
     ImageView imageView;
     Button camerabtn , gallerybtn;
 
@@ -75,7 +80,8 @@ public class UploadFragment extends Fragment {
     }
 
     private void opencamera() {
-
+        Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(camera, CAMERA_REQUEST);
         Toast.makeText(getActivity().getApplicationContext(), "opening camera", Toast.LENGTH_SHORT).show();
     }
 }
