@@ -3,6 +3,7 @@ package com.example.birdsadventure;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.service.media.MediaBrowserService;
@@ -83,5 +84,14 @@ public class UploadFragment extends Fragment {
         Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(camera, CAMERA_REQUEST);
         Toast.makeText(getActivity().getApplicationContext(), "opening camera", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == CAMERA_REQUEST){
+            Bitmap image = (Bitmap) data.getExtras().get("data");
+            imageView.setImageBitmap(image);
+        }
+
     }
 }
