@@ -144,7 +144,8 @@
         android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/prompt_login"
+        android:text="@string/prompt_sign_up"
+
         android:textColor="@color/txtColor"
         android:textSize="@dimen/txt_normal"/>
     <androidx.appcompat.widget.AppCompatTextView
@@ -154,7 +155,7 @@
         android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/prompt_sign_up"
+        android:text="@string/prompt_login"
         android:textColor="@color/txtColor"
         android:textSize="@dimen/txt_normal"/>
 </LinearLayout>
