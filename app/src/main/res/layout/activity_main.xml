@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
     android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/welcometxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:layout_weight="1"
             android:text="@string/txt_home_welcome"
             android:textAlignment="center"
             android:textColor="@color/txtColor"
@@ -31,88 +34,87 @@
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
             app:srcCompat="@mipmap/logo" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/birdnametxt"
+            android:id="@+id/txtBirdName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:text="NAME OF THE BIRD"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2">
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-        </androidx.appcompat.widget.AppCompatTextView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="wrap_content"
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
-            <Button
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/playSoundSample"
                 android:layout_width="42dp"
                 android:layout_height="47dp"
-                android:layout_marginStart="156dp"
-                android:layout_marginLeft="156dp"
-                android:layout_marginTop="15dp"
-                android:background="@android:drawable/ic_media_play"/>
+                android:background="@android:drawable/ic_media_play" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/txtSoundSample"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="137dp"
-                android:layout_marginRight="137dp"
                 android:background="@drawable/rounded"
                 android:text="@string/action_sounds"
                 android:textColor="@color/btnTxtColor" />
-        </LinearLayout>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/playVideoSample"
-        android:layout_width="42dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginLeft="156dp"
-        android:layout_marginTop="10dp"
-        android:background="@android:drawable/ic_media_play" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnVideoSample"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="137dp"
-        android:layout_marginRight="137dp"
-        android:background="@drawable/rounded"
-        android:text="@string/action_videos" />
-</LinearLayout>
-    </LinearLayout>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <LinearLayout
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/playVideoSample"
+                android:layout_width="42dp"
+                android:layout_height="47dp"
+                android:background="@android:drawable/ic_media_play" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnVideoSample"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/rounded"
+                android:text="@string/action_videos" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSignUpHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_weight="2"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
             android:background="@drawable/rounded"
             android:text="@string/action_register"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -123,40 +125,41 @@
             android:id="@+id/btnLoginHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_weight="2"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
             android:background="@drawable/rounded"
             android:text="@string/action_login"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@color/btnTxtColor"
             android:textSize="25sp" />
 
-    </LinearLayout>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView"
-        android:layout_width="266dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/prompt_login"
-        android:textColor="@color/txtColor"
-        android:textSize="@dimen/txt_normal"/>
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView2"
-        android:layout_width="266dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/prompt_sign_up"
-        android:textColor="@color/txtColor"
-        android:textSize="@dimen/txt_normal"/>
-</LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-</LinearLayout>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="266dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/prompt_login"
+            android:textColor="@color/txtColor"
+            android:textSize="@dimen/txt_normal" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="266dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/prompt_sign_up"
+            android:textColor="@color/txtColor"
+            android:textSize="@dimen/txt_normal" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

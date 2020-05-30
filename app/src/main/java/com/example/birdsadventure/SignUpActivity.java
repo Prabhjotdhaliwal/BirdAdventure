@@ -1,6 +1,8 @@
 package com.example.birdsadventure;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -19,6 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -29,12 +32,21 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private FirebaseAuth fireBaseAuth;
     EditText txtName, txtEmail, txtPassword, txtPhone, txtAddress, txtConfirmPassword;
     Button btnSignUp;
+    FirebaseAuth firebaseAuth;
 
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+    boolean isLogin;
+    String currentUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_sign_up);
+
+        if (validateAutomaticLogin()) {
+            navigateToHome();
+        }
 
         txtName = findViewById (R.id.txtNameSignUp);
         txtEmail = findViewById (R.id.txtEmailSignUp);
@@ -43,12 +55,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         txtAddress = findViewById (R.id.txtAddressSignUp);
         txtConfirmPassword = findViewById (R.id.txtConfirmPassword);
 
-
-        //Initalize  firebaseAuth
+        //Initialize  firebaseAuth
         fireBaseAuth = FirebaseAuth.getInstance();
-        btnSignUp = findViewById (R.id.btnSignUp);
 
         //SignUp Button
+        btnSignUp = findViewById (R.id.btnSignUp);
         btnSignUp.setOnClickListener (this);
 
     }
@@ -61,10 +72,26 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    private boolean validateAutomaticLogin() {
+        sp = getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);
 
+        isLogin = sp.getBoolean(MyVariables.keyLoginAuth, MyVariables.defaultLoginAuth);
+        currentUserID = sp.getString(MyVariables.keyUserID, MyVariables.defaultUserID);
 
+        if (isLogin && !currentUserID.equals("")) {
+            return true;
+        }
+        return false;
+    }
 
-//Register user Using Firebase Authentication
+    private void navigateToHome() {
+        finish();
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    //Register user Using Firebase Authentication
     private  void registerUser() {
 
        final String name, email, phone, address;
@@ -112,7 +139,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         }
         if (TextUtils.isEmpty(confirmpassword)|| !confirmpassword.equals (password))
         {
-            txtConfirmPassword.setError("Confirm Password  is not matched with password ");
+            txtConfirmPassword.setError("Confirm Password is not matched with password ");
         }
 
         else {
@@ -164,6 +191,21 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    private void saveUserDetails() {
 
+        editor = sp.edit();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null) {
+            String userId = firebaseUser.getUid();
+            String userEmail = firebaseUser.getEmail();
+
+            editor.putBoolean(MyVariables.keyLoginAuth, true);
+            editor.putString(MyVariables.keyUserID, userId);
+        } else {
+            editor.putBoolean(MyVariables.keyLoginAuth, false);
+            editor.putString(MyVariables.keyUserID, "");
+        }
+        editor.apply();
+    }
 
 }

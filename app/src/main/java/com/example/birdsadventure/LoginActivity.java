@@ -1,15 +1,18 @@
 package com.example.birdsadventure;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.gms.tasks.OnCanceledListener;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -17,20 +20,27 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener
-{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText txtEmail, txtPassword;
     Button btnLogin;
     FirebaseAuth firebaseAuth;
 
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+    boolean isLogin;
+    String currentUserID;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-    //Initialize the firebaseAuth
+        if (validateAutomaticLogin()) {
+            navigateToHome();
+        }
+
+        //Initialize the firebaseAuth
         firebaseAuth = FirebaseAuth.getInstance();
 
         txtEmail = findViewById(R.id.txtEmailLogin);
@@ -40,89 +50,99 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         super.onStart();
         //  FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         //System.out.println (currentUser);
     }
 
     @Override
-    public void onClick(View v)
-    {
-        if (v.getId() == R.id.btnLogin)
-        {
-            LoginUser();
+    public void onClick(View v) {
+        if (v.getId() == R.id.btnLogin) {
+            btnLoginClick();
         }
     }
 
+    private boolean validateAutomaticLogin() {
+        sp = getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);
+
+        isLogin = sp.getBoolean(MyVariables.keyLoginAuth, MyVariables.defaultLoginAuth);
+        currentUserID = sp.getString(MyVariables.keyUserID, MyVariables.defaultUserID);
+
+        if (isLogin && !currentUserID.equals("")) {
+            return true;
+        }
+        return false;
+    }
+
+    private void navigateToHome() {
+        finish();
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
     //SignInUser with firebase
-    public void LoginUser()
-    {
-         String username;
-         String password;
+    private void btnLoginClick() {
+        String username;
+        String password;
 
         username = txtEmail.getText().toString();
         password = txtPassword.getText().toString();
 
-        if (TextUtils.isEmpty(username))
-        {
+        if (TextUtils.isEmpty(username)) {
             txtEmail.setError("Email is Required ");
 
         }
-        if (TextUtils.isEmpty(password))
-        {
+        if (TextUtils.isEmpty(password)) {
             txtPassword.setError("Password is Required ");
 
         }
-        if (password.length() < 8)
-        {
+        if (password.length() < 8) {
             txtPassword.setError("Password must be >= 6 Characters");
-        }
-        else
-            {
+        } else {
             //Authenticate the user
             firebaseAuth.signInWithEmailAndPassword(username, password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>()
-                    {
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task)
-                        {
+                        public void onComplete(@NonNull Task<AuthResult> task) {
                             Toast.makeText(LoginActivity.this, "hello", Toast.LENGTH_SHORT).show();
-                            if (task.isSuccessful())
-                            {
-                                Toast.makeText(getApplicationContext(), "User has successfully logged in", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(LoginActivity.this, HomeActivity.class);
-                               // i.putExtra("currentuserk", username);
-                                startActivity(i);
-                            }
+                            if (task.isSuccessful()) {
 
-                            else
-                                {
+                                saveUserDetails();
+                                navigateToHome();
+                            } else {
                                 Toast.makeText(getApplicationContext(), "Authentication failed check your Email & Password", Toast.LENGTH_SHORT).show();
 
-                                }
+                            }
                         }
 
-                    }).addOnFailureListener(new OnFailureListener()
-            {
+                    }).addOnFailureListener(new OnFailureListener() {
                 @Override
-                public void onFailure(@NonNull Exception e)
-                {
-                    Toast.makeText(LoginActivity.this, "hello i am an exception", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(LoginActivity.this, "prabhjot is stupid, why? ANs -> " + e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            })
-            .addOnCanceledListener(new OnCanceledListener()
-            {
-                @Override
-                public void onCanceled()
-                {
-                    Toast.makeText(LoginActivity.this, "hello cancel", Toast.LENGTH_SHORT).show();
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(LoginActivity.this, "Error -> " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
 
         }
     }
+
+    private void saveUserDetails() {
+
+        editor = sp.edit();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null) {
+            String userId = firebaseUser.getUid();
+            String userEmail = firebaseUser.getEmail();
+
+            editor.putBoolean(MyVariables.keyLoginAuth, true);
+            editor.putString(MyVariables.keyUserID, userId);
+        } else {
+            editor.putBoolean(MyVariables.keyLoginAuth, false);
+            editor.putString(MyVariables.keyUserID, "");
+        }
+        editor.apply();
+    }
+
 }
 
