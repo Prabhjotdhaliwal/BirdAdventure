@@ -79,7 +79,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(getApplicationContext(), "User Profile Selected", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.featured_bird:
-                Toast.makeText(getApplicationContext(), "Featured_bird Selected", Toast.LENGTH_LONG).show();
+                navController.navigate(R.id.featuredBirdsFragment);
                 return true;
             case R.id.news:
                 Toast.makeText(getApplicationContext(), "News Selected", Toast.LENGTH_LONG).show();

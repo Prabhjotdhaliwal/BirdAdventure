@@ -34,4 +34,14 @@
         android:name="com.example.birdsadventure.FavoritesFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/featuredBirdsFragment"
+        android:name="com.example.birdsadventure.FeaturedBirdsFragment"
+        android:label="fragment_featured_birds"
+        tools:layout="@layout/fragment_featured_birds" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.birdsadventure.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
