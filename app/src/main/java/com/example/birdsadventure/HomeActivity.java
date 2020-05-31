@@ -76,7 +76,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()) {
             case R.id.profile:
-                Toast.makeText(getApplicationContext(), "User Profile Selected", Toast.LENGTH_LONG).show();
+                navController.navigate(R.id.profileFragment);
                 return true;
             case R.id.featured_bird:
                 navController.navigate(R.id.featuredBirdsFragment);
