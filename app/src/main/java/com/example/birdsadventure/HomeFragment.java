@@ -60,20 +60,30 @@ public class HomeFragment extends Fragment {
         if (firebaseUser != null) {
             txtUserName.setText(firebaseUser.getDisplayName());
         }
+        getAllBirds();
+
         fillRecyclerView();
     }
 
-    private void fillRecyclerView() {
+    private void getAllBirds() {
+        /**
+         TODO: get data from FireStore
+         */
 
+        //sample data temporarily added
         birdsList = new ArrayList<Bird>();
         birdsList.add(new Bird("Parrot", "https://pyxis.nymag.com/v1/imgs/a40/333/c115e400743744250195e8c5e8cfc9abc9-9-parrots.rsquare.w700.jpg"));
         birdsList.add(new Bird("Sparrow", "https://www.allaboutbirds.org/guide/assets/photo/63742431-480px.jpg"));
         birdsList.add(new Bird("Pigeon", "https://www.allaboutbirds.org/guide/assets/photo/66031271-480px.jpg"));
         birdsList.add(new Bird("Ostrich", "https://cdn.mos.cms.futurecdn.net/tMnjLRtEm47ueTPt9Rkyxd-320-80.jpg"));
 
+    }
+
+    private void fillRecyclerView() {
+
         recyclerView = getActivity().findViewById(R.id.recycler_featured_birds);
         recyclerLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerAdapter = new BirdsRecyclerAdapter(birdsList);
+        recyclerAdapter = new BirdsRecyclerAdapter(birdsList, false);
         recyclerView.setLayoutManager(recyclerLayoutManager);
         recyclerView.setAdapter(recyclerAdapter);
 

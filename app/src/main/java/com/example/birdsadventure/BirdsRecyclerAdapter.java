@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class BirdsRecyclerAdapter extends RecyclerView.Adapter<BirdsRecyclerAdapter.RecyclerViewHolder> {
 
     private ArrayList<Bird> birdsList;
+    private boolean isVerticalList;
     private OnItemClickListener listenerAdapter;
 
     public interface OnItemClickListener {
@@ -50,14 +51,20 @@ public class BirdsRecyclerAdapter extends RecyclerView.Adapter<BirdsRecyclerAdap
         }
     }
 
-    public BirdsRecyclerAdapter(ArrayList<Bird> birdsList) {
+    public BirdsRecyclerAdapter(ArrayList<Bird> birdsList, boolean isVerticalList) {
         this.birdsList = birdsList;
+        this.isVerticalList = isVerticalList;
     }
 
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.birds_recycler_item, parent, false);
+        View view;
+        if (this.isVerticalList) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.birds_recycler_list_item, parent, false);
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.birds_recycler_item, parent, false);
+        }
         RecyclerViewHolder recyclerViewHolder = new RecyclerViewHolder(view, listenerAdapter);
         return recyclerViewHolder;
     }

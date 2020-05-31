@@ -29,4 +29,8 @@
     <string name="action_videos">Videos</string>
     <string name="action_sounds">Sounds</string>
 
+    <!-- Birds -->
+    <string name="prompt_bird_name">Search Birds</string>
+    <string name="btn_search">Search</string>
+
 </resources>
