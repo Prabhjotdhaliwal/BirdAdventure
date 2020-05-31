@@ -101,7 +101,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
             public void onItemClick(int position) {
 
                 Bundle bundle = new Bundle();
-                bundle.putParcelable("place", birdsList.get(position));
+                bundle.putParcelable("birds", birdsList.get(position));
                 // navController.navigate(R.id.displayFragment, bundle);
                 Toast.makeText(getActivity().getApplicationContext(), birdsList.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
