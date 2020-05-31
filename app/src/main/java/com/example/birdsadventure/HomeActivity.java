@@ -26,10 +26,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public NavController navController;
     public BottomNavigationView bottomNavigationView;
 
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+    boolean isLogin;
+    String currentUserID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        if (!validateAutomaticLogin()) {
+            goToHomeScreen();
+        }
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -41,6 +50,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 //        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
+    }
+
+    private boolean validateAutomaticLogin() {
+        sp = getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);
+
+        isLogin = sp.getBoolean(MyVariables.keyLoginAuth, MyVariables.defaultLoginAuth);
+        currentUserID = sp.getString(MyVariables.keyUserID, MyVariables.defaultUserID);
+
+        if (isLogin && !currentUserID.equals("")) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -87,8 +108,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         editor.putString(MyVariables.keyUserID, "");
         editor.apply();
 
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        goToHomeScreen();
+    }
+
+    private void goToHomeScreen() {
+
         finish();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     @Override

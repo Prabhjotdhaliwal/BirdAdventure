@@ -26,6 +26,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
+
     private FirebaseAuth fireBaseAuth;
     EditText txtName, txtEmail, txtPassword, txtPhone, txtAddress, txtConfirmPassword;
     Button btnSignUp;
