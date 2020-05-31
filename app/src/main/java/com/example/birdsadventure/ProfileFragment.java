@@ -47,7 +47,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         txtPhone = getActivity().findViewById(R.id.txtPhoneProfile);
         Button btnSaveProfile = getActivity().findViewById(R.id.btnSaveProfile);
         Button btnResetProfile = getActivity().findViewById(R.id.btnResetProfile);
-        TextView changePassword=getActivity().findViewById(R.id.changePassword);
+        TextView changePassword = getActivity().findViewById(R.id.changePassword);
 
         btnSaveProfile.setOnClickListener(this);
         btnResetProfile.setOnClickListener(this);
@@ -83,7 +83,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         } else if (v.getId() == R.id.btnSaveProfile) {
             btnSaveProfileClick(v);
         } else if (v.getId() == R.id.changePassword) {
-            Toast.makeText(getActivity().getApplicationContext(), "change password page", Toast.LENGTH_SHORT).show();
+            navController.navigate(R.id.changePasswordFragment);
         }
     }
 
