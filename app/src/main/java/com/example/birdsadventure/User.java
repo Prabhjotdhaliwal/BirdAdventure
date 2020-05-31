@@ -1,17 +1,15 @@
 package com.example.birdsadventure;
 
-public class User
-{
-    private  int userID;
+public class User {
+    private int userID;
     private String name;
-    private  String email;
+    private String email;
     private String phone;
-    private  String address;
+    private String address;
     private boolean status;
 
     //constructors
-    public User()
-    {
+    public User() {
     }
 
     public User(String name, String email, String phone, String address) {
@@ -21,16 +19,13 @@ public class User
         this.address = address;
     }
 
-    public User(int userID, String name, String email, String phone, String address,  boolean status) {
-        this.userID = userID;
+    public User(String name, String email, String phone, String address, boolean status) {
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.address = address;
         this.status = status;
     }
-
-
 
     //Getters
     public int getUserID() {
@@ -79,8 +74,6 @@ public class User
     public void setAddress(String address) {
         this.address = address;
     }
-
-
 
     public void setStatus(boolean status) {
         this.status = status;

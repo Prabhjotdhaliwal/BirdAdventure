@@ -84,47 +84,48 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     //SignInUser with firebase
     private void btnLoginClick() {
-        String username;
-        String password;
 
-        username = txtEmail.getText().toString();
-        password = txtPassword.getText().toString();
+        final String userName = txtEmail.getText().toString().trim();
+        final String password = txtPassword.getText().toString().trim();
 
-        if (TextUtils.isEmpty(username)) {
+        if (TextUtils.isEmpty(userName)) {
+            txtEmail.requestFocus();
             txtEmail.setError("Email is Required ");
-
+            return;
         }
         if (TextUtils.isEmpty(password)) {
+            txtPassword.requestFocus();
             txtPassword.setError("Password is Required ");
-
+            return;
         }
         if (password.length() < 8) {
+            txtPassword.requestFocus();
             txtPassword.setError("Password must be >= 6 Characters");
-        } else {
-            //Authenticate the user
-            firebaseAuth.signInWithEmailAndPassword(username, password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            Toast.makeText(LoginActivity.this, "hello", Toast.LENGTH_SHORT).show();
-                            if (task.isSuccessful()) {
-
-                                saveUserDetails();
-                                navigateToHome();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Authentication failed check your Email & Password", Toast.LENGTH_SHORT).show();
-
-                            }
-                        }
-
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(LoginActivity.this, "Error -> " + e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
-
+            return;
         }
+
+        //Authenticate the user
+        firebaseAuth.signInWithEmailAndPassword(userName, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Toast.makeText(LoginActivity.this, "hello", Toast.LENGTH_SHORT).show();
+                        if (task.isSuccessful()) {
+
+                            saveUserDetails();
+                            navigateToHome();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Authentication failed check your Email & Password", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(LoginActivity.this, "Error -> " + e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void saveUserDetails() {
