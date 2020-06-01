@@ -38,6 +38,12 @@
     <!-- Birds -->
     <string name="prompt_bird_name">Search Birds</string>
     <string name="btn_search">Search</string>
+
+    <!-- Settings -->
+    <string name="receive_featured_notifications">Receive Featured Birds notifications when in close proximity</string>
+    <string name="receive_favorites_notifications">Receive Favorite Birds notifications when in close proximity</string>
+    <string name="proximity_radius">Proximity Radius</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -82,13 +81,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 navController.navigate(R.id.featuredBirdsFragment);
                 return true;
             case R.id.news:
-                Toast.makeText(getApplicationContext(), "News Selected", Toast.LENGTH_LONG).show();
+                navController.navigate(R.id.newsFragment);
                 return true;
             case R.id.settings:
-                Toast.makeText(getApplicationContext(), "Settings Selected", Toast.LENGTH_LONG).show();
+                navController.navigate(R.id.settingsFragment);
                 return true;
             case R.id.notifications:
-                Toast.makeText(getApplicationContext(), "Notifications Selected ", Toast.LENGTH_LONG).show();
+                navController.navigate(R.id.notificationsFragment);
                 return true;
             case R.id.logout:
                 logout();

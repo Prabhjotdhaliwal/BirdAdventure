@@ -17,22 +17,21 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/receive_featured_notifications"
+            android:textColor="@color/txtColor"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatToggleButton
             android:id="@+id/featured_notification_toggle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="receive featured notifications"
-            android:textColor="@color/txtColor"
-            android:textSize="@dimen/txt_normal" />
-
-        <ToggleButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_weight="3"
             android:textColor="@color/txtColor" />
 
@@ -41,22 +40,22 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="18dp"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/receive_favorites_notifications"
+            android:textColor="@color/txtColor"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatToggleButton
             android:id="@+id/favorites_notification_toggle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="receive featured notifications"
-            android:textColor="@color/txtColor"
-            android:textSize="@dimen/txt_normal" />
-
-        <ToggleButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_weight="3"
             android:textColor="@color/txtColor" />
 
@@ -65,36 +64,42 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
+        android:layout_marginTop="18dp"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txt_proximity_radius"
+        <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Proximity Radius"
+            android:layout_weight="5"
+            android:text="@string/proximity_radius"
             android:textColor="@color/txtColor"
             android:textSize="@dimen/txt_normal" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/txtNewConfirmPassword"
+            android:id="@+id/txt_proximity_radius"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/prompt_confirm__new_password"
+            android:layout_weight="6"
             android:imeOptions="actionDone"
-            android:inputType="textPassword"
+            android:inputType="numberDecimal"
             android:selectAllOnFocus="true"
             android:textColor="@color/txtColor" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:text="km"
+            android:gravity="right"
+            android:textColor="@color/txtColor"
+            android:textSize="@dimen/txt_normal" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="26dp"
         android:gravity="center"
         android:orientation="horizontal">
 
