@@ -121,6 +121,7 @@
                     android:layout_width="27dp"
                     android:layout_height="19dp"
                     android:layout_marginLeft="25dp"
+                    android:textColor="@color/txtColor"
                     android:text="xx" />
 
                 <TextView
@@ -168,6 +169,7 @@
                     android:layout_width="27dp"
                     android:layout_height="18dp"
                     android:layout_marginLeft="25dp"
+                    android:textColor="@color/txtColor"
                     android:text="xx" />
 
                 <TextView

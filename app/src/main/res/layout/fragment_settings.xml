@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:textColor="@color/txtColor" />
+            android:textColor="@color/btnTxtColor" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:textColor="@color/txtColor" />
+            android:textColor="@color/btnTxtColor" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
