@@ -92,12 +92,6 @@ public class UploadFragment extends Fragment {
         if(requestCode == CAMERA_REQUEST){
             Bitmap image = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(image);
-
-
-
-
-
-
         }
 
     }
