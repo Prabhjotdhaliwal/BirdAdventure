@@ -45,6 +45,8 @@
     <string name="proximity_radius">Proximity Radius</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="news_fragment">NEWS</string>
+    <string name="notifications_fragment">Notifications</string>
+
 
 </resources>
