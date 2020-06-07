@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:rowCount="8"
     android:columnCount="8"
+    android:background="@drawable/gradient_bg"
 
     tools:context=".HomeFragment">
 

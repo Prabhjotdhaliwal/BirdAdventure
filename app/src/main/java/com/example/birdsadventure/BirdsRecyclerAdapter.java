@@ -76,6 +76,7 @@ public class BirdsRecyclerAdapter extends RecyclerView.Adapter<BirdsRecyclerAdap
 
         holder.txtTitle.setText(currentBird.getName());
         Picasso.get().load(currentBird.getImageURL()).into(holder.image);
+
     }
 
     @Override

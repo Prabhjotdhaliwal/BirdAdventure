@@ -16,10 +16,18 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class SearchFragment extends Fragment implements View.OnClickListener {
-
+   //Database instance
+    FirebaseFirestore db;
     EditText txtSearchDrink;
     Button btnSearch;
 
@@ -57,7 +65,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         btnSearch.setOnClickListener(this);
 
         getAllBirds();
-        fillRecyclerView();
+       fillRecyclerView();
     }
 
     private void getAllBirds() {
@@ -72,6 +80,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         birdsList.add(new Bird("Pigeon", "https://www.allaboutbirds.org/guide/assets/photo/66031271-480px.jpg"));
         birdsList.add(new Bird("Ostrich", "https://cdn.mos.cms.futurecdn.net/tMnjLRtEm47ueTPt9Rkyxd-320-80.jpg"));
 
+
+
     }
 
     @Override
@@ -85,10 +95,11 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
         String searchedText = txtSearchDrink.getText().toString();
         getAllBirds();
-        fillRecyclerView();
+       // fillRecyclerView();
     }
 
-    private void fillRecyclerView() {
+    private void fillRecyclerView()
+    {
 
         recyclerView = getActivity().findViewById(R.id.recycler_view_search_birds);
         recyclerLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);

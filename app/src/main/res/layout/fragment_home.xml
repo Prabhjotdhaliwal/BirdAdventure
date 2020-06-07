@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradientcolor1"
+    android:background="@drawable/gradient_bg"
     android:gravity="top"
     android:orientation="vertical"
     tools:context=".HomeFragment">
@@ -25,7 +25,6 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/welcome"
-            android:textColor="@color/txtColor"
             android:textAlignment="textEnd"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -38,7 +37,6 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="username"
-            android:textColor="@color/txtColor"
             android:textAlignment="textStart"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -62,7 +60,6 @@
                 android:layout_height="29dp"
                 android:layout_marginTop="18dp"
                 android:gravity="center"
-                android:textColor="@color/txtColor"
                 android:text="Want to capture a bird you like?"
                 android:textStyle="bold" />
 
@@ -85,7 +82,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:textColor="@color/txtColor"
                 android:text="Click on the button" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -121,7 +117,6 @@
                     android:layout_width="27dp"
                     android:layout_height="19dp"
                     android:layout_marginLeft="25dp"
-                    android:textColor="@color/txtColor"
                     android:text="xx" />
 
                 <TextView
@@ -129,7 +124,6 @@
                     android:layout_width="128dp"
                     android:layout_height="19dp"
                     android:gravity="right"
-                    android:textColor="@color/txtColor"
                     android:text="Images Uploaded" />
 
             </LinearLayout>
@@ -142,7 +136,6 @@
 
                 <TextView
                     android:id="@+id/videocount"
-                    android:textColor="@color/txtColor"
                     android:layout_width="27dp"
                     android:layout_height="19dp"
                     android:layout_marginLeft="25dp"
@@ -153,7 +146,6 @@
                     android:layout_width="128dp"
                     android:layout_height="19dp"
                     android:gravity="right"
-                    android:textColor="@color/txtColor"
                     android:text="Videos Uploaded" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -169,14 +161,12 @@
                     android:layout_width="27dp"
                     android:layout_height="18dp"
                     android:layout_marginLeft="25dp"
-                    android:textColor="@color/txtColor"
                     android:text="xx" />
 
                 <TextView
                     android:id="@+id/text6"
                     android:layout_width="128dp"
                     android:layout_height="19dp"
-                    android:textColor="@color/txtColor"
                     android:text="Soundclip Uploaded" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
