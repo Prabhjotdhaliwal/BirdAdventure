@@ -38,22 +38,28 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class UploadFragment extends Fragment {
+public class UploadFragment extends Fragment  {
+
     public static final int CAMERA_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 105;
     //static final int REQUEST_TAKE_PHOTO = 1;
+
     ImageView imageView;
     Button camerabtn, gallerybtn;
 
     String currentPhotoPath;
       //  Firebase Storage Reference
      StorageReference storageReference;
-    public UploadFragment() {
+
+
+    public UploadFragment()
+    {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate (savedInstanceState);
     }
 
@@ -70,6 +76,9 @@ public class UploadFragment extends Fragment {
 
         //initialize storage reference
         storageReference = FirebaseStorage.getInstance().getReference();
+         //storageReference = FirebaseStorage.getInstance().getReference("uploads");
+
+
 
         imageView = getActivity ().findViewById (R.id.imageView);
         camerabtn = getActivity ().findViewById (R.id.cameraBtn);
@@ -135,17 +144,21 @@ public class UploadFragment extends Fragment {
         if (requestCode == CAMERA_REQUEST_CODE)
         {
        if (resultCode== Activity.RESULT_OK)
+
        {
            File f =new File(currentPhotoPath);
+
            imageView.setImageURI (Uri.fromFile (f));
            Log.d ("tag" ,"Absolute url "+Uri.fromFile (f));
 
            Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
            Uri contentUri = Uri.fromFile(f);
            mediaScanIntent.setData(contentUri);
-           getActivity ().sendBroadcast(mediaScanIntent);
+            getActivity ().sendBroadcast(mediaScanIntent);
 
-         //  uploadImageToFirebase (f.getName (),contentUri);
+
+     //Upload the captured image to firebase
+         uploadImageToFirebase (f.getName (),contentUri);
        }
         }
 
@@ -155,12 +168,17 @@ public class UploadFragment extends Fragment {
             if (resultCode== Activity.RESULT_OK)
             {
                 Uri contentUri=data.getData ();
-                String timeStamp = new SimpleDateFormat ("yyyyMMdd_HHmmss").format(new Date ());
-                String imageFileName = "JPEG_" + timeStamp + "."+getFileExt(contentUri);
-                Log.d ("tag","gallery image uri"+imageFileName);
+               // Uri contentUri= Uri.parse(currentPhotoPath);
+
+                String timeStamp = new SimpleDateFormat ("yyyyMMdd_MMmmss").format (new Date ());
+                String imageFileName="JPEG_"+timeStamp+"."+getFileExt(contentUri);
+                Log.d ("tag","onActivityResult: Gallery Image Uri: "+imageFileName);
                 imageView.setImageURI (contentUri);
 
-                uploadImageToFirebase (imageFileName,contentUri);
+
+                //Upload Gallery image to firebase
+                uploadImageToFirebase(imageFileName ,contentUri);
+
 
             }
         }
@@ -170,7 +188,7 @@ public class UploadFragment extends Fragment {
     //Upload an image to firebase
     private void uploadImageToFirebase(String name, Uri contentUri)
     {
-        final StorageReference image= storageReference.child ("pictures/"+name);
+        final StorageReference image= storageReference.child ("pictures"+name);
         image.putFile (contentUri).addOnSuccessListener (new OnSuccessListener< UploadTask.TaskSnapshot > () {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
@@ -180,16 +198,18 @@ public class UploadFragment extends Fragment {
                     public void onSuccess(Uri uri)
                     {
                         Log.d ("tag","onSuccess: Upload Image URI is "+ uri);
+
                     }
                 });
-                Toast.makeText (getActivity (),"image has been successfully uploaded",Toast.LENGTH_LONG).show ();
+                Toast.makeText (getActivity (),"image is uploaded",Toast.LENGTH_LONG).show ();
+
             }
         }).addOnFailureListener (new OnFailureListener ()
         {
             @Override
             public void onFailure(@NonNull Exception e)
             {
-                Toast.makeText (getActivity (),"Upload Failed",Toast.LENGTH_LONG).show ();
+                Toast.makeText (getActivity (),"failed upload",Toast.LENGTH_LONG).show ();
             }
         });
     }
@@ -202,15 +222,18 @@ public class UploadFragment extends Fragment {
     }
 
 
-    //Create a file for the image
+    //create a file for the image
     private File createImageFile() throws IOException
     {
         // Create an image file name
         String timeStamp = new SimpleDateFormat ("yyyyMMdd_HHmmss").format(new Date ());
         String imageFileName = "JPEG_" + timeStamp + "_";
-       // File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-       File storageDir=Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_PICTURES);
+     File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+   //   File storageDir=Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_PICTURES);
        // (it will work for actual device)
+      //  final File storageDir =     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
