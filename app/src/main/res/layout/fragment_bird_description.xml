@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
     tools:context=".BirdDescriptionFragment"
+    android:padding="20dp"
     >
 <LinearLayout
     android:layout_width="match_parent"
@@ -21,12 +22,14 @@
             android:layout_height="35dp"
             android:textSize="20sp"
             android:text="@string/birdDescription"
+            android:textColor="@color/textcolor"
             android:background="@color/txtviewcolor"
             ></TextView>
         <TextView
             android:id="@+id/birddescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/textcolor"
 
             android:text="DesA habitat is the natural environment of a plant or an animal or the place that is normal for the life and growth of an animal or a plant.
 A biome describes the world’s major communities of living things. Biomes are classified according to the predominant vegetation (plants) and characterized by adaptations of organisms (animals) to that particular environment.
@@ -45,6 +48,7 @@ A Desert Habitat (Introducing Habitats) by Kelley Macaulay and Bobbie Kalman
         android:layout_height="35dp"
         android:textSize="20sp"
         android:text= "@string/birdLocation"
+        android:textColor="@color/textcolor"
         android:background="@color/txtviewcolor"
         />
     <LinearLayout
@@ -56,6 +60,8 @@ A Desert Habitat (Introducing Habitats) by Kelley Macaulay and Bobbie Kalman
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text= "@string/birdCity"
+
+            android:textColor="@color/textcolor"
             android:textSize="15sp"
             />
         <TextView
@@ -63,6 +69,7 @@ A Desert Habitat (Introducing Habitats) by Kelley Macaulay and Bobbie Kalman
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:textColor="@color/textcolor"
             android:text= "city" />
     </LinearLayout>
 
@@ -75,12 +82,14 @@ A Desert Habitat (Introducing Habitats) by Kelley Macaulay and Bobbie Kalman
           android:layout_height="wrap_content"
           android:text= "@string/birdRegion"
           android:textSize="15sp"
+          android:textColor="@color/textcolor"
           />
       <TextView
           android:id="@+id/birdregion"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginLeft="20dp"
+          android:textColor="@color/textcolor"
           android:text= "region" />
   </LinearLayout>
 
@@ -89,6 +98,7 @@ A Desert Habitat (Introducing Habitats) by Kelley Macaulay and Bobbie Kalman
         android:layout_height="35dp"
         android:textSize="20sp"
         android:text= "@string/birdBiome"
+        android:textColor="@color/textcolor"
         android:background="@color/txtviewcolor"
         />
     <TextView
@@ -96,12 +106,14 @@ A Desert Habitat (Introducing Habitats) by Kelley Macaulay and Bobbie Kalman
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
+        android:textColor="@color/textcolor"
         android:text= "biome" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:textSize="20sp"
+        android:textColor="@color/textcolor"
         android:text= "@string/birdHabitat"
         android:background="@color/txtviewcolor"
         />
@@ -109,7 +121,8 @@ A Desert Habitat (Introducing Habitats) by Kelley Macaulay and Bobbie Kalman
             android:id="@+id/birdhabitat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text= "Habitat" />
+            android:textColor="@color/textcolor"
+            android:text= "Habitat" />
 
     <TextView
         android:layout_width="match_parent"
@@ -117,17 +130,21 @@ A Desert Habitat (Introducing Habitats) by Kelley Macaulay and Bobbie Kalman
         android:textSize="20sp"
         android:text= "@string/birdDiet"
         android:background="@color/txtviewcolor"
+        android:textColor="@color/textcolor"
+
         />
     <TextView
         android:id="@+id/diet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/textcolor"
         android:text= "diet" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:textSize="20sp"
         android:text= "@string/BirdAppearance"
+        android:textColor="@color/textcolor"
         android:background="@color/txtviewcolor"
 
         />
@@ -140,12 +157,14 @@ A Desert Habitat (Introducing Habitats) by Kelley Macaulay and Bobbie Kalman
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15sp"
+            android:textColor="@color/textcolor"
             android:text= "@string/birdColour" />
         <TextView
             android:id="@+id/birdcolour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:textColor="@color/textcolor"
             android:text= "Color" />
     </LinearLayout>
 
@@ -157,13 +176,16 @@ A Desert Habitat (Introducing Habitats) by Kelley Macaulay and Bobbie Kalman
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
+        android:textColor="@color/textcolor"
         android:text= "@string/birdHeight" />
     <TextView
         android:id="@+id/birdheight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:text= "Height" />
+        android:text= "Height"
+        android:textColor="@color/textcolor"
+        />
     </LinearLayout>
 <LinearLayout
     android:layout_width="wrap_content"
@@ -173,14 +195,17 @@ A Desert Habitat (Introducing Habitats) by Kelley Macaulay and Bobbie Kalman
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:text= "@string/birdWeight" />
+        android:text= "@string/birdWeight"
+        android:textColor="@color/textcolor"
+        />
 
     <TextView
         android:id="@+id/birdweight"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-    android:text= "Weight" />
+        android:textColor="@color/textcolor"
+        android:text= "Weight" />
 
 </LinearLayout>
 </LinearLayout>

@@ -10,5 +10,6 @@
     <color name="txtColor">#d9d9d9</color>
     <color name="btnTxtColor">#000000</color>
     <color name="txtviewcolor">#A9A9A9</color>
+    <color name="textcolor">#000000</color>
 
 </resources>
