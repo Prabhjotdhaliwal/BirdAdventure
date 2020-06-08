@@ -33,6 +33,7 @@
     <!-- Media -->
     <string name="action_images">Images</string>
     <string name="action_videos">Videos</string>
+    <string name="capture_video">Capture Video</string>
     <string name="action_sounds">Sounds</string>
 
     <!-- Birds -->

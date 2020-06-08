@@ -5,15 +5,15 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
     android:orientation="vertical"
-    tools:context=".UploadFragment">
+    tools:context=".UploadVideoFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageViewCamera"
+        <VideoView
+            android:id="@+id/videoViewCamera"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
@@ -34,7 +34,7 @@
             android:gravity="center">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnCameraImage"
+                android:id="@+id/btnCameraVideo"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@drawable/ic_camera" />
@@ -48,27 +48,10 @@
             android:gravity="center">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnGalleryImage"
+                android:id="@+id/btnGalleryVideo"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@drawable/ic_gallery" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtCaptureVideo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/capture_video"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
