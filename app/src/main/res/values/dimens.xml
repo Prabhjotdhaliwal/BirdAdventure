@@ -6,4 +6,7 @@
 
     <!-- Custom Dimensions -->
     <dimen name="txt_normal">15sp</dimen>
+    <dimen name="appbar_padding">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
 </resources>

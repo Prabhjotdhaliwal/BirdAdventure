@@ -1,5 +1,6 @@
 package com.example.birdsadventure;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -115,6 +116,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                 bundle.putParcelable("birds", birdsList.get(position));
                 // navController.navigate(R.id.displayFragment, bundle);
                 Toast.makeText(getActivity().getApplicationContext(), birdsList.get(position).getName(), Toast.LENGTH_SHORT).show();
+                Intent Intent = new Intent (getActivity(), BirdProfileActivity.class);
+                getActivity().startActivity(Intent);
             }
         });
     }

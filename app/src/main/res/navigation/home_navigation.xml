@@ -65,13 +65,26 @@
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
-        android:id="@+id/birdProfilefragment"
-        android:name="com.example.birdsadventure.BirdProfilefragment"
-        android:label="fragment_bird_profilefragment"
-        tools:layout="@layout/fragment_bird_profilefragment" />
-    <fragment
         android:id="@+id/uploadVideoFragment"
         android:name="com.example.birdsadventure.UploadVideoFragment"
         android:label="fragment_upload_video"
         tools:layout="@layout/fragment_upload_video" />
+
+
+
+    <fragment
+        android:id="@+id/birdDescriptionFragment"
+        android:name="com.example.birdsadventure.BirdDescriptionFragment"
+        android:label="fragment_bird_description"
+        tools:layout="@layout/fragment_bird_description" />
+    <fragment
+        android:id="@+id/birdMediaFragment"
+        android:name="com.example.birdsadventure.BirdMediaFragment"
+        android:label="fragment_bird_media"
+        tools:layout="@layout/fragment_bird_media" />
+    <fragment
+        android:id="@+id/birdLocationFragment"
+        android:name="com.example.birdsadventure.BirdLocationFragment"
+        android:label="fragment_bird_location"
+        tools:layout="@layout/fragment_bird_location" />
 </navigation>

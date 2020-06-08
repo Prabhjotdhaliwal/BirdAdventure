@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
+    tools:context=".BirdDescriptionFragment"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:textSize="20sp"
+            android:text="@string/birdDescription"
+            android:background="@color/txtviewcolor"
+            ></TextView>
+        <TextView
+            android:id="@+id/birddescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="DesA habitat is the natural environment of a plant or an animal or the place that is normal for the life and growth of an animal or a plant.
+A biome describes the world’s major communities of living things. Biomes are classified according to the predominant vegetation (plants) and characterized by adaptations of organisms (animals) to that particular environment.
+In other words, a habitat describes the specific neighborhood where a plant or animal is found. A biome describes major neighborhoods of the world by the plants and weather conditions that are typically found in it.
+
+So, a habitat refers to the local environment of a specific species, while a biome refers to a global environment.
+
+he Arctic Habitat (Introducing Habitats) by Molly Aloian and Bobbie Kalman
+Arctic Tundra (Habitats) by Michael H. Forman
+A Desert Habitat (Introducing Habitats) by Kelley Macaulay and Bobbie Kalman
+" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textSize="20sp"
+        android:text= "@string/birdLocation"
+        android:background="@color/txtviewcolor"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= "@string/birdCity"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/birdcity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text= "city" />
+    </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text= "@string/birdRegion"
+          android:textSize="15sp"
+          />
+      <TextView
+          android:id="@+id/birdregion"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="20dp"
+          android:text= "region" />
+  </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textSize="20sp"
+        android:text= "@string/birdBiome"
+        android:background="@color/txtviewcolor"
+        />
+    <TextView
+        android:id="@+id/birdbiome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text= "biome" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textSize="20sp"
+        android:text= "@string/birdHabitat"
+        android:background="@color/txtviewcolor"
+        />
+        <TextView
+            android:id="@+id/birdhabitat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text= "Habitat" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textSize="20sp"
+        android:text= "@string/birdDiet"
+        android:background="@color/txtviewcolor"
+        />
+    <TextView
+        android:id="@+id/diet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text= "diet" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textSize="20sp"
+        android:text= "@string/BirdAppearance"
+        android:background="@color/txtviewcolor"
+
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text= "@string/birdColour" />
+        <TextView
+            android:id="@+id/birdcolour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text= "Color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text= "@string/birdHeight" />
+    <TextView
+        android:id="@+id/birdheight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text= "Height" />
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text= "@string/birdWeight" />
+
+    <TextView
+        android:id="@+id/birdweight"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+    android:text= "Weight" />
+
+</LinearLayout>
+</LinearLayout>
+</ScrollView>
