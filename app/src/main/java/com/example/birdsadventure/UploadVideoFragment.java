@@ -143,8 +143,8 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
 
 //        takeVideoIntent.setType("video/*");
 
-        takeVideoIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
-        takeVideoIntent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 8);
+        takeVideoIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0);
+        takeVideoIntent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5);
         if (takeVideoIntent.resolveActivity(getActivity().getPackageManager()) != null) {
 
             File videoFile = null;
@@ -172,11 +172,11 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
 
             File f = new File(currentVideoPath);
 
-//            videoViewCamera.setVideoURI(Uri.fromFile(f));
+            videoViewCamera.setVideoURI(Uri.fromFile(f));
 
             //Uri videoUri = intent.getData();
             //videoViewCamera.setVideoURI(videoUri);
-//            videoViewCamera.start();
+            videoViewCamera.start();
 
             Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
             Uri contentUri = Uri.fromFile(f);
@@ -213,8 +213,8 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
                     public void onSuccess(Uri uri) {
                         Log.d("tag", "onSuccess: Upload Image URI is " + uri);
 
-                        videoViewCamera.setVideoURI(uri);
-                        videoViewCamera.requestFocus();
+//                        videoViewCamera.setVideoURI(uri);
+//                        videoViewCamera.requestFocus();
                     }
                 });
                 Toast.makeText(getActivity(), "Video is uploaded", Toast.LENGTH_LONG).show();
