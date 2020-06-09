@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.MediaController;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -26,6 +27,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -46,10 +49,12 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
 
     Button btnCameraVideo, btnGalleryVideo;
     VideoView videoViewCamera;
+    TextView txtCaptureAudio;
     MediaController mediaController;
 
     String currentVideoPath;
     StorageReference storageReference;
+    private NavController navController;
 
     public UploadVideoFragment() {
     }
@@ -68,15 +73,19 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
         storageReference = FirebaseStorage.getInstance().getReference();
         //storageReference = FirebaseStorage.getInstance().getReference("uploads");
 
         videoViewCamera = getActivity().findViewById(R.id.videoViewCamera);
         btnCameraVideo = getActivity().findViewById(R.id.btnCameraVideo);
         btnGalleryVideo = getActivity().findViewById(R.id.btnGalleryVideo);
+        txtCaptureAudio = getActivity().findViewById(R.id.txtCaptureAudio);
 
         btnCameraVideo.setOnClickListener(this);
         btnGalleryVideo.setOnClickListener(this);
+        txtCaptureAudio.setOnClickListener(this);
 
         videoViewCamera.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
@@ -109,6 +118,8 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
 
                 startActivityForResult(intentGallery, GALLERY_REQUEST_CODE);
                 break;
+            case R.id.txtCaptureAudio:
+                navController.navigate(R.id.uploadAudioFragment);
             default:
                 break;
         }

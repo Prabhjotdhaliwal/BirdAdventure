@@ -78,7 +78,7 @@ public class UploadFragment extends Fragment implements View.OnClickListener {
         imageView = getActivity().findViewById(R.id.imageViewCamera);
         btnCameraImage = getActivity().findViewById(R.id.btnCameraImage);
         btnGalleryImage = getActivity().findViewById(R.id.btnGalleryImage);
-        txtCaptureVideo=getActivity().findViewById(R.id.txtCaptureVideo);
+        txtCaptureVideo = getActivity().findViewById(R.id.txtCaptureVideo);
 
         btnCameraImage.setOnClickListener(this);
         btnGalleryImage.setOnClickListener(this);

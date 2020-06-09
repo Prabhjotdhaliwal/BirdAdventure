@@ -87,4 +87,9 @@
         android:name="com.example.birdsadventure.BirdLocationFragment"
         android:label="fragment_bird_location"
         tools:layout="@layout/fragment_bird_location" />
+    <fragment
+        android:id="@+id/uploadAudioFragment"
+        android:name="com.example.birdsadventure.UploadAudioFragment"
+        android:label="fragment_upload_audio"
+        tools:layout="@layout/fragment_upload_audio" />
 </navigation>
