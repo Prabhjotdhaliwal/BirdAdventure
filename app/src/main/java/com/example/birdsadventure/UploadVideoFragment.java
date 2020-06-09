@@ -149,7 +149,6 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
     }
 
     private void dispatchTakeVideoIntent() {
-        Toast.makeText(getActivity().getApplicationContext(), "hi there,", Toast.LENGTH_SHORT).show();
         Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
 
 //        takeVideoIntent.setType("video/*");
@@ -248,7 +247,7 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
     private File createVideoFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "VIDEO_" + timeStamp + "_";
+        String videoFileName = "VIDEO_" + timeStamp + "_";
         File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_MOVIES);
 
         //   File storageDir=Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_PICTURES);
@@ -256,7 +255,7 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
         //  final File storageDir =     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
         File videoFile = File.createTempFile(
-                imageFileName,  /* prefix */
+                videoFileName,  /* prefix */
                 ".mp4",         /* suffix */
                 storageDir      /* directory */
         );
