@@ -2,29 +2,43 @@ package com.example.birdsadventure;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
+import android.widget.Button;
+import android.widget.MediaController;
+import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
-import android.provider.MediaStore;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
-import android.widget.VideoView;
-
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
-public class UploadVideoFragment extends Fragment  implements View.OnClickListener {
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class UploadVideoFragment extends Fragment implements View.OnClickListener {
 
     public static final int CAMERA_CODE = 101;
     public static final int REQUEST_VIDEO_CAPTURE = 102;
@@ -32,6 +46,7 @@ public class UploadVideoFragment extends Fragment  implements View.OnClickListen
 
     Button btnCameraVideo, btnGalleryVideo;
     VideoView videoViewCamera;
+    MediaController mediaController;
 
     String currentVideoPath;
     StorageReference storageReference;
@@ -62,6 +77,23 @@ public class UploadVideoFragment extends Fragment  implements View.OnClickListen
 
         btnCameraVideo.setOnClickListener(this);
         btnGalleryVideo.setOnClickListener(this);
+
+        videoViewCamera.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
+                    @Override
+                    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
+
+                        mediaController = new MediaController(getActivity().getApplicationContext());
+                        videoViewCamera.setMediaController(mediaController);
+                        mediaController.setAnchorView(videoViewCamera);
+                    }
+                });
+            }
+        });
+
+        videoViewCamera.start();
     }
 
     @Override
@@ -71,7 +103,10 @@ public class UploadVideoFragment extends Fragment  implements View.OnClickListen
                 askCameraPermission();
                 break;
             case R.id.btnGalleryVideo:
-                Intent intentGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                Intent intentGallery = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
+
+                intentGallery.setType("video/*");
+
                 startActivityForResult(intentGallery, GALLERY_REQUEST_CODE);
                 break;
             default:
@@ -106,26 +141,118 @@ public class UploadVideoFragment extends Fragment  implements View.OnClickListen
         Toast.makeText(getActivity().getApplicationContext(), "hi there,", Toast.LENGTH_SHORT).show();
         Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
 
-        takeVideoIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY,1);
-        takeVideoIntent.putExtra(MediaStore.EXTRA_DURATION_LIMIT,8);
-        if (takeVideoIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-            Toast.makeText(getActivity().getApplicationContext(), "yes there,", Toast.LENGTH_SHORT).show();
-            startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
-        }
-        else {
+//        takeVideoIntent.setType("video/*");
 
-            Toast.makeText(getActivity().getApplicationContext(), "no there,", Toast.LENGTH_SHORT).show();
+        takeVideoIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+        takeVideoIntent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 8);
+        if (takeVideoIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+
+            File videoFile = null;
+            try {
+                videoFile = createVideoFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+
+            }
+
+            if (videoFile != null) {
+                Uri videoUri = FileProvider.getUriForFile(getActivity(),
+                        "com.example.android.fileprovider",
+                        videoFile);
+                takeVideoIntent.putExtra(MediaStore.EXTRA_OUTPUT, videoUri);
+                startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
+            }
         }
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+
         if (requestCode == REQUEST_VIDEO_CAPTURE && resultCode == Activity.RESULT_OK) {
 
-            Toast.makeText(getActivity().getApplicationContext(), "hellozzzz ", Toast.LENGTH_SHORT).show();
-            Uri videoUri = intent.getData();
-            videoViewCamera.setVideoURI(videoUri);
-            videoViewCamera.start();
+            File f = new File(currentVideoPath);
+
+//            videoViewCamera.setVideoURI(Uri.fromFile(f));
+
+            //Uri videoUri = intent.getData();
+            //videoViewCamera.setVideoURI(videoUri);
+//            videoViewCamera.start();
+
+            Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+            Uri contentUri = Uri.fromFile(f);
+            mediaScanIntent.setData(contentUri);
+            getActivity().sendBroadcast(mediaScanIntent);
+
+            //Upload the captured image to firebase
+            uploadVideoToFirebase(f.getName(), contentUri);
+        }
+
+        //Gallery
+        if (requestCode == GALLERY_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                Uri contentUri = intent.getData();
+                // Uri contentUri= Uri.parse(currentPhotoPath);
+
+                String timeStamp = new SimpleDateFormat("yyyyMMdd_MMmmss").format(new Date());
+                String videoFileName = "JPEG_" + timeStamp + "." + getFileExt(contentUri);
+                Log.d("tag", "onActivityResult: Gallery Video Uri: " + videoFileName);
+                videoViewCamera.setVideoURI(contentUri);
+
+                uploadVideoToFirebase(videoFileName, contentUri);
+            }
         }
     }
+
+    private void uploadVideoToFirebase(String name, Uri contentUri) {
+        final StorageReference videosStorage = storageReference.child("videos/video" + name);
+        videosStorage.putFile(contentUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                videosStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Log.d("tag", "onSuccess: Upload Image URI is " + uri);
+
+                        videoViewCamera.setVideoURI(uri);
+                        videoViewCamera.requestFocus();
+                    }
+                });
+                Toast.makeText(getActivity(), "Video is uploaded", Toast.LENGTH_LONG).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Video upload failed - " + e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private String getFileExt(Uri contentUri) {
+        ContentResolver c = getActivity().getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(c.getType(contentUri));
+    }
+
+    private File createVideoFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "VIDEO_" + timeStamp + "_";
+        File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_MOVIES);
+
+        //   File storageDir=Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_PICTURES);
+        // (it will work for actual device)
+        //  final File storageDir =     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+
+        File videoFile = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".mp4",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        currentVideoPath = videoFile.getAbsolutePath();
+        return videoFile;
+    }
+
 }
