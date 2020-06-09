@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:background="@drawable/rounded"
-            android:textColor="@color/txtColor" />
+            android:textColor="@color/textcolor" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:background="@drawable/rounded"
-            android:textColor="@color/txtColor" />
+            android:textColor="@color/textcolor" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
