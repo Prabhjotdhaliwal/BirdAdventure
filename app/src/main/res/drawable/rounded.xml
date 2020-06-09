@@ -2,6 +2,9 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <solid android:color="@color/buttonbackgroundColor"/>
-    <corners android:radius="100dp"/>
+
+    <gradient android:startColor="#D16BA5"
+        android:endColor="#5FFBF1"
+        android:angle="180" />
+    <corners android:radius="80dp"/>
 </shape>

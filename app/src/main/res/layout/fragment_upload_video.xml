@@ -3,58 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_bg"
+    android:background="@drawable/gradientcolor1"
     android:orientation="vertical"
     tools:context=".UploadVideoFragment">
-
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <VideoView
+        android:id="@+id/videoViewCamera"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:padding="10dp" />
 
-        <VideoView
-            android:id="@+id/videoViewCamera"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:padding="10dp" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnCameraVideo"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:background="@drawable/ic_camera" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
+                android:background="@drawable/ic_baseline_videocam_24" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnGalleryVideo"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@drawable/ic_gallery" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

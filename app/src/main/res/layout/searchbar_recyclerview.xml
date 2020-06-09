@@ -21,7 +21,6 @@
            <ImageView
                android:id="@+id/searchimage"
                android:layout_width="150dp"
-
                android:layout_height="150dp"
                tools:srcCompat="@drawable/ic_wallpaper_black_24dp" />
            <TextView

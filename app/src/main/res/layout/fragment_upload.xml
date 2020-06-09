@@ -3,75 +3,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_bg"
+    android:background="@drawable/gradientcolor1"
     android:orientation="vertical"
     tools:context=".UploadFragment">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewCamera"
         android:layout_width="match_parent"
+       android:layout_gravity="center"
+        android:layout_weight="1"
         android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageViewCamera"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:padding="10dp" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_margin="10dp"
+        />
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnCameraImage"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@drawable/ic_camera" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnGalleryImage"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+
                 android:background="@drawable/ic_gallery" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtCaptureVideo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/capture_video"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_baseline_videocam_24"
                 />
+        </LinearLayout>
+    </LinearLayout>
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

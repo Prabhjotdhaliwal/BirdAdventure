@@ -1,9 +1,11 @@
 package com.example.birdsadventure;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
 
     TextView txtUserName;
+    Button mUpload;
     FirebaseAuth firebaseAuth;
 
     private ArrayList<Bird> birdsList;
@@ -52,7 +55,7 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-
+        mUpload = getActivity().findViewById(R.id.upload);
         txtUserName = getActivity().findViewById(R.id.user_name);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -61,9 +64,17 @@ public class HomeFragment extends Fragment {
             txtUserName.setText(firebaseUser.getDisplayName());
         }
         getAllBirds();
-
         fillRecyclerView();
+
+        mUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             //   Intent intent = new Intent(getActivity(), UploadFragment.class);
+             //   startActivity(intent);
+            }
+        });
     }
+
 
     private void getAllBirds() {
         /**
@@ -78,6 +89,7 @@ public class HomeFragment extends Fragment {
         birdsList.add(new Bird("Ostrich", "https://cdn.mos.cms.futurecdn.net/tMnjLRtEm47ueTPt9Rkyxd-320-80.jpg"));
 
     }
+
 
     private void fillRecyclerView() {
 

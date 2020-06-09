@@ -1,87 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:rowCount="8"
-    android:columnCount="8"
+android:orientation="vertical"
     android:background="@drawable/gradient_bg"
-
     tools:context=".HomeFragment">
 
-    <Button
-        android:id="@+id/image_btn"
-        android:layout_width="165dp"
-        android:layout_height="170dp"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@mipmap/picture"
-        android:scaleType="fitXY" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/image_btn"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:background="@mipmap/picture" />
+            <TextView
+                android:id="@+id/txt_picture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_toRightOf="@id/image_btn"
+                android:text="Pictures"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/video_btn"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:background="@mipmap/video" />
 
-    <TextView
-        android:id="@+id/txt_picture"
-        android:layout_width="165dp"
-        android:layout_height="59dp"
-        android:layout_row="1"
-        android:layout_column="0"
-        android:text="Pictures \n XXX"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="20sp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="5dp"
-       />
+            <TextView
+                android:id="@+id/txt_videos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Videos"
+                android:layout_toRightOf="@id/video_btn"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/sound_btn"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:background="@mipmap/soundclip"
+                />
 
-    <Button
-        android:id="@+id/video_btn"
-        android:layout_width="165dp"
-        android:layout_height="170dp"
-        android:layout_row="0"
-        android:layout_column="1"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-
-        android:background="@mipmap/video"
-        android:scaleType="fitCenter"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/txt_videos"
-        android:layout_width="165dp"
-        android:layout_height="59dp"
-        android:layout_row="1"
-        android:layout_column="1"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="5dp"
-        android:text="Videos \n XXX"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="20sp" />
-
-    <Button
-        android:id="@+id/sound_btn"
-        android:layout_width="165dp"
-        android:layout_height="170dp"
-        android:layout_row="5"
-        android:layout_column="0"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@mipmap/soundclip"
-        android:scaleType="fitXY" />
-    <TextView
-        android:id="@+id/txt_sounds"
-        android:layout_width="165dp"
-        android:layout_height="59dp"
-        android:layout_row="6"
-        android:layout_column="0"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="5dp"
-        android:text="Sounds \n XXX"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="20sp" />
-
-</GridLayout>
+            <TextView
+                android:id="@+id/txt_sounds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Sounds"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/sound_btn"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
