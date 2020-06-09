@@ -166,7 +166,7 @@ public class UploadFragment extends Fragment implements View.OnClickListener {
 
     //Upload an image to firebase
     private void uploadImageToFirebase(String name, Uri contentUri) {
-        final StorageReference image = storageReference.child("pictures" + name);
+        final StorageReference image = storageReference.child("pictures/" + name);
         image.putFile(contentUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
