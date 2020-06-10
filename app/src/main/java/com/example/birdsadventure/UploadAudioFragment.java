@@ -4,8 +4,10 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +20,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
@@ -78,7 +83,6 @@ public class UploadAudioFragment extends Fragment implements View.OnClickListene
             btnAudioStop.setEnabled(false);
             btnAudioPlay.setEnabled(false);
         }
-
 
         File audioFile = null;
         try {
@@ -144,6 +148,8 @@ public class UploadAudioFragment extends Fragment implements View.OnClickListene
             mediaRecorder.release();
             mediaRecorder = null;
             isRecording = false;
+
+            uploadVideoToFirebase();
         } else {
             mediaPlayer.release();
             mediaPlayer = null;
@@ -195,6 +201,34 @@ public class UploadAudioFragment extends Fragment implements View.OnClickListene
         // Save a file: path for use with ACTION_VIEW intents
         audioFilePath = audioFile.getAbsolutePath();
         return audioFile;
+    }
+
+    private void uploadVideoToFirebase() {
+
+        File f = new File(audioFilePath);
+
+        String name = f.getName();
+        Uri contentUri = Uri.fromFile(f);
+
+        final StorageReference audioStorage = storageReference.child("audio/audio" + name);
+        audioStorage.putFile(contentUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                audioStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Log.d("tag", "onSuccess: Upload Audio URI is " + uri);
+                    }
+                });
+                Toast.makeText(getActivity(), "Audio is uploaded", Toast.LENGTH_LONG).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Audio upload failed - " + e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }
