@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:rowCount="8"
-    android:columnCount="8"
+  android:orientation="vertical"
     android:background="@drawable/gradient_bg"
 
     tools:context=".HomeFragment">
-    <LinearLayout android:layout_height="match_parent"
-        android:layout_width="match_parent"
 
-        android:orientation="vertical"  >
         <LinearLayout android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:orientation="horizontal"  android:layout_weight="1" >
@@ -101,5 +97,5 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="20sp" />
         </LinearLayout>
-    </LinearLayout>
-</GridLayout>
+   
+</androidx.appcompat.widget.LinearLayoutCompat>
