@@ -25,22 +25,20 @@
             android:textColor="@color/textcolor"
             android:background="@color/txtviewcolor"
             ></TextView>
+
         <TextView
             android:id="@+id/birddescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/textcolor"
 
+
             android:text="DesA habitat is the natural environment of a plant or an animal or the place that is normal for the life and growth of an animal or a plant.
-A biome describes the world’s major communities of living things. Biomes are classified according to the predominant vegetation (plants) and characterized by adaptations of organisms (animals) to that particular environment.
-In other words, a habitat describes the specific neighborhood where a plant or animal is found. A biome describes major neighborhoods of the world by the plants and weather conditions that are typically found in it.
+A biome describes the world where a plant or animal is found. A biome describes major neighborhoods of the world by the plants and weather conditions that are typically found in it.
 
 So, a habitat refers to the local environment of a specific species, while a biome refers to a global environment.
 
-he Arctic Habitat (Introducing Habitats) by Molly Aloian and Bobbie Kalman
-Arctic Tundra (Habitats) by Michael H. Forman
-A Desert Habitat (Introducing Habitats) by Kelley Macaulay and Bobbie Kalman
-" />
+he " />
     </LinearLayout>
 
     <TextView
