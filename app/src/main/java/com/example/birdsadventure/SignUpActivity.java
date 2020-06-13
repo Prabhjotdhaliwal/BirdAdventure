@@ -27,7 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private FirebaseAuth fireBaseAuth;       /* Declaration of firebase authentication to get backend services */
+    private FirebaseAuth fireBaseAuth;
     /* Declaration of edit text boxes */
     EditText txtName, txtEmail, txtPassword, txtPhone, txtAddress, txtConfirmPassword;
 
