@@ -22,29 +22,38 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText txtEmail, txtPassword;
-    Button btnLogin;
-    FirebaseAuth firebaseAuth;
+    EditText txtEmail, txtPassword;           /** Declaration of edit text boxes */
+    Button btnLogin;                          /** Declaration of button */
+    FirebaseAuth firebaseAuth;                /* Declaration of firebase authentication to get backend services */
 
-    SharedPreferences sp;
-    SharedPreferences.Editor editor;
-    boolean isLogin;
-    String currentUserID;
+    SharedPreferences sp;                     /** Shared preferences declaration to save login information  */
+    SharedPreferences.Editor editor;          /** This Interface used for modifying values in a SharedPreferences object */
+    boolean isLogin;                          /** To check if user is already logged in or not */
+    String currentUserID;                     /** Returns the ID of the current user if they are logged in */
 
+    /** To set the layout of the activity from which it is invoked. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        /*
+        * To check if user is already logged in
+        * if yes then navigate the user to the home screen
+        *  */
         if (validateAutomaticLogin()) {
             navigateToHome();
         }
 
-        //Initialize the firebaseAuth
+        /** For user authentication we have to take reference to the FirebaseAuth.
+         * getInstance functionality used to take reference */
         firebaseAuth = FirebaseAuth.getInstance();
 
+        /** To connect edit text boxes with the current activity */
         txtEmail = findViewById(R.id.txtEmailLogin);
         txtPassword = findViewById(R.id.txtPasswordLogin);
+
+        /** To connect button with the current activity */
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this);
     }
@@ -56,6 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //System.out.println (currentUser);
     }
 
+    /** Implementation of click functionality of login button */
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnLogin) {
@@ -63,8 +73,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    /** To check if the user is already log in */
     private boolean validateAutomaticLogin() {
-        sp = getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);
+        sp = getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);      /** Get Preference */
 
         isLogin = sp.getBoolean(MyVariables.keyLoginAuth, MyVariables.defaultLoginAuth);
         currentUserID = sp.getString(MyVariables.keyUserID, MyVariables.defaultUserID);
@@ -74,64 +85,76 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         return false;
     }
-
+    /** Navigate user to the home page after login authentication*/
     private void navigateToHome() {
         finish();
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
-
-    //SignInUser with firebase
+    /** Functionality of login button */
     private void btnLoginClick() {
 
+        /** To get login information from the user  */
         final String userName = txtEmail.getText().toString().trim();
         final String password = txtPassword.getText().toString().trim();
 
+        /** Check if the user name is entered or not by the user */
         if (TextUtils.isEmpty(userName)) {
             txtEmail.requestFocus();
             txtEmail.setError("Email is Required ");
             return;
         }
+        /** Check if the password is entered or not by the user*/
         if (TextUtils.isEmpty(password)) {
             txtPassword.requestFocus();
             txtPassword.setError("Password is Required ");
             return;
         }
+        /** Check the password conditions */
         if (password.length() < 8) {
             txtPassword.requestFocus();
-            txtPassword.setError("Password must be >= 6 Characters");
+            txtPassword.setError("Password must be >= 8 Characters");
             return;
         }
 
-        //Authenticate the user
+        /** verify login details with the database */
         firebaseAuth.signInWithEmailAndPassword(userName, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Toast.makeText(LoginActivity.this, "hello", Toast.LENGTH_SHORT).show();
+
+                        /** If login credentials matches with the database */
                         if (task.isSuccessful()) {
 
                             saveUserDetails();
+
+                            /** navigate user to the home page after successful authentication */
                             navigateToHome();
                         } else {
                             Toast.makeText(getApplicationContext(), "Authentication failed check your Email & Password", Toast.LENGTH_SHORT).show();
 
                         }
                     }
-
+                    /** failure listener is called when the task unable to complete due to problem or error */
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
+
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(LoginActivity.this, "Error -> " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
 
+
+    /** Save the data of the current logged in user in shared preferences */
+
     private void saveUserDetails() {
 
+
         editor = sp.edit();
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();  /** firebaseUser an object containing the details about the user */
         if (firebaseUser != null) {
             String userId = firebaseUser.getUid();
             String userEmail = firebaseUser.getEmail();
