@@ -52,7 +52,6 @@
     <!-- Birds Profile -->
 
     <string name="notifications_fragment">Notifications</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="title_activity_bird_profile">BirdProfileActivity</string>
     <string name="tab_text_1">Description</string>
     <string name="tab_text_2">Media</string>
@@ -72,6 +71,7 @@
     <string name="birdimages">Pictures</string>
     <string name="birdvideos">Videos</string>
     <string name="birdsounds">Sound Clips</string>
+    <string name="prompt_location">Location</string>
 
 
 </resources>

@@ -2,11 +2,14 @@ package com.example.birdsadventure;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,25 +21,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
 public class SearchFragment extends Fragment implements View.OnClickListener {
-   //Database instance
+    //Database instance
     FirebaseFirestore db;
     EditText txtSearchDrink;
     Button btnSearch;
+    Spinner spinnerLocation;
 
     private ArrayList<Bird> birdsList;
-
-    private RecyclerView recyclerView;
-    private BirdsRecyclerAdapter recyclerAdapter;
-    private RecyclerView.LayoutManager recyclerLayoutManager;
 
     private NavController navController;
 
@@ -58,30 +58,107 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        db = FirebaseFirestore.getInstance();
 
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         txtSearchDrink = getActivity().findViewById(R.id.text_search_place);
         btnSearch = getActivity().findViewById(R.id.button_search);
+        spinnerLocation = (Spinner) getActivity().findViewById(R.id.spinner_locations);
 
         btnSearch.setOnClickListener(this);
 
-        getAllBirds();
-       fillRecyclerView();
+        getAllLocations();
+
+        getAllBirds("", "");
     }
 
-    private void getAllBirds() {
-        /**
-         TODO: get data from FireStore
-         */
+    private void getAllLocations() {
 
-        //sample data temporarily added
+        ArrayList<Location> locationList = new ArrayList<Location>();
+
+        //dummy temporary data
+        locationList.add(new Location("All Locations"));
+        locationList.add(new Location("Montreal national park"));
+        locationList.add(new Location("Laval"));
+        locationList.add(new Location("Sherwood national park"));
+        locationList.add(new Location("Montreal bird reserve"));
+
+        db.collection("Location")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                //locationList.add(new Location(document.get("region").toString()));
+                            }
+
+                        } else {
+                            Log.d("tag", "Error getting Locations: ", task.getException());
+                            Toast.makeText(getActivity().getApplicationContext(), "Error getting Locations: " + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+        ArrayAdapter<Location> locationArrayAdapter = new ArrayAdapter<Location>(getActivity().getApplicationContext(),
+                android.R.layout.simple_spinner_item, locationList);
+
+        locationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerLocation.setAdapter(locationArrayAdapter);
+    }
+
+    private void getAllBirds(final String searchText, String region) {
+
         birdsList = new ArrayList<Bird>();
-        birdsList.add(new Bird("Parrot", "https://pyxis.nymag.com/v1/imgs/a40/333/c115e400743744250195e8c5e8cfc9abc9-9-parrots.rsquare.w700.jpg"));
-        birdsList.add(new Bird("Sparrow", "https://www.allaboutbirds.org/guide/assets/photo/63742431-480px.jpg"));
-        birdsList.add(new Bird("Pigeon", "https://www.allaboutbirds.org/guide/assets/photo/66031271-480px.jpg"));
-        birdsList.add(new Bird("Ostrich", "https://cdn.mos.cms.futurecdn.net/tMnjLRtEm47ueTPt9Rkyxd-320-80.jpg"));
+        Query query = db.collection("Birds");
 
+//        if (searchText.equals("")) {
+//            query = db.collection("Birds");
+//        } else {
+//
+//            query = db.collection("Birds").whereGreaterThanOrEqualTo("name", searchText)
+//                    .whereLessThanOrEqualTo("name", searchText + "\uf8ff");
+//        }
 
+        query.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                final String birdName = document.getString("name");
+//                                document.getReference().collection("media").document("Image")
+//                                        .get()
+//                                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                                            @Override
+//                                            public void onComplete(@NonNull Task<DocumentSnapshot> task2) {
+//
+//                                                if (task2.isSuccessful()) {
+//                                                    DocumentSnapshot document2 = task2.getResult();
+//
+//                                                    final String birdImageURL = document2.getString("url");
+//                                                    //if (birdImageURL != null) {
+//                                                        birdsList.add(new Bird(birdName, birdImageURL));
+//                                                    //}
+//                                                }
+//                                            }
+//                                        });
+
+                                if (birdName.contains(searchText)) {
+                                    String birdImageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg/1200px-Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg";
+                                    birdsList.add(new Bird(birdName, birdImageURL));
+                                }
+                            }
+                            fillRecyclerView();
+                        } else {
+                            Log.d("tag", "Error getting birds: ", task.getException());
+                            Toast.makeText(getActivity().getApplicationContext(), "Error getting birds: " + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
     }
 
@@ -94,17 +171,17 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
     private void btnSearchClick(View v) {
 
-        String searchedText = txtSearchDrink.getText().toString();
-        getAllBirds();
-       // fillRecyclerView();
+        Location location = (Location) spinnerLocation.getSelectedItem();
+
+        String searchText = txtSearchDrink.getText().toString();
+        getAllBirds(searchText, location.getLocationName());
     }
 
-    private void fillRecyclerView()
-    {
+    private void fillRecyclerView() {
 
-        recyclerView = getActivity().findViewById(R.id.recycler_view_search_birds);
-        recyclerLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerAdapter = new BirdsRecyclerAdapter(birdsList, true);
+        RecyclerView recyclerView = getActivity().findViewById(R.id.recycler_view_search_birds);
+        RecyclerView.LayoutManager recyclerLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        BirdsRecyclerAdapter recyclerAdapter = new BirdsRecyclerAdapter(birdsList, true);
         recyclerView.setLayoutManager(recyclerLayoutManager);
         recyclerView.setAdapter(recyclerAdapter);
 
@@ -116,10 +193,9 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                 bundle.putParcelable("birds", birdsList.get(position));
                 // navController.navigate(R.id.displayFragment, bundle);
                 Toast.makeText(getActivity().getApplicationContext(), birdsList.get(position).getName(), Toast.LENGTH_SHORT).show();
-                Intent Intent = new Intent (getActivity(), BirdProfileActivity.class);
+                Intent Intent = new Intent(getActivity(), BirdProfileActivity.class);
                 getActivity().startActivity(Intent);
             }
         });
     }
-
 }

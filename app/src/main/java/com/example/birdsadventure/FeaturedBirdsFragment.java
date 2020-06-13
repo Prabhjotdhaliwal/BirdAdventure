@@ -1,6 +1,7 @@
 package com.example.birdsadventure;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,13 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class FeaturedBirdsFragment extends Fragment implements View.OnClickListener {
@@ -23,6 +31,7 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
     EditText txtSearchDrink;
     Button btnSearch;
 
+    FirebaseFirestore db;
     private ArrayList<Bird> birdsList;
 
     private RecyclerView recyclerView;
@@ -48,6 +57,8 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        db = FirebaseFirestore.getInstance();
+
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         txtSearchDrink = getActivity().findViewById(R.id.text_search_place);
@@ -55,21 +66,36 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
 
         btnSearch.setOnClickListener(this);
 
-        getAllBirds();
-        fillRecyclerView();
+        getFeaturedBirds("");
     }
 
-    private void getAllBirds() {
-        /**
-         TODO: get data from FireStore
-         */
+    private void getFeaturedBirds(final String searchText) {
 
-        //sample data temporarily added
         birdsList = new ArrayList<Bird>();
-        birdsList.add(new Bird("Parrot", "https://pyxis.nymag.com/v1/imgs/a40/333/c115e400743744250195e8c5e8cfc9abc9-9-parrots.rsquare.w700.jpg"));
-        birdsList.add(new Bird("Sparrow", "https://www.allaboutbirds.org/guide/assets/photo/63742431-480px.jpg"));
-        birdsList.add(new Bird("Pigeon", "https://www.allaboutbirds.org/guide/assets/photo/66031271-480px.jpg"));
-        birdsList.add(new Bird("Ostrich", "https://cdn.mos.cms.futurecdn.net/tMnjLRtEm47ueTPt9Rkyxd-320-80.jpg"));
+        Query query = db.collection("Birds").whereEqualTo("isFeatured", true);
+
+        query.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                final String birdName = document.getString("name");
+
+                                if (birdName.contains(searchText)) {
+                                    String birdImageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg/1200px-Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg";
+                                    birdsList.add(new Bird(birdName, birdImageURL));
+                                }
+                            }
+                            fillRecyclerView();
+                        } else {
+                            Log.d("tag", "Error getting birds: ", task.getException());
+                            Toast.makeText(getActivity().getApplicationContext(), "Error getting birds: " + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
     }
 
@@ -82,9 +108,8 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
 
     private void btnSearchClick(View v) {
 
-        String searchedText = txtSearchDrink.getText().toString();
-        getAllBirds();
-        fillRecyclerView();
+        String searchText = txtSearchDrink.getText().toString();
+        getFeaturedBirds(searchText);
     }
 
     private void fillRecyclerView() {
