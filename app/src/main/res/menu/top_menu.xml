@@ -5,28 +5,29 @@
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_more"
-        android:title="Profile"
+        android:title="My Profile"
         />
 
     <item
         android:id="@+id/featured_bird"
         android:icon="@drawable/ic_more"
-        android:title="Featured Bird"
+        android:title="Featured Birds"
         />
     <item
         android:id="@+id/news"
         android:icon="@drawable/ic_more"
         android:title="News"
         />
+
+    <item
+        android:id="@+id/favourites"
+        android:icon="@drawable/ic_more"
+        android:title="Favourites"
+        />
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_more"
         android:title="Settings"
-        />
-    <item
-        android:id="@+id/notifications"
-        android:icon="@drawable/ic_more"
-        android:title="Notifications"
         />
     <item
         android:id="@+id/logout"

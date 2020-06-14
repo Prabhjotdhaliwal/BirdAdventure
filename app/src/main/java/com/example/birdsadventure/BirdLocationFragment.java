@@ -36,7 +36,7 @@ public class BirdLocationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate the layoout fragment
         View rootView = inflater.inflate(R.layout.fragment_bird_location, container, false);
         SupportMapFragment mapFragment = null;
         if (mapFragment == null) {
