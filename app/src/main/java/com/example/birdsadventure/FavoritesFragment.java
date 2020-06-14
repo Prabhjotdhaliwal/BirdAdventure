@@ -2,6 +2,7 @@
 package com.example.birdsadventure;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,15 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class FavoritesFragment extends Fragment implements View.OnClickListener {
@@ -24,11 +34,10 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
     EditText txtSearchDrink;
     Button btnSearch;
 
+    FirebaseFirestore db;
+    FirebaseUser user;
+    String userID;
     private ArrayList<Bird> birdsList;
-
-    private RecyclerView recyclerView;
-    private BirdsRecyclerAdapter recyclerAdapter;
-    private RecyclerView.LayoutManager recyclerLayoutManager;
 
     private NavController navController;
 
@@ -49,6 +58,8 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        db = FirebaseFirestore.getInstance();
+
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         txtSearchDrink = getActivity().findViewById(R.id.text_search_place);
@@ -56,21 +67,59 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
         btnSearch.setOnClickListener(this);
 
-        getAllBirds();
-        fillRecyclerView();
+        getUserDetails();
+
+        getFavoriteBirds("");
     }
 
-    private void getAllBirds() {
-        /**
-         TODO: get data from FireStore
-         */
+    private void getUserDetails() {
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
 
-        //sample data temporarily added
+            String email = user.getEmail();
+
+            db.collection("Users").whereEqualTo("Email", email).get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                QuerySnapshot documents = task.getResult();
+                                userID = documents.getDocuments().get(0).getId();
+
+                                getFavoriteBirds("");
+                            }
+                        }
+                    });
+        }
+    }
+
+    private void getFavoriteBirds(final String searchText) {
+
         birdsList = new ArrayList<Bird>();
-        birdsList.add(new Bird("Parrot", "https://pyxis.nymag.com/v1/imgs/a40/333/c115e400743744250195e8c5e8cfc9abc9-9-parrots.rsquare.w700.jpg"));
-        birdsList.add(new Bird("Sparrow", "https://www.allaboutbirds.org/guide/assets/photo/63742431-480px.jpg"));
-        birdsList.add(new Bird("Pigeon", "https://www.allaboutbirds.org/guide/assets/photo/66031271-480px.jpg"));
-        birdsList.add(new Bird("Ostrich", "https://cdn.mos.cms.futurecdn.net/tMnjLRtEm47ueTPt9Rkyxd-320-80.jpg"));
+        Query query = db.collection("favorite_birds").whereEqualTo("user_id", userID)
+                .whereEqualTo("is_favorite", true);
+
+        query.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                final String birdName = document.getString("name");
+
+                                if (birdName.contains(searchText)) {
+                                    String birdImageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg/1200px-Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg";
+                                    birdsList.add(new Bird(birdName, birdImageURL));
+                                }
+                            }
+                            fillRecyclerView();
+                        } else {
+                            Log.d("tag", "Error getting birds: ", task.getException());
+                            Toast.makeText(getActivity().getApplicationContext(), "Error getting birds: " + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
     }
 
@@ -83,16 +132,15 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
     private void btnSearchClick(View v) {
 
-        String searchedText = txtSearchDrink.getText().toString();
-        getAllBirds();
-        fillRecyclerView();
+        String searchText = txtSearchDrink.getText().toString();
+        getFavoriteBirds(searchText);
     }
 
     private void fillRecyclerView() {
 
-        recyclerView = getActivity().findViewById(R.id.recycler_view_search_birds);
-        recyclerLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerAdapter = new BirdsRecyclerAdapter(birdsList, true);
+        RecyclerView recyclerView = getActivity().findViewById(R.id.recycler_view_search_birds);
+        RecyclerView.LayoutManager recyclerLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        BirdsRecyclerAdapter recyclerAdapter = new BirdsRecyclerAdapter(birdsList, true);
         recyclerView.setLayoutManager(recyclerLayoutManager);
         recyclerView.setAdapter(recyclerAdapter);
 
