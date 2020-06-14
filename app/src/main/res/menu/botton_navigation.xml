@@ -13,8 +13,8 @@
     <item android:id="@+id/libraryFragment"
         android:icon="@drawable/ic_local_library_black_24dp"
         android:title="Library"/>
-    <item android:id="@+id/favoritesFragment"
-        android:icon="@drawable/ic_favorite_black_24dp"
-        android:title="Favorites"/>
+    <item android:id="@+id/notificationsFragment"
+        android:icon="@drawable/notificationimg"
+        android:title="Notifications"/>
 
 </menu>

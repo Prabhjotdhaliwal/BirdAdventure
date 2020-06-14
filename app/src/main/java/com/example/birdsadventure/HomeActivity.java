@@ -86,8 +86,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.settings:
                 navController.navigate(R.id.settingsFragment);
                 return true;
-            case R.id.notifications:
-                navController.navigate(R.id.notificationsFragment);
+            case R.id.favourites:
+                navController.navigate(R.id.favoritesFragment);
                 return true;
             case R.id.logout:
                 logout();
