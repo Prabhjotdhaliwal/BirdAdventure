@@ -29,7 +29,8 @@
             android:layout_toEndOf="@+id/mytext"
             android:text="EWS"
             android:textColor="#ffffff"
-            android:textSize="26sp" />
+            android:textSize="26sp"
+            android:layout_toRightOf="@+id/mytext" />
     </RelativeLayout>
 
 </LinearLayout>
