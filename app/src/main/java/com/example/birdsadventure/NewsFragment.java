@@ -57,8 +57,8 @@ public class NewsFragment extends Fragment {
                     apiInterface.getArticle(topStories.get(i)).enqueue(new Callback<ArticleResponse>() {
                         @Override
                         public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
-                            String title= response.body().getTitle().toString();
-                            String url = response.body().getUrl().toString();
+                            String title= response.body().getTitle();
+                            String url = response.body().getUrl();
                             list.add(new Article(title,url));
                             NewsAdapter adapter=new NewsAdapter(list);
                             recyclerView.setAdapter(adapter);
