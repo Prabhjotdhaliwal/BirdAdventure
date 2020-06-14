@@ -72,7 +72,7 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
     private void getFeaturedBirds(final String searchText) {
 
         birdsList = new ArrayList<Bird>();
-        Query query = db.collection("Birds").whereEqualTo("isFeatured", true);
+        Query query = db.collection("Birds").whereEqualTo("is_Featured", true);
 
         query.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -85,7 +85,7 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
                                 final String birdName = document.getString("name");
 
                                 if (birdName.contains(searchText)) {
-                                    String birdImageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg/1200px-Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg";
+                                    String birdImageURL = document.getString("birdimgUrl");
                                     birdsList.add(new Bird(birdName, birdImageURL));
                                 }
                             }

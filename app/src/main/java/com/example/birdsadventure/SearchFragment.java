@@ -35,6 +35,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     EditText txtSearchDrink;
     Button btnSearch;
     Spinner spinnerLocation;
+    ArrayList<Location> locationList;
 
     private ArrayList<Bird> birdsList;
 
@@ -74,14 +75,14 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
     private void getAllLocations() {
 
-        ArrayList<Location> locationList = new ArrayList<Location>();
+        locationList = new ArrayList<Location>();
 
         //dummy temporary data
-        locationList.add(new Location("All Locations"));
-        locationList.add(new Location("Montreal national park"));
-        locationList.add(new Location("Laval"));
-        locationList.add(new Location("Sherwood national park"));
-        locationList.add(new Location("Montreal bird reserve"));
+//        locationList.add(new Location("All Locations"));
+//        locationList.add(new Location("Montreal national park"));
+//        locationList.add(new Location("Laval"));
+//        locationList.add(new Location("Sherwood national park"));
+//        locationList.add(new Location("Montreal bird reserve"));
 
         db.collection("Location")
                 .get()
@@ -91,7 +92,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                         if (task.isSuccessful()) {
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                //locationList.add(new Location(document.get("region").toString()));
+                                locationList.add(new Location(document.get("Location_name").toString()));
                             }
 
                         } else {
@@ -130,25 +131,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
                                 final String birdName = document.getString("name");
-//                                document.getReference().collection("media").document("Image")
-//                                        .get()
-//                                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                                            @Override
-//                                            public void onComplete(@NonNull Task<DocumentSnapshot> task2) {
-//
-//                                                if (task2.isSuccessful()) {
-//                                                    DocumentSnapshot document2 = task2.getResult();
-//
-//                                                    final String birdImageURL = document2.getString("url");
-//                                                    //if (birdImageURL != null) {
-//                                                        birdsList.add(new Bird(birdName, birdImageURL));
-//                                                    //}
-//                                                }
-//                                            }
-//                                        });
-
                                 if (birdName.contains(searchText)) {
-                                    String birdImageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg/1200px-Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg";
+                                    String birdImageURL = document.getString("birdimgUrl");
                                     birdsList.add(new Bird(birdName, birdImageURL));
                                 }
                             }

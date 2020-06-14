@@ -106,10 +106,10 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                final String birdName = document.getString("name");
+                                final String birdName = document.getString("bird_name");
 
                                 if (birdName.contains(searchText)) {
-                                    String birdImageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg/1200px-Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg";
+                                    String birdImageURL = document.getString("default_image");
                                     birdsList.add(new Bird(birdName, birdImageURL));
                                 }
                             }

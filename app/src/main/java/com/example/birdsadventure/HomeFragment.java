@@ -1,7 +1,7 @@
 package com.example.birdsadventure;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +17,25 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
 
-    TextView txtUserName;
-    Button mUpload;
-    FirebaseAuth firebaseAuth;
+    TextView txtUserName, txt_featured_birds_home;
+    Button btnUpload, btnLibrary;
+    FirebaseUser user;
+    String userID;
 
+    FirebaseFirestore db;
     private ArrayList<Bird> birdsList;
 
     private RecyclerView recyclerView;
@@ -54,42 +62,82 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        db = FirebaseFirestore.getInstance();
+
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        mUpload = getActivity().findViewById(R.id.upload);
+
+        btnUpload = getActivity().findViewById(R.id.btn_upload_home);
+        btnLibrary = getActivity().findViewById(R.id.btn_library_home);
         txtUserName = getActivity().findViewById(R.id.user_name);
+        txt_featured_birds_home = getActivity().findViewById(R.id.txt_featured_birds_home);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        if (firebaseUser != null) {
-            txtUserName.setText(firebaseUser.getDisplayName());
+        getUserDetails();
+
+        getFeaturedBirds();
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btn_upload_home) {
+            navController.navigate(R.id.uploadFragment);
+        } else if (v.getId() == R.id.btn_library_home) {
+            navController.navigate(R.id.libraryFragment);
+        } else if (v.getId() == R.id.txt_featured_birds_home) {
+            navController.navigate(R.id.featuredBirdsFragment);
         }
-        getAllBirds();
-        fillRecyclerView();
-
-        mUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-             //   Intent intent = new Intent(getActivity(), UploadFragment.class);
-             //   startActivity(intent);
-            }
-        });
     }
 
+    private void getUserDetails() {
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
 
-    private void getAllBirds() {
-        /**
-         TODO: get data from FireStore
-         */
+            String email = user.getEmail();
 
-        //sample data temporarily added
+            db.collection("Users").whereEqualTo("Email", email).get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                QuerySnapshot documents = task.getResult();
+                                if (documents.getDocuments().size() > 0) {
+                                    userID = documents.getDocuments().get(0).getId();
+                                    String name = documents.getDocuments().get(0).getString("name");
+                                    txtUserName.setText(name);
+                                }
+                            }
+                        }
+                    });
+        }
+    }
+
+    private void getFeaturedBirds() {
+
         birdsList = new ArrayList<Bird>();
-        birdsList.add(new Bird("Parrot", "https://pyxis.nymag.com/v1/imgs/a40/333/c115e400743744250195e8c5e8cfc9abc9-9-parrots.rsquare.w700.jpg"));
-        birdsList.add(new Bird("Sparrow", "https://www.allaboutbirds.org/guide/assets/photo/63742431-480px.jpg"));
-        birdsList.add(new Bird("Pigeon", "https://www.allaboutbirds.org/guide/assets/photo/66031271-480px.jpg"));
-        birdsList.add(new Bird("Ostrich", "https://cdn.mos.cms.futurecdn.net/tMnjLRtEm47ueTPt9Rkyxd-320-80.jpg"));
+        Query query = db.collection("Birds").whereEqualTo("is_Featured", true).limit(8);
+
+        query.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                final String birdName = document.getString("name");
+                                String birdImageURL = document.getString("birdimgUrl");
+                                birdsList.add(new Bird(birdName, birdImageURL));
+
+                            }
+                            fillRecyclerView();
+                        } else {
+                            Log.d("tag", "Error getting birds: ", task.getException());
+                            Toast.makeText(getActivity().getApplicationContext(), "Error getting birds: " + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
     }
-
 
     private void fillRecyclerView() {
 
