@@ -31,32 +31,27 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     /* Declaration of edit text boxes */
     EditText txtName, txtEmail, txtPassword, txtPhone, txtAddress, txtConfirmPassword;
 
-    Button btnSignUp;                        /* Declaration of sign up button */
-    FirebaseAuth firebaseAuth;              /* Declaration of firebase authentication to get backend services */
+    Button btnSignUp;                         /* Declaration of sign up button */
+    FirebaseAuth firebaseAuth;                /* Declaration of firebase authentication to get backend services */
 
-    SharedPreferences sp;
-    /**
-     * Shared preferences declaration to save login information
-     */
-    SharedPreferences.Editor editor;
-    /**
-     * This Interface used for modifying values in a SharedPreferences object
-     */
-    boolean isLogin;
-    /**
-     * To check if user is already logged in or not
-     */
+    SharedPreferences sp;                     /** Shared preferences declaration to save login information */
+    SharedPreferences.Editor editor;          /* This Interface used for modifying values in a SharedPreferences object  */
+
+    boolean isLogin;                          /* To check if user is already logged in or not */
+
+
     String currentUserID;                   /** Returns the ID of the current user if they are logged in */
 
     /**
      * To set the layout of the activity from which it is invoked
+     * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_sign_up);
 
-        /** To check if user is already logged in */
+        /** To check if user is already logged in if yes call navigateToHome() method */
         if (validateAutomaticLogin ()) {
             navigateToHome ();
         }
@@ -72,14 +67,17 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
          * getInstance functionality used to take reference */
         fireBaseAuth = FirebaseAuth.getInstance ();
 
+        /** To connect SignUp Button with the current activity */
+        btnSignUp = findViewById (R.id.btnSignUp);
 
-        btnSignUp = findViewById (R.id.btnSignUp);     /** To connect SignUp Button with the current activity */
-        btnSignUp.setOnClickListener (this);           /** To implement clicking functionality on sign up button */
+        /** To implement clicking functionality on sign up button */
+        btnSignUp.setOnClickListener (this);
 
     }
 
     /**
      * To call reigsterUser method after clicking on signup button
+     * @param v
      */
     @Override
     public void onClick(View v) {
@@ -88,11 +86,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    /**
-     * To check user is already logged in
+    /** To check user is already logged in by checking the key values in shared preferences
+     *  Return true if isLogin & currentUserID are equal
      */
     private boolean validateAutomaticLogin() {
-        sp = getSharedPreferences (MyVariables.cacheFile, Context.MODE_PRIVATE);      /** Get Preference */
+        sp = getSharedPreferences (MyVariables.cacheFile, Context.MODE_PRIVATE);      /**Code to retrieve data */
 
         isLogin = sp.getBoolean (MyVariables.keyLoginAuth, MyVariables.defaultLoginAuth);
         currentUserID = sp.getString (MyVariables.keyUserID, MyVariables.defaultUserID);
@@ -104,7 +102,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     /**
-     * To navigate user to the home screen
+     * To navigate user to the home screen that is MainActivity
      */
     private void navigateToHome() {
         finish ();
@@ -115,8 +113,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     /**
-     * Register user Using Firebase Authentication
-     */
+     * get data from user( name, email, phone, address, password and confirm password) to sign up */
     private void registerUser() {
 
         /** To fetch text from edit text boxes */
@@ -127,25 +124,24 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         String password = txtPassword.getText ().toString ().trim ();
         String confirmPassword = txtConfirmPassword.getText ().toString ();
 
-        /**  Check if the Name is entered or not */
+        /**  Check if the (Name, email, password) is entered or not by the user */
         if (TextUtils.isEmpty (name)) {
             txtName.requestFocus ();
             txtName.setError ("Name is Required ");
             return;
         }
-        /** Check if the email is entered or not */
         if (TextUtils.isEmpty (email)) {
             txtEmail.requestFocus ();
             txtEmail.setError ("Email is Required ");
             return;
         }
-        /** Check if the email is valid or not */
+         /** Check if the email pattern is correct or not */
         if (! Patterns.EMAIL_ADDRESS.matcher (email).matches ()) {
             txtEmail.requestFocus ();
             txtEmail.setError ("Invalid Email");
             return;
         }
-        /** Check if the password is filled or not */
+
         if (TextUtils.isEmpty (password)) {
             txtPassword.requestFocus ();
             txtPassword.setError ("Password is Required ");
@@ -163,10 +159,15 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             txtConfirmPassword.setError ("Passwords do not match");
             return;
         }
-
+        /** To save user credentials (name, email, phone, address) only in the Users column */
         final User user = new User (name, email, phone, address, true);
 
-        /** create the user with email and password */
+        /** create the user with email and password
+         *  and store user details in database under the User column
+         *  then navigate user to the home page
+         * @param email
+         * @param password
+         */
         fireBaseAuth.createUserWithEmailAndPassword (email, password)
                 .addOnCompleteListener (this, new OnCompleteListener< AuthResult > () {
                     @Override
@@ -177,7 +178,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
                             FirebaseFirestore db = FirebaseFirestore.getInstance ();
 
-                            /** To store user details in database under the Users column */
+
 
                             db.collection ("Users").add (user)
                                     .addOnSuccessListener (new OnSuccessListener< DocumentReference > () {
@@ -192,8 +193,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                     e.printStackTrace ();
                                 }
                             });
-                            /** Invoke saveUserDetails method and navigate user to the home page  */
-                            // saveUserDetails();
+
                             navigateToHome ();
                         }
                     }
@@ -202,11 +202,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     /**
      * Save the data of the current logged in user in shared preferences
+     * MyVariables used to save key values (keyLoginAuth,keyUserID)
      */
     private void saveUserDetails() {
 
         editor = sp.edit ();
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser ();  /** firebaseUser an object containing the details about the user */
+
+        /** firebaseUser an object containing the details about the user */
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser ();
         if (firebaseUser != null) {
             String userId = firebaseUser.getUid ();
             String userEmail = firebaseUser.getEmail ();

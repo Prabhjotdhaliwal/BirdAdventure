@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText txtEmail, txtPassword;           /** Declaration of edit text boxes */
-    Button btnLogin;                          /** Declaration of button */
+    Button btnLogin;                          /** Declaration of login button */
     FirebaseAuth firebaseAuth;                /* Declaration of firebase authentication to get backend services */
 
     SharedPreferences sp;                     /** Shared preferences declaration to save login information  */
@@ -37,16 +37,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        /*
-        * To check if user is already logged in
-        * if yes then navigate the user to the home screen
-        *  */
+        /** To check if user is already logged in if yes call navigateToHome() method */
         if (validateAutomaticLogin()) {
             navigateToHome();
         }
 
-        /** For user authentication we have to take reference to the FirebaseAuth.
-         * getInstance functionality used to take reference */
+        /*
+         * For user authentication we have to take reference to the FirebaseAuth.
+         * getInstance functionality used to take reference
+         */
         firebaseAuth = FirebaseAuth.getInstance();
 
         /** To connect edit text boxes with the current activity */
@@ -65,7 +64,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //System.out.println (currentUser);
     }
 
-    /** Implementation of click functionality of login button */
+    /** To call btnLoginClick method when clicking on login button
+     *@param v
+     */
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnLogin) {
@@ -73,9 +74,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    /** To check if the user is already log in */
+    /** To check user is already logged in by checking the key values in shared preferences
+     *  Return true if isLogin & currentUserID are equal otherwise return false
+     */
     private boolean validateAutomaticLogin() {
-        sp = getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);      /** Get Preference */
+        sp = getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);       /**Code to retrieve data */
 
         isLogin = sp.getBoolean(MyVariables.keyLoginAuth, MyVariables.defaultLoginAuth);
         currentUserID = sp.getString(MyVariables.keyUserID, MyVariables.defaultUserID);
@@ -92,20 +95,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
-    /** Functionality of login button */
+
+    /** The method btnLoginClick() is used for login button functionality*/
     private void btnLoginClick() {
 
         /** To get login information from the user  */
         final String userName = txtEmail.getText().toString().trim();
         final String password = txtPassword.getText().toString().trim();
 
-        /** Check if the user name is entered or not by the user */
+        /** Check if the user name and password is entered or not by the user */
         if (TextUtils.isEmpty(userName)) {
             txtEmail.requestFocus();
             txtEmail.setError("Email is Required ");
             return;
         }
-        /** Check if the password is entered or not by the user*/
+
         if (TextUtils.isEmpty(password)) {
             txtPassword.requestFocus();
             txtPassword.setError("Password is Required ");
@@ -118,19 +122,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        /** verify login details with the database */
+        /** verify login details with the database
+         * If login credentials matches with the database then navigate user to the home page
+         * @param userName,
+         * @param password
+         * */
         firebaseAuth.signInWithEmailAndPassword(userName, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Toast.makeText(LoginActivity.this, "hello", Toast.LENGTH_SHORT).show();
 
-                        /** If login credentials matches with the database */
+
                         if (task.isSuccessful()) {
 
                             saveUserDetails();
 
-                            /** navigate user to the home page after successful authentication */
                             navigateToHome();
                         } else {
                             Toast.makeText(getApplicationContext(), "Authentication failed check your Email & Password", Toast.LENGTH_SHORT).show();
@@ -148,13 +155,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    /** Save the data of the current logged in user in shared preferences */
-
+    /**
+     * Save the data of the current logged in user in shared preferences
+     * MyVariables used to save key values (keyLoginAuth,keyUserID)
+     */
     private void saveUserDetails() {
 
 
         editor = sp.edit();
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();  /** firebaseUser an object containing the details about the user */
+
+        /** firebaseUser an object containing the details about the user */
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if (firebaseUser != null) {
             String userId = firebaseUser.getUid();
             String userEmail = firebaseUser.getEmail();
