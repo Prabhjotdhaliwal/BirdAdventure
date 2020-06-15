@@ -70,19 +70,13 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
         getAllLocations();
 
-        getAllBirds("", "");
+        getAllBirds("", "--All Locations--");
     }
 
     private void getAllLocations() {
 
         locationList = new ArrayList<Location>();
-
-        //dummy temporary data
-//        locationList.add(new Location("All Locations"));
-//        locationList.add(new Location("Montreal national park"));
-//        locationList.add(new Location("Laval"));
-//        locationList.add(new Location("Sherwood national park"));
-//        locationList.add(new Location("Montreal bird reserve"));
+        locationList.add(new Location("--All Locations--"));
 
         db.collection("Location")
                 .get()
@@ -95,6 +89,12 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                                 locationList.add(new Location(document.get("Location_name").toString()));
                             }
 
+                            ArrayAdapter<Location> locationArrayAdapter = new ArrayAdapter<Location>(getActivity().getApplicationContext(),
+                                    android.R.layout.simple_spinner_item, locationList);
+
+                            locationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                            spinnerLocation.setAdapter(locationArrayAdapter);
                         } else {
                             Log.d("tag", "Error getting Locations: ", task.getException());
                             Toast.makeText(getActivity().getApplicationContext(), "Error getting Locations: " + task.getException(), Toast.LENGTH_SHORT).show();
@@ -102,26 +102,27 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                     }
                 });
 
-        ArrayAdapter<Location> locationArrayAdapter = new ArrayAdapter<Location>(getActivity().getApplicationContext(),
-                android.R.layout.simple_spinner_item, locationList);
-
-        locationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spinnerLocation.setAdapter(locationArrayAdapter);
     }
 
     private void getAllBirds(final String searchText, String region) {
 
         birdsList = new ArrayList<Bird>();
-        Query query = db.collection("Birds");
+        Query query = null;
 
-//        if (searchText.equals("")) {
-//            query = db.collection("Birds");
-//        } else {
-//
-//            query = db.collection("Birds").whereGreaterThanOrEqualTo("name", searchText)
-//                    .whereLessThanOrEqualTo("name", searchText + "\uf8ff");
-//        }
+        if (region.equals("--All Locations--")) {
+            query = db.collection("Birds");
+        } else {
+            query = db.collection("Birds").whereEqualTo("Location_name", region);
+        }
+
+        /*
+        if (searchText.equals("")) {
+            query = db.collection("Birds");
+        } else {
+
+            query = db.collection("Birds").whereGreaterThanOrEqualTo("name", searchText)
+                    .whereLessThanOrEqualTo("name", searchText + "\uf8ff");
+        }*/
 
         query.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

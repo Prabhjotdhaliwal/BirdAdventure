@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,10 +36,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
      * TextView for the user to see
      */
     TextView txtUserName, txt_featured_birds_home;
-    /**
-     * Decleration of Buttons
-     */
-    Button btnUpload, btnLibrary;
+
     FirebaseUser user;
     String userID;
 
@@ -63,7 +59,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     /**
-     *this method  inflater.inflate() you create your View from your XML file.
+     * this method  inflater.inflate() you create your View from your XML file.
+     *
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -81,18 +78,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         db = FirebaseFirestore.getInstance();
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-/**
- * To connect the upload button  and edit text boxes
- * with current activity
- *
- */
-        btnUpload = getActivity().findViewById(R.id.btn_upload_home);
-        btnLibrary = getActivity().findViewById(R.id.btn_library_home);
+        /**
+         * To connect the upload button  and edit text boxes
+         * with current activity
+         *
+         */
 
         txtUserName = getActivity().findViewById(R.id.user_name);
         txt_featured_birds_home = getActivity().findViewById(R.id.txt_featured_birds_home);
 
-        txt_featured_birds_home.setOnClickListener (this);
+        txt_featured_birds_home.setOnClickListener(this);
         getUserDetails();
 
         getFeaturedBirds();
@@ -102,18 +97,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     /**
      * This method is for user  to  select  the  buttons of
      * UploadData,MyLibrary, FeaturedBirds on HomeFragment page
+     *
      * @param v
      */
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.btn_upload_home) {
-            navController.navigate(R.id.uploadFragment);
-        } else if (v.getId() == R.id.btn_library_home) {
-            navController.navigate(R.id.libraryFragment);
-        } else if (v.getId() == R.id.txt_featured_birds_home) {
+        if (v.getId() == R.id.txt_featured_birds_home) {
             navController.navigate(R.id.featuredBirdsFragment);
         }
-
     }
 
     /**

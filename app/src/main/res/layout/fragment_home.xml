@@ -79,20 +79,23 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Click on the"
+                android:textSize="15sp" />
+
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_upload_home"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@android:drawable/ic_menu_add"
                 android:gravity="center" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Click on the button" />
+                android:text="Button in the bottom"
+                android:textSize="15sp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -115,15 +118,6 @@
                 android:text="My Library"
                 android:textSize="25sp"
                 android:textStyle="bold" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_library_home"
-                android:layout_width="170dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="80dp"
-                android:background="@drawable/rounded"
-                android:text="Go to My Library"
-                android:textSize="15sp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
