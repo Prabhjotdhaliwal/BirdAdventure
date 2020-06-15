@@ -25,6 +25,7 @@ public class User {
         this.phone = phone;
         this.address = address;
         this.status = status;
+        this.userID=userID;
     }
 
     //Getters

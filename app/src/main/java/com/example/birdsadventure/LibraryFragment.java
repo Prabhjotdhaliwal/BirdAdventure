@@ -11,9 +11,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 public class LibraryFragment extends Fragment implements View.OnClickListener {
 Button imagefolderbtn,videofolderbtn,soundsfolderbtn;
+    private NavController navController;
+
     public LibraryFragment() {
     }
 
@@ -35,7 +39,7 @@ Button imagefolderbtn,videofolderbtn,soundsfolderbtn;
        imagefolderbtn=view.findViewById (R.id.image_btn);
         videofolderbtn=view.findViewById (R.id.video_btn);
         soundsfolderbtn=view.findViewById (R.id.sound_btn);
-
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
   imagefolderbtn.setOnClickListener (this);
   videofolderbtn.setOnClickListener (this);
@@ -48,12 +52,17 @@ Button imagefolderbtn,videofolderbtn,soundsfolderbtn;
         switch (v.getId()) {
             case R.id.image_btn:
                 Toast.makeText (getActivity (),"Images folder selected",Toast.LENGTH_LONG).show ();
+                navController.navigate(R.id.imagesCollectionFragment);
                 break;
             case R.id.video_btn:
                 Toast.makeText (getActivity (),"Videos folder selected",Toast.LENGTH_LONG).show ();
+                navController.navigate(R.id.videosCollectionFragment);
+
                 break;
             case R.id.sound_btn:
                 Toast.makeText (getActivity (),"Sounds folder selected",Toast.LENGTH_LONG).show ();
+                navController.navigate(R.id.soundsCollectionFragment);
+
 
                 break;
 

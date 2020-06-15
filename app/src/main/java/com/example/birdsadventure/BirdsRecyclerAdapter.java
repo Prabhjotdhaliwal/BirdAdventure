@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class BirdsRecyclerAdapter extends RecyclerView.Adapter<BirdsRecyclerAdapter.RecyclerViewHolder> {
 
     private ArrayList< Bird > birdsList;
+
     private boolean isVerticalList;
     private OnItemClickListener listenerAdapter;
 
