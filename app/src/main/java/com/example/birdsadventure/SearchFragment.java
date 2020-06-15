@@ -32,14 +32,30 @@ import java.util.ArrayList;
 public class SearchFragment extends Fragment implements View.OnClickListener {
     //Database instance
     FirebaseFirestore db;
+    /**
+     *  Decleration of Edit Text boxes
+     */
     EditText txtSearchDrink;
+    /**
+     * Decleration of Buttons
+     */
     Button btnSearch;
+    /**
+     * Spinner is Display  Location Selected and for Selection
+     */
     Spinner spinnerLocation;
+    /**
+     *Array list of Locations and Birds
+     */
     ArrayList<Location> locationList;
 
     private ArrayList<Bird> birdsList;
 
     private NavController navController;
+
+    /**
+     * This Method Show The Search Birds
+     */
 
     public SearchFragment() {
     }
@@ -55,6 +71,13 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    /**
+     * This Method Display the view where user can Search Places with Search button
+     * with Spinner user can Select the list of Location
+     * OnClickListener is set for Search Button to Display All Birds
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -73,6 +96,9 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         getAllBirds("", "");
     }
 
+    /**
+     *This Method is to get the  Location Name with Spinner
+     */
     private void getAllLocations() {
 
         locationList = new ArrayList<Location>();
@@ -104,12 +130,21 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
         ArrayAdapter<Location> locationArrayAdapter = new ArrayAdapter<Location>(getActivity().getApplicationContext(),
                 android.R.layout.simple_spinner_item, locationList);
-
+/**
+ * Set the  Selected Location in the Spinner
+ */
         locationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerLocation.setAdapter(locationArrayAdapter);
     }
 
+    /**
+     *This metthos id to get birds list with region
+     * user see the search bird with name and image
+     * if not then it display the error
+     * @param searchText
+     * @param region
+     */
     private void getAllBirds(final String searchText, String region) {
 
         birdsList = new ArrayList<Bird>();
@@ -146,6 +181,10 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    /**
+     * this method shows view where user can click on search button
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.button_search) {
@@ -153,6 +192,10 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    /**
+     *  this method display the list of all birds with location
+     * @param v
+     */
     private void btnSearchClick(View v) {
 
         Location location = (Location) spinnerLocation.getSelectedItem();
@@ -161,6 +204,9 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         getAllBirds(searchText, location.getLocationName());
     }
 
+    /**
+     * The RecyclerView Method  will Display the List of Birds in Vertically with Names
+     */
     private void fillRecyclerView() {
 
         RecyclerView recyclerView = getActivity().findViewById(R.id.recycler_view_search_birds);
@@ -168,7 +214,11 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         BirdsRecyclerAdapter recyclerAdapter = new BirdsRecyclerAdapter(birdsList, true);
         recyclerView.setLayoutManager(recyclerLayoutManager);
         recyclerView.setAdapter(recyclerAdapter);
-
+/**
+ * this method show when user click on the Item
+ * to go to next Avtivity that is BirdProfileActivity
+ *
+ */
         recyclerAdapter.setOnItemClickListener(new BirdsRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
