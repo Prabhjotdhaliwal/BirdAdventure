@@ -71,6 +71,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         txtUserName = getActivity().findViewById(R.id.user_name);
         txt_featured_birds_home = getActivity().findViewById(R.id.txt_featured_birds_home);
 
+        txt_featured_birds_home.setOnClickListener (this);
         getUserDetails();
 
         getFeaturedBirds();
@@ -86,6 +87,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         } else if (v.getId() == R.id.txt_featured_birds_home) {
             navController.navigate(R.id.featuredBirdsFragment);
         }
+
     }
 
     private void getUserDetails() {
