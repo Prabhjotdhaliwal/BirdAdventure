@@ -33,6 +33,7 @@ public class NotificationsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
     public NotificationsFragment() {
         // Required empty public constructor
     }
