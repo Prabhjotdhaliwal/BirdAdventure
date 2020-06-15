@@ -18,18 +18,30 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * The Home Activity for the Application
+ * This is the first screen user see after login
+ */
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    /**
+     *  Declaration of firebase authentication to get backend services
+     */
     FirebaseAuth firebaseAuth;
-
     public NavController navController;
     public BottomNavigationView bottomNavigationView;
-
+    /**
+     * SharedPreferences Object
+     */
     SharedPreferences sp;
-    SharedPreferences.Editor editor;
-    boolean isLogin;
-    String currentUserID;
+    SharedPreferences.Editor editor;             /** This Interface used for modifying values in a SharedPreferences object */
+    boolean isLogin;                           /** To check if user is already logged in or not */
+    String currentUserID;                         /** Returns the ID of the current user if they are logged in */
 
+    /**
+     *  To set the layout of the activity from which it is invoked.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +63,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    /**
+     *  To check if the user is already log in
+     * @return
+     */
     private boolean validateAutomaticLogin() {
         sp = getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);
 
@@ -64,12 +80,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.top_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * This Method  gets called when user select an options  such as( Profile,FeaturedBirds,News,Settings,Favourites and logout)
+     * @param item a MenuItem Selected
+     * @return the selected Item
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -97,6 +119,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    /**
+     * Method called on Logout from Application
+     */
     private void logout() {
 
         FirebaseAuth.getInstance().signOut();
@@ -110,6 +135,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         goToHomeScreen();
     }
 
+    /**
+     * @See The HomePage after LoggedOut
+     */
     private void goToHomeScreen() {
 
         finish();

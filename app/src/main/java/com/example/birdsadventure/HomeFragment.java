@@ -28,9 +28,18 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+/**
+ * This is HomeFragment page
+ */
 
+public class HomeFragment extends Fragment implements View.OnClickListener {
+    /**
+     * TextView for the user to see
+     */
     TextView txtUserName, txt_featured_birds_home;
+    /**
+     * Decleration of Buttons
+     */
     Button btnUpload, btnLibrary;
     FirebaseUser user;
     String userID;
@@ -53,6 +62,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    /**
+     *this method  inflater.inflate() you create your View from your XML file.
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
@@ -65,9 +81,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         db = FirebaseFirestore.getInstance();
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-
+/**
+ * To connect the upload button  and edit text boxes
+ * with current activity
+ *
+ */
         btnUpload = getActivity().findViewById(R.id.btn_upload_home);
         btnLibrary = getActivity().findViewById(R.id.btn_library_home);
+
         txtUserName = getActivity().findViewById(R.id.user_name);
         txt_featured_birds_home = getActivity().findViewById(R.id.txt_featured_birds_home);
 
@@ -78,6 +99,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    /**
+     * This method is for user  to  select  the  buttons of
+     * UploadData,MyLibrary, FeaturedBirds on HomeFragment page
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btn_upload_home) {
@@ -90,6 +116,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    /**
+     * Get the Data of the currentUser in shared preferences
+     */
     private void getUserDetails() {
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -113,6 +142,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    /**
+     * This Method  Query collection is equal to is_featured and value is true then  it show the FeaturedBirds with Name and Url
+     * if not it show Error
+     */
     private void getFeaturedBirds() {
 
         birdsList = new ArrayList<Bird>();
@@ -141,6 +174,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    /**
+     * This Method Show Birds Horizontal in RecyclerView
+     */
     private void fillRecyclerView() {
 
         recyclerView = getActivity().findViewById(R.id.recycler_featured_birds);
@@ -148,7 +184,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerAdapter = new BirdsRecyclerAdapter(birdsList, false);
         recyclerView.setLayoutManager(recyclerLayoutManager);
         recyclerView.setAdapter(recyclerAdapter);
-
+        /**
+         * This Method Displays the Selected bird information
+         */
         recyclerAdapter.setOnItemClickListener(new BirdsRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
