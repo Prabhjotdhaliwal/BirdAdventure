@@ -26,6 +26,7 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ImagesCollectionFragment extends Fragment {
@@ -35,7 +36,8 @@ private ImageView imgcollect;
 FirebaseFirestore db;
     StorageReference storageReference;
     private ArrayList< String > myImages;
-    ArrayList< UserCollectionitem > myImages1;
+    static final List<UserCollectionitem> ITEMS = new ArrayList<>();
+
     public ImagesCollectionFragment() {
         // Required empty public constructor
     }
@@ -67,7 +69,6 @@ FirebaseFirestore db;
     recyclerView.setLayoutManager (new LinearLayoutManager (getActivity ()));
 
     myImages=new ArrayList< String > () ;
-      myImages1 = new ArrayList< UserCollectionitem > ();;
 
         //
 
@@ -80,6 +81,8 @@ FirebaseFirestore db;
         }
         listFiles ();
     }
+
+
 
     private void getimages() throws IOException {
 
