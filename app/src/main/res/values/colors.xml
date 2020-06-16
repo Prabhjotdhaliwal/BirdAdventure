@@ -13,5 +13,6 @@
     <color name="txtviewcolor">#A9A9A9</color>
     <color name="textcolor">#000000</color>
     <color name="white">#fff</color>
-
+    <color name="blue">#068BE4</color>
+    <color name="testwhite">#FFFFFF</color>
 </resources>
