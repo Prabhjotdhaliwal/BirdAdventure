@@ -62,8 +62,6 @@ Button imagefolderbtn,videofolderbtn,soundsfolderbtn;
             case R.id.sound_btn:
                 Toast.makeText (getActivity (),"Sounds folder selected",Toast.LENGTH_LONG).show ();
                 navController.navigate(R.id.soundsCollectionFragment);
-
-
                 break;
 
             default:
