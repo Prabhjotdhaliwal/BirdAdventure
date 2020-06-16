@@ -15,10 +15,21 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private EditText txtName, txtAddress, txtPhone;
     User userDetails;
+
+    FirebaseUser user;
+    String userID;
+    FirebaseFirestore db;
 
     private NavController navController;
 
@@ -40,6 +51,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        db = FirebaseFirestore.getInstance();
+
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         txtName = getActivity().findViewById(R.id.txtNameProfile);
@@ -57,17 +70,32 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     private void getUserDetails() {
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
 
-        /**
-         * TODO: get user details from FireStore.
-         */
+            String email = user.getEmail();
 
-        /**
-         * Temporary assigning user details
-         */
-        userDetails = new User("sample", "", "11223344", "123 sample street");
+            db.collection("Users").whereEqualTo("email", email)
+                    .whereEqualTo("status", true).get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                QuerySnapshot documents = task.getResult();
+                                if (documents.getDocuments().size() > 0) {
+                                    userID = documents.getDocuments().get(0).getId();
+                                    String name = documents.getDocuments().get(0).getString("name");
+                                    String phone = documents.getDocuments().get(0).getString("phone");
+                                    String address = documents.getDocuments().get(0).getString("address");
 
-        setUserDetails();
+                                    userDetails = new User(name, "", phone, address);
+
+                                    setUserDetails();
+                                }
+                            }
+                        }
+                    });
+        }
     }
 
     private void setUserDetails() {
@@ -89,10 +117,29 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private void btnSaveProfileClick(View v) {
 
-        /**
-         * TODO: get user details from FireStore.
-         */
+        final String name = txtName.getText().toString();
+        final String phone = txtPhone.getText().toString();
+        final String address = txtAddress.getText().toString();
 
-        Toast.makeText(getActivity().getApplicationContext(), "Data saved", Toast.LENGTH_SHORT).show();
+        User userDetail = new User();
+        userDetail.setName(name);
+        userDetail.setPhone(phone);
+        userDetail.setAddress(address);
+
+        if (userID != null) {
+
+            db.collection("Users").document(userID).update(
+                    "name", name, "phone", phone, "address", address
+            ).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(getContext().getApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext().getApplicationContext(), "Profile Update Failed!!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 }
