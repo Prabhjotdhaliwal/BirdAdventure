@@ -26,20 +26,35 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+
 public class FeaturedBirdsFragment extends Fragment implements View.OnClickListener {
 
+
+    /** Declaration of Edit Text box for search */
     EditText txtSearchDrink;
+
+    /** Declaration of search button */
     Button btnSearch;
 
+    /** Declaration of search button */
     FirebaseFirestore db;
+
+    /** Array List of birds */
     private ArrayList<Bird> birdsList;
 
+    /** It is an container for rendering larger data set of views that can be recycled */
     private RecyclerView recyclerView;
+
+    /** To handle the data collection and bind it to the view */
     private BirdsRecyclerAdapter recyclerAdapter;
+
+    /** Helps in positioning the items */
     private RecyclerView.LayoutManager recyclerLayoutManager;
 
+    /** An object that manages app navigation within a NavHost. */
     private NavController navController;
 
+    /** FeaturedBirdsFragment() used to show Featured birds */
     public FeaturedBirdsFragment() {
     }
 
@@ -53,6 +68,11 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
         return inflater.inflate(R.layout.fragment_featured_birds, container, false);
     }
 
+    /** onViewCreated used to render the featured bird list
+     * User can also search birds by name and location
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -69,6 +89,10 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
         getFeaturedBirds("");
     }
 
+    /** getFeaturedBirds to fetch only the featured birds from the database
+     * and if user search matches with database then fill the recycler view accordingly
+     * otherwise there will be an error
+     */
     private void getFeaturedBirds(final String searchText) {
 
         birdsList = new ArrayList<Bird>();
@@ -99,19 +123,24 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
 
     }
 
+    /** To call btnSearchClick method when clicking on search button
+     *@param v
+     */
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.button_search) {
             btnSearchClick(v);
         }
     }
-
+    /** To get featured birds list when user trying to search birds
+     * @param v
+     * */
     private void btnSearchClick(View v) {
 
         String searchText = txtSearchDrink.getText().toString();
         getFeaturedBirds(searchText);
     }
-
+    /** fillRecyclerView() is used to fill recycler view in featured birds fragment vertically*/
     private void fillRecyclerView() {
 
         recyclerView = getActivity().findViewById(R.id.recycler_view_search_birds);

@@ -1,52 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
-    android:gravity="center"
     android:orientation="vertical"
     tools:context=".FeaturedBirdsFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/text_search_place"
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_margin="5dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/text_search_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_bird_name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/prompt_bird_name" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:background="@drawable/rounded"
-            android:text="@string/btn_search" />
-
+            android:layout_gravity="center"
+            android:layout_height="30dp">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded"
+                android:text="@string/btn_search" />
+        </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_search_birds"
             android:layout_width="match_parent"
+            android:layout_margin="2dp"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</LinearLayout>

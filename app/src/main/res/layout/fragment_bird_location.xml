@@ -4,14 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
-    tools:context=".BirdLocationFragment"
-    android:padding="20dp"
-    >
+    tools:context=".BirdLocationFragment">
+
 <fragment
     android:layout_width="match_parent"
+    android:layout_margin="10dp"
     android:layout_height="match_parent"
     android:id="@+id/map_View"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    ></fragment>
+    android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
 </LinearLayout>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/gradient_bg"
     android:layout_height="match_parent">
 
 <androidx.cardview.widget.CardView
@@ -12,23 +11,22 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/imageviewnotification"
-        android:src="@drawable/ic_launcher_background"
-        android:layout_margin="5dp"
-        ></ImageView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textviewnotification"
-        android:layout_toRightOf="@id/imageviewnotification"
-        android:text="Description"
-        android:textSize="20dp"
-        android:layout_margin="5dp"
-        ></TextView>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imageviewnotification"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textviewnotification"
+            android:layout_toRightOf="@id/imageviewnotification"
+            android:text="Description"
+            android:textSize="20dp"
+            android:layout_margin="5dp" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -92,4 +92,19 @@
         android:name="com.example.birdsadventure.UploadAudioFragment"
         android:label="fragment_upload_audio"
         tools:layout="@layout/fragment_upload_audio" />
+    <fragment
+        android:id="@+id/imagesCollectionFragment"
+        android:name="com.example.birdsadventure.ImagesCollectionFragment"
+        android:label="fragment_images_collection"
+        tools:layout="@layout/fragment_images_collection" />
+    <fragment
+        android:id="@+id/videosCollectionFragment"
+        android:name="com.example.birdsadventure.VideosCollectionFragment"
+        android:label="fragment_videos_collection"
+        tools:layout="@layout/fragment_videos_collection" />
+    <fragment
+        android:id="@+id/soundsCollectionFragment"
+        android:name="com.example.birdsadventure.SoundsCollectionFragment"
+        android:label="fragment_sounds_collection"
+        tools:layout="@layout/fragment_sounds_collection" />
 </navigation>

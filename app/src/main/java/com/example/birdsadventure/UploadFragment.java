@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -173,7 +174,7 @@ public class UploadFragment extends Fragment implements View.OnClickListener {
                 image.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        //Log.d("tag", "onSuccess: Upload Image URI is " + uri);
+                        Log.d("tag", "onSuccess: Upload Image URI is " + uri);
 
                     }
                 });

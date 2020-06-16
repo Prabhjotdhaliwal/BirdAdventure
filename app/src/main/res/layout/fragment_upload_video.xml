@@ -30,8 +30,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnCameraVideo"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/ic_baseline_videocam_24" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -44,8 +44,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnGalleryVideo"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/ic_gallery" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -58,9 +58,9 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtCaptureAudio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/capture_audio"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+             android:background="@drawable/ic_baseline_audiotrack_24"
                 android:textSize="22sp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
