@@ -9,38 +9,41 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:theme="@style/AppTheme.AppBarOverlay"
-     >
-
-        <TextView
-            android:id="@+id/birdtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:minHeight="?actionBarSize"
-            android:padding="@dimen/appbar_padding"
-            android:text="BirdName"
-            android:layout_marginLeft="150dp"
-            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
-        <ImageView
-            android:id="@+id/birdimage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="150dp"
-            android:background="@mipmap/bird101"></ImageView>
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbar"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary" />
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/birdtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/appbar_padding"
+                android:text="BirdName"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+            <ImageView
+                android:id="@+id/birdimage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@mipmap/bird101"/>
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="?attr/colorPrimary" />
+        </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/appbar"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

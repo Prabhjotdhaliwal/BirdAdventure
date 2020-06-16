@@ -1,85 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/gradient_bg"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:background="@drawable/gradient_bg">
 
-    <RelativeLayout
-        android:layout_height="wrap_content"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_margin="10dp">
-        <Button
-            android:id="@+id/image_btn"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_margin="5dp"
-            android:background="@mipmap/picture" />
-
-        <TextView
-            android:id="@+id/txt_picture"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/image_btn"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="35dp"
-            android:text="Pictures \n XXX"
-            android:textColor="#ffffff"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="20sp"
-            />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-       android:layout_margin="10dp"
-        >
-        <Button
-            android:id="@+id/video_btn"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_margin="5dp"
-            android:background="@mipmap/video" />
-
-        <TextView
-            android:id="@+id/txt_videos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_toRightOf="@id/video_btn"
-            android:layout_marginTop="35dp"
-            android:textColor="#ffffff"
-            android:text="Videos \n XXX"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="20sp" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="10dp"
-        >
-        <Button
-            android:id="@+id/sound_btn"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="5dp"
-            android:background="@mipmap/soundclip" />
+        android:orientation="vertical">
         <TextView
-            android:id="@+id/txt_sounds"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:layout_toRightOf="@id/sound_btn"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:textColor="#ffffff"
-            android:text="Sounds \n XXX"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="20sp" />
-    </RelativeLayout>
-</androidx.appcompat.widget.LinearLayoutCompat>
+            android:text= "@string/birdimages"
+            android:textSize="20sp"
+            android:textColor="@color/textcolor"
+            android:background="@color/txtviewcolor" />
+        <LinearLayout
+            android:layout_width="match_parent"
+           android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_height="250dp">
+            <ImageView
+                android:id="@+id/mediaImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="@mipmap/birdimgmedia"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= "@string/birdvideos"
+            android:textColor="@color/textcolor"
+            android:textSize="20sp"
+            android:background="@color/txtviewcolor"
+            />
+
+        <ImageView
+            android:id="@+id/videothumnail"
+            android:layout_width="100dp"
+            android:layout_marginTop="5dp"
+            android:layout_height="100dp"
+            android:src="@drawable/birddemothiumnail">
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text= "@string/birdsounds"
+            android:textColor="@color/textcolor"
+            android:textSize="20sp"
+            android:background="@color/txtviewcolor"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/soundplaybtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@mipmap/playbtn">
+            </Button>
+            <SeekBar
+               android:layout_gravity="center"
+                android:id="@+id/seekbarProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

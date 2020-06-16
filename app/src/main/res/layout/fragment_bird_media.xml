@@ -5,42 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
-    tools:context=".BirdMediaFragment"
-    android:padding="20dp">
-
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-   <LinearLayout
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:orientation="vertical">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text= "@string/birdimages"
-        android:textSize="20sp"
-        android:textColor="@color/textcolor"
-        android:background="@color/txtviewcolor" />
-
-       <ImageView
-           android:id="@+id/mediaImage"
-           android:layout_width="match_parent"
-           android:layout_height="250dp"
-           android:background="@mipmap/birdimgmedia">
-
-       </ImageView>
-  </LinearLayout>
+    tools:context=".BirdMediaFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp">
-
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= "@string/birdimages"
+            android:textSize="20sp"
+            android:textColor="@color/textcolor"
+            android:background="@color/txtviewcolor" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_height="250dp">
+            <ImageView
+                android:id="@+id/mediaImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="@mipmap/birdimgmedia"/>
+        </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,65 +39,41 @@
             android:textSize="20sp"
             android:background="@color/txtviewcolor"
             />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <ImageView
+        <ImageView
             android:id="@+id/videothumnail"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_marginTop="5dp"
+            android:layout_height="100dp"
             android:src="@drawable/birddemothiumnail">
-            </ImageView>
-
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-         android:layout_marginTop="10dp">
+        </ImageView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text= "@string/birdsounds"
             android:textColor="@color/textcolor"
             android:textSize="20sp"
             android:background="@color/txtviewcolor"
             />
-
-    </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
-
 
             <Button
                 android:id="@+id/soundplaybtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@mipmap/playbtn">
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@mipmap/playbtn" />
 
-            </Button>
             <SeekBar
-                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
                 android:id="@+id/seekbarProgress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></SeekBar>
-
-
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </LinearLayout>
