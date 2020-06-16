@@ -26,16 +26,16 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class ImagesCollectionFragment extends Fragment {
 private RecyclerView recyclerView;
+ImageAdapter adapter;
 private ImageView imgcollect;
 FirebaseFirestore db;
     StorageReference storageReference;
-    private List< StorageReference > myImages;
-
+    private ArrayList< String > myImages;
+    ArrayList< UserCollectionitem > myImages1;
     public ImagesCollectionFragment() {
         // Required empty public constructor
     }
@@ -66,12 +66,14 @@ FirebaseFirestore db;
     recyclerView.setHasFixedSize (true);
     recyclerView.setLayoutManager (new LinearLayoutManager (getActivity ()));
 
-    myImages=new ArrayList< StorageReference > ();
-    //
+    myImages=new ArrayList< String > () ;
+      myImages1 = new ArrayList< UserCollectionitem > ();;
+
+        //
 
 
        // storageReference = FirebaseStorage.getInstance().getReference("pictures/");
-        try {
+       try {
             getimages ();
         } catch (IOException e) {
             e.printStackTrace ();
@@ -138,8 +140,17 @@ FirebaseFirestore db;
                           //  UserCollectionitem userCollectionitem=new UserCollectionitem ();
                             System.out.println (item);
                             Toast.makeText (getActivity (),"successfully loaded the images",Toast.LENGTH_LONG).show ();
+                            System.out.println ("Jottttttttttttttttttttttttttttttttttttttttttttttttttt");
 
-                            myImages.add (item);
+                          //  myImages.add (item.toString ());
+                          //  String birdImageURL = document.getString("birdimgUrl");
+                            myImages.add(item.toString ());
+                            UserCollectionitem userCollectionitem=new UserCollectionitem ();
+                            System.out.println (myImages);
+                         //   imgcollect.setImageURI(Uri.fromFile(localFile));
+
+                            adapter=new ImageAdapter (getActivity (),myImages);
+                      recyclerView.setAdapter (adapter);
 
                         }
                     }
