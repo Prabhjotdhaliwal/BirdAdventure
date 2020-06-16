@@ -233,6 +233,7 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:gravity="center"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <LinearLayout
@@ -278,7 +279,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_featured_birds"
                 android:layout_width="match_parent"
-                android:layout_margin="2dp"
+                android:layout_margin="3dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 

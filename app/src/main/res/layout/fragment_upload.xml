@@ -29,8 +29,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnCameraImage"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/ic_camera" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -43,8 +43,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnGalleryImage"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/ic_gallery" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -57,8 +57,8 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtCaptureVideo"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/ic_baseline_videocam_24" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
