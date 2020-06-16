@@ -1,210 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/gradient_bg"
-    tools:context=".BirdDescriptionFragment"
-    android:padding="20dp"
-    >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context=".BirdDescriptionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:textSize="20sp"
             android:text="@string/birdDescription"
             android:textColor="@color/textcolor"
-            android:background="@color/txtviewcolor"
-            ></TextView>
-
-        <TextView
-            android:id="@+id/birddescription"
+            android:background="@color/txtviewcolor" />
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/textcolor"
-
-
-            android:text="DesA habitat is the natural environment of a plant or an animal or the place that is normal for the life and growth of an animal or a plant.
+            android:layout_height="70dp"
+            android:layout_margin="5dp">
+            <TextView
+                android:id="@+id/birddescription"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+                android:text="DesA habitat is the natural environment of a plant or an animal or the place that is normal for the life and growth of an animal or a plant.
 A biome describes the world where a plant or animal is found. A biome describes major neighborhoods of the world by the plants and weather conditions that are typically found in it.
 
 So, a habitat refers to the local environment of a specific species, while a biome refers to a global environment.
 
-he " />
+he "
+                android:textColor="@color/textcolor" />
+        </ScrollView>
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:textSize="20sp"
-        android:text= "@string/birdLocation"
-        android:textColor="@color/textcolor"
-        android:background="@color/txtviewcolor"
-        />
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text= "@string/birdCity"
-
-            android:textColor="@color/textcolor"
-            android:textSize="15sp"
-            />
-        <TextView
-            android:id="@+id/birdcity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/textcolor"
-            android:text= "city" />
-    </LinearLayout>
-
-  <LinearLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal">
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text= "@string/birdRegion"
-          android:textSize="15sp"
-          android:textColor="@color/textcolor"
-          />
-      <TextView
-          android:id="@+id/birdregion"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginLeft="20dp"
-          android:textColor="@color/textcolor"
-          android:text= "region" />
-  </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:textSize="20sp"
-        android:text= "@string/birdBiome"
-        android:textColor="@color/textcolor"
-        android:background="@color/txtviewcolor"
-        />
-    <TextView
-        android:id="@+id/birdbiome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:textColor="@color/textcolor"
-        android:text= "biome" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:textSize="20sp"
-        android:textColor="@color/textcolor"
-        android:text= "@string/birdHabitat"
-        android:background="@color/txtviewcolor"
-        />
-        <TextView
-            android:id="@+id/birdhabitat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-            android:textColor="@color/textcolor"
-            android:text= "Habitat" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:textSize="20sp"
-        android:text= "@string/birdDiet"
-        android:background="@color/txtviewcolor"
-        android:textColor="@color/textcolor"
-
-        />
-    <TextView
-        android:id="@+id/diet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/textcolor"
-        android:text= "diet" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:textSize="20sp"
-        android:text= "@string/BirdAppearance"
-        android:textColor="@color/textcolor"
-        android:background="@color/txtviewcolor"
-
-        />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textColor="@color/textcolor"
-            android:text= "@string/birdColour" />
-        <TextView
-            android:id="@+id/birdcolour"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/textcolor"
-            android:text= "Color" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="@color/textcolor"
-        android:text= "@string/birdHeight" />
-    <TextView
-        android:id="@+id/birdheight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text= "Height"
-        android:textColor="@color/textcolor"
-        />
-    </LinearLayout>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text= "@string/birdWeight"
-        android:textColor="@color/textcolor"
-        />
-
-    <TextView
-        android:id="@+id/birdweight"
+<ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:textColor="@color/textcolor"
-        android:text= "Weight" />
+    android:layout_margin="10dp"
+    android:layout_height="wrap_content">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="35dp"
+           android:textSize="20sp"
+           android:text= "@string/birdLocation"
+           android:textColor="@color/textcolor"
+           android:background="@color/txtviewcolor"
+           />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_marginTop="2dp"
+           android:orientation="horizontal">
+
+           <TextView
+               android:layout_width="70dp"
+               android:layout_height="wrap_content"
+               android:text= "@string/birdCity"
+               android:textColor="@color/textcolor"
+               android:textSize="15sp"
+               />
+           <TextView
+               android:id="@+id/birdcity"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:layout_marginLeft="20dp"
+               android:textColor="@color/textcolor"
+               android:text= "city" />
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_marginTop="2dp"
+           android:orientation="horizontal">
+           <TextView
+               android:layout_width="70dp"
+               android:layout_height="wrap_content"
+               android:text= "@string/birdRegion"
+               android:textSize="15sp"
+               android:textColor="@color/textcolor"
+               />
+           <TextView
+               android:id="@+id/birdregion"
+               android:layout_width="wrap_content"
+               android:layout_weight="1"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="20dp"
+               android:textColor="@color/textcolor"
+               android:text= "region" />
+       </LinearLayout>
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="35dp"
+           android:textSize="20sp"
+           android:text= "@string/birdBiome"
+           android:textColor="@color/textcolor"
+           android:background="@color/txtviewcolor"
+           />
+       <TextView
+           android:id="@+id/birdbiome"
+           android:layout_width="match_parent"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_marginTop="2dp"
+           android:layout_marginBottom="2dp"
+           android:layout_height="wrap_content"
+           android:textColor="@color/textcolor"
+           android:text= "biome" />
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="35dp"
+           android:textSize="20sp"
+           android:textColor="@color/textcolor"
+           android:text= "@string/birdHabitat"
+           android:background="@color/txtviewcolor"
+           />
+
+       <TextView
+           android:id="@+id/birdhabitat"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_marginTop="2dp"
+           android:layout_marginBottom="2dp"
+           android:textColor="@color/textcolor"
+           android:text= "Habitat" />
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="35dp"
+           android:textSize="20sp"
+           android:text= "@string/birdDiet"
+           android:background="@color/txtviewcolor"
+           android:textColor="@color/textcolor"
+           />
+
+       <TextView
+           android:id="@+id/diet"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textColor="@color/textcolor"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_marginTop="2dp"
+           android:layout_marginBottom="2dp"
+           android:text= "diet" />
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="35dp"
+           android:textSize="20sp"
+           android:text= "@string/BirdAppearance"
+           android:textColor="@color/textcolor"
+           android:background="@color/txtviewcolor"
+           />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_marginTop="2dp"
+           android:orientation="horizontal">
+           <TextView
+               android:layout_width="70dp"
+               android:layout_height="wrap_content"
+               android:textSize="15sp"
+               android:textColor="@color/textcolor"
+               android:text= "@string/birdColour" />
+           <TextView
+               android:id="@+id/birdcolour"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:layout_marginLeft="20dp"
+               android:textColor="@color/textcolor"
+               android:text= "Color" />
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_marginTop="2dp"
+           android:orientation="horizontal">
+           <TextView
+               android:layout_width="70dp"
+               android:layout_height="wrap_content"
+               android:textSize="15sp"
+               android:textColor="@color/textcolor"
+               android:text= "@string/birdHeight" />
+           <TextView
+               android:id="@+id/birdheight"
+               android:layout_width="wrap_content"
+               android:layout_weight="1"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="20dp"
+               android:text= "Height"
+               android:textColor="@color/textcolor"
+               />
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_marginTop="2dp"
+           android:orientation="horizontal">
+           <TextView
+               android:layout_width="70dp"
+               android:layout_height="wrap_content"
+               android:textSize="15sp"
+               android:text= "@string/birdWeight"
+               android:textColor="@color/textcolor"
+               />
+
+           <TextView
+               android:id="@+id/birdweight"
+               android:layout_width="wrap_content"
+               android:layout_weight="1"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="20dp"
+               android:textColor="@color/textcolor"
+               android:text= "Weight" />
+
+       </LinearLayout>
+   </LinearLayout>
+
+</ScrollView>
 
 </LinearLayout>
-</LinearLayout>
-</ScrollView>

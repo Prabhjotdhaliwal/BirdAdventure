@@ -7,4 +7,5 @@
     android:background="@drawable/gradient_bg"
     android:orientation="vertical">
 
+
 </androidx.appcompat.widget.LinearLayoutCompat>

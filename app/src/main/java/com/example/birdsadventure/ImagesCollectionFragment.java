@@ -87,7 +87,7 @@ FirebaseFirestore db;
 
                         for (StorageReference item : listResult.getItems()) {
                             // All the items under listRef.
-                            UserCollectionitem userCollectionitem=new UserCollectionitem ();
+                          //  UserCollectionitem userCollectionitem=new UserCollectionitem ();
                             System.out.println (item);
                             Toast.makeText (getActivity (),"successfully loaded the images",Toast.LENGTH_LONG).show ();
 

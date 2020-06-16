@@ -6,7 +6,6 @@
     android:background="@drawable/gradient_bg"
     android:orientation="vertical"
     tools:context=".HomeFragment">
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,10 +16,8 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="0.5"
             android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:text="@string/welcome"
             android:textAlignment="textEnd"
             android:textSize="20sp"
@@ -31,7 +28,7 @@
             android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:gravity="center_horizontal"
             android:text=""
             android:textAlignment="textStart"
@@ -51,21 +48,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Upload"
+            android:layout_marginLeft="10dp"
             android:textSize="25sp"
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
+            android:layout_marginTop="2dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:layout_weight="1"
             android:gravity="center">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
+               android:layout_marginLeft="20dp"
                 android:text="Want to capture a bird you like?"
                 android:textStyle="bold" />
 
@@ -85,13 +81,13 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@android:drawable/ic_menu_add"
-                android:gravity="center" />
+                android:background="@android:drawable/ic_menu_add" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="15sp"
                 android:text="Click on the button" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -105,25 +101,41 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="7dp">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="?android:attr/listSeparatorTextViewStyle"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="My Library"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:text="My Library"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_library_home"
-                android:layout_width="170dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="80dp"
-                android:background="@drawable/rounded"
-                android:text="Go to My Library"
-                android:textSize="15sp" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_library_home"
+                    android:layout_width="77dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/rounded"
+                    android:text="See All"
+                    android:textColor="@color/textcolor"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -137,8 +149,9 @@
                 android:id="@+id/imagecount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="right"
+                android:layout_marginRight="15dp"
                 android:hint="XX"
                 android:textSize="15sp" />
 
@@ -147,7 +160,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:gravity="left"
                 android:hint="Images Uploaded"
                 android:textSize="15sp" />
 
@@ -163,8 +177,9 @@
                 android:id="@+id/videocount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="right"
+                android:layout_marginRight="15dp"
                 android:hint="XX"
                 android:textSize="15sp" />
 
@@ -173,7 +188,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:gravity="center"
+                android:gravity="left"
+                android:layout_marginLeft="20dp"
                 android:hint="Videos Uploaded"
                 android:textSize="15sp" />
 
@@ -189,7 +205,7 @@
                 android:id="@+id/clipcount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="right"
                 android:hint="XX"
                 android:textSize="15sp" />
@@ -199,7 +215,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:gravity="center"
+                android:gravity="left"
+                android:layout_marginLeft="20dp"
                 android:hint="Soundclip Uploaded"
                 android:textSize="15sp" />
 
@@ -210,28 +227,46 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
+            android:gravity="center"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="?android:attr/listSeparatorTextViewStyle"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Featured Birds"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:layout_weight="1">
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Featured Birds"
+                    android:textSize="25sp"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold" /></LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_featured_birds_home"
+            <LinearLayout
                 android:layout_width="wrap_content"
+                android:gravity="right"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="130dp"
-                android:text="See All"
-                android:textSize="20sp" />
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_featured_birds_home"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/rounded"
+                    android:gravity="center"
+                    android:text="SEE ALL"
+                    android:textStyle="bold"
+                    android:textColor="@color/textcolor"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -243,6 +278,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_featured_birds"
                 android:layout_width="match_parent"
+                android:layout_margin="2dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 

@@ -91,7 +91,7 @@ public class VideosCollectionFragment extends Fragment {
 
                         for (StorageReference item : listResult.getItems()) {
                             // All the items under listRef.
-                            UserCollectionitem userCollectionitem=new UserCollectionitem ();
+                            //UserCollectionitem userCollectionitem=new UserCollectionitem ();
                             System.out.println (item);
                             Toast.makeText (getActivity (),"successfully loaded the Videos",Toast.LENGTH_LONG).show ();
 
