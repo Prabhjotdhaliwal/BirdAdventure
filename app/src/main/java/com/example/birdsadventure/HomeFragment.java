@@ -1,5 +1,6 @@
 package com.example.birdsadventure;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -183,10 +184,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onItemClick(int position) {
 
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("birds", birdsList.get(position));
+                //Bundle bundle = new Bundle();
+                //bundle.putParcelable("birds", birdsList.get(position));
                 // navController.navigate(R.id.displayFragment, bundle);
-                Toast.makeText(getActivity().getApplicationContext(), birdsList.get(position).getName(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity().getApplicationContext(), birdsList.get(position).getName(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getActivity(), BirdProfileActivity.class);
+                intent.putExtra("birdID", birdsList.get(position).getBirdID());
+                intent.putExtra("birdName", birdsList.get(position).getName());
+                intent.putExtra("birdImageUrl", birdsList.get(position).getImageURL());
+                getActivity().startActivity(intent);
             }
         });
     }

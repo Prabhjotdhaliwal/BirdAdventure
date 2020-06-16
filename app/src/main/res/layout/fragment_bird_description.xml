@@ -1,250 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/gradient_bg"
+    android:orientation="vertical"
     tools:context=".BirdDescriptionFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
 
-        <TextView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:textSize="20sp"
-            android:text="@string/birdDescription"
-            android:textColor="@color/textcolor"
-            android:background="@color/txtviewcolor" />
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_margin="5dp">
-            <TextView
-                android:id="@+id/birddescription"
-                android:layout_margin="5dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
-                android:textSize="15dp"
+                android:layout_height="35dp"
+                android:background="@color/txtviewcolor"
+                android:text="@string/birdDescription"
+                android:textColor="@color/textcolor"
+                android:textSize="20sp" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_margin="5dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/bird_desc_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/textcolor"
+                    android:textSize="15dp" />
+
+            </androidx.core.widget.NestedScrollView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@color/txtviewcolor"
+                android:text="@string/birdLocation"
+                android:textColor="@color/textcolor"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DesA habitat is the natural environment of a plant or an animal or the place that is normal for the life and growth of an animal or a plant.
-A biome describes the world where a plant or animal is found. A biome describes major neighborhoods of the world by the plants and weather conditions that are typically found in it.
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal">
 
-So, a habitat refers to the local environment of a specific species, while a biome refers to a global environment.
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birdCity"
+                    android:textColor="@color/textcolor"
+                    android:textSize="15sp" />
 
-he "
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/bird_desc_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:text="city"
+                    android:textColor="@color/textcolor" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birdRegion"
+                    android:textColor="@color/textcolor"
+                    android:textSize="15sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/bird_desc_region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:text="region"
+                    android:textColor="@color/textcolor" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@color/txtviewcolor"
+                android:text="@string/birdBiome"
+                android:textColor="@color/textcolor"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bird_desc_biome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="2dp"
+                android:text="biome"
                 android:textColor="@color/textcolor" />
-        </ScrollView>
-    </LinearLayout>
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_margin="10dp"
-    android:layout_height="wrap_content">
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:orientation="vertical">
-       <TextView
-           android:layout_width="match_parent"
-           android:layout_height="35dp"
-           android:textSize="20sp"
-           android:text= "@string/birdLocation"
-           android:textColor="@color/textcolor"
-           android:background="@color/txtviewcolor"
-           />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@color/txtviewcolor"
+                android:text="@string/birdHabitat"
+                android:textColor="@color/textcolor"
+                android:textSize="20sp" />
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="5dp"
-           android:layout_marginRight="5dp"
-           android:layout_marginTop="2dp"
-           android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bird_desc_habitat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="2dp"
+                android:text="Habitat"
+                android:textColor="@color/textcolor" />
 
-           <TextView
-               android:layout_width="70dp"
-               android:layout_height="wrap_content"
-               android:text= "@string/birdCity"
-               android:textColor="@color/textcolor"
-               android:textSize="15sp"
-               />
-           <TextView
-               android:id="@+id/birdcity"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_weight="1"
-               android:layout_marginLeft="20dp"
-               android:textColor="@color/textcolor"
-               android:text= "city" />
-       </LinearLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@color/txtviewcolor"
+                android:text="@string/birdDiet"
+                android:textColor="@color/textcolor"
+                android:textSize="20sp" />
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="5dp"
-           android:layout_marginRight="5dp"
-           android:layout_marginTop="2dp"
-           android:orientation="horizontal">
-           <TextView
-               android:layout_width="70dp"
-               android:layout_height="wrap_content"
-               android:text= "@string/birdRegion"
-               android:textSize="15sp"
-               android:textColor="@color/textcolor"
-               />
-           <TextView
-               android:id="@+id/birdregion"
-               android:layout_width="wrap_content"
-               android:layout_weight="1"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="20dp"
-               android:textColor="@color/textcolor"
-               android:text= "region" />
-       </LinearLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bird_desc_diet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="2dp"
+                android:text="diet"
+                android:textColor="@color/textcolor" />
 
-       <TextView
-           android:layout_width="match_parent"
-           android:layout_height="35dp"
-           android:textSize="20sp"
-           android:text= "@string/birdBiome"
-           android:textColor="@color/textcolor"
-           android:background="@color/txtviewcolor"
-           />
-       <TextView
-           android:id="@+id/birdbiome"
-           android:layout_width="match_parent"
-           android:layout_marginLeft="5dp"
-           android:layout_marginRight="5dp"
-           android:layout_marginTop="2dp"
-           android:layout_marginBottom="2dp"
-           android:layout_height="wrap_content"
-           android:textColor="@color/textcolor"
-           android:text= "biome" />
-       <TextView
-           android:layout_width="match_parent"
-           android:layout_height="35dp"
-           android:textSize="20sp"
-           android:textColor="@color/textcolor"
-           android:text= "@string/birdHabitat"
-           android:background="@color/txtviewcolor"
-           />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@color/txtviewcolor"
+                android:text="@string/BirdAppearance"
+                android:textColor="@color/textcolor"
+                android:textSize="20sp" />
 
-       <TextView
-           android:id="@+id/birdhabitat"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="5dp"
-           android:layout_marginRight="5dp"
-           android:layout_marginTop="2dp"
-           android:layout_marginBottom="2dp"
-           android:textColor="@color/textcolor"
-           android:text= "Habitat" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal">
 
-       <TextView
-           android:layout_width="match_parent"
-           android:layout_height="35dp"
-           android:textSize="20sp"
-           android:text= "@string/birdDiet"
-           android:background="@color/txtviewcolor"
-           android:textColor="@color/textcolor"
-           />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birdColour"
+                    android:textColor="@color/textcolor"
+                    android:textSize="15sp" />
 
-       <TextView
-           android:id="@+id/diet"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:textColor="@color/textcolor"
-           android:layout_marginLeft="5dp"
-           android:layout_marginRight="5dp"
-           android:layout_marginTop="2dp"
-           android:layout_marginBottom="2dp"
-           android:text= "diet" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/bird_desc_colour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:text="Color"
+                    android:textColor="@color/textcolor" />
 
-       <TextView
-           android:layout_width="match_parent"
-           android:layout_height="35dp"
-           android:textSize="20sp"
-           android:text= "@string/BirdAppearance"
-           android:textColor="@color/textcolor"
-           android:background="@color/txtviewcolor"
-           />
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="5dp"
-           android:layout_marginRight="5dp"
-           android:layout_marginTop="2dp"
-           android:orientation="horizontal">
-           <TextView
-               android:layout_width="70dp"
-               android:layout_height="wrap_content"
-               android:textSize="15sp"
-               android:textColor="@color/textcolor"
-               android:text= "@string/birdColour" />
-           <TextView
-               android:id="@+id/birdcolour"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_weight="1"
-               android:layout_marginLeft="20dp"
-               android:textColor="@color/textcolor"
-               android:text= "Color" />
-       </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="5dp"
-           android:layout_marginRight="5dp"
-           android:layout_marginTop="2dp"
-           android:orientation="horizontal">
-           <TextView
-               android:layout_width="70dp"
-               android:layout_height="wrap_content"
-               android:textSize="15sp"
-               android:textColor="@color/textcolor"
-               android:text= "@string/birdHeight" />
-           <TextView
-               android:id="@+id/birdheight"
-               android:layout_width="wrap_content"
-               android:layout_weight="1"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="20dp"
-               android:text= "Height"
-               android:textColor="@color/textcolor"
-               />
-       </LinearLayout>
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="5dp"
-           android:layout_marginRight="5dp"
-           android:layout_marginTop="2dp"
-           android:orientation="horizontal">
-           <TextView
-               android:layout_width="70dp"
-               android:layout_height="wrap_content"
-               android:textSize="15sp"
-               android:text= "@string/birdWeight"
-               android:textColor="@color/textcolor"
-               />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal">
 
-           <TextView
-               android:id="@+id/birdweight"
-               android:layout_width="wrap_content"
-               android:layout_weight="1"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="20dp"
-               android:textColor="@color/textcolor"
-               android:text= "Weight" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birdHeight"
+                    android:textColor="@color/textcolor"
+                    android:textSize="15sp" />
 
-       </LinearLayout>
-   </LinearLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/bird_desc_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:text="Height"
+                    android:textColor="@color/textcolor" />
 
-</ScrollView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-</LinearLayout>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birdWeight"
+                    android:textColor="@color/textcolor"
+                    android:textSize="15sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/bird_desc_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:text="Weight"
+                    android:textColor="@color/textcolor" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </ScrollView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

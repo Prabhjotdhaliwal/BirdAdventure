@@ -133,8 +133,9 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
                                 final String birdName = document.getString("name");
                                 if (birdName.contains(searchText)) {
+                                    String birdID = document.getId();
                                     String birdImageURL = document.getString("birdimgUrl");
-                                    birdsList.add(new Bird(birdName, birdImageURL));
+                                    birdsList.add(new Bird(birdID, birdName, birdImageURL));
                                 }
                             }
                             fillRecyclerView();
@@ -174,12 +175,15 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onItemClick(int position) {
 
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("birds", birdsList.get(position));
+//                Bundle bundle = new Bundle();
+//                bundle.putParcelable("birds", birdsList.get(position));
                 // navController.navigate(R.id.displayFragment, bundle);
-                Toast.makeText(getActivity().getApplicationContext(), birdsList.get(position).getName(), Toast.LENGTH_SHORT).show();
-                Intent Intent = new Intent(getActivity(), BirdProfileActivity.class);
-                getActivity().startActivity(Intent);
+
+                Intent intent = new Intent(getActivity(), BirdProfileActivity.class);
+                intent.putExtra("birdID", birdsList.get(position).getBirdID());
+                intent.putExtra("birdName", birdsList.get(position).getName());
+                intent.putExtra("birdImageUrl", birdsList.get(position).getImageURL());
+                getActivity().startActivity(intent);
             }
         });
     }
