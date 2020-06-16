@@ -1,79 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/gradient_bg">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text= "@string/birdimages"
-            android:textSize="20sp"
-            android:textColor="@color/textcolor"
-            android:background="@color/txtviewcolor" />
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
-           android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_height="250dp">
-            <ImageView
-                android:id="@+id/mediaImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:background="@mipmap/birdimgmedia"/>
+            android:layout_margin="5dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/text_search_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_bird_name" />
         </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text= "@string/birdvideos"
-            android:textColor="@color/textcolor"
-            android:textSize="20sp"
-            android:background="@color/txtviewcolor"
-            />
 
-        <ImageView
-            android:id="@+id/videothumnail"
-            android:layout_width="100dp"
-            android:layout_marginTop="5dp"
-            android:layout_height="100dp"
-            android:src="@drawable/birddemothiumnail">
-        </ImageView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text= "@string/birdsounds"
-            android:textColor="@color/textcolor"
-            android:textSize="20sp"
-            android:background="@color/txtviewcolor"
-            />
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_height="30dp">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/soundplaybtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@mipmap/playbtn">
-            </Button>
-            <SeekBar
-               android:layout_gravity="center"
-                android:id="@+id/seekbarProgress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+            android:background="@drawable/rounded"
+            android:text="@string/btn_search" />
         </LinearLayout>
-    </LinearLayout>
-
-</ScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</LinearLayout>
