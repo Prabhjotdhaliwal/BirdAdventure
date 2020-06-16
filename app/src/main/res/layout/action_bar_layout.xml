@@ -14,23 +14,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="N"
+            android:text="Birds Adventure"
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:id="@+id/mytext"
             android:textSize="26sp" />
 
-        <TextView
-            android:id="@+id/mytext2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center"
-            android:layout_toEndOf="@+id/mytext"
-            android:text="EWS"
-            android:textColor="#ffffff"
-            android:textSize="26sp"
-            android:layout_toRightOf="@+id/mytext" />
+
     </RelativeLayout>
 
 </LinearLayout>
