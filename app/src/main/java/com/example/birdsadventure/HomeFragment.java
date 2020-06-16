@@ -115,8 +115,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         if (user != null) {
 
             String email = user.getEmail();
+//            Toast.makeText(getActivity().getApplicationContext(), email, Toast.LENGTH_SHORT).show();
 
-            db.collection("Users").whereEqualTo("Email", email).get()
+            db.collection("Users").whereEqualTo("email", email).get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
