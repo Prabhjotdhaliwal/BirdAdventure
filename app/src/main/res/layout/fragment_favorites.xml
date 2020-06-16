@@ -41,6 +41,12 @@
         android:layout_height="match_parent"
         android:layout_weight="2">
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_no_favorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_search_birds"
             android:layout_width="match_parent"

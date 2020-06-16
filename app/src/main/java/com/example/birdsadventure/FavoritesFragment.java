@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,7 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
     EditText txtSearchDrink;
     Button btnSearch;
+    TextView txt_no_favorites;
 
     FirebaseFirestore db;
     FirebaseUser user;
@@ -62,8 +64,10 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
+        txt_no_favorites = getActivity().findViewById(R.id.txt_no_favorites);
         txtSearchDrink = getActivity().findViewById(R.id.text_search_place);
         btnSearch = getActivity().findViewById(R.id.button_search);
+        txt_no_favorites.setText("");
 
         btnSearch.setOnClickListener(this);
 
@@ -78,15 +82,17 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
             String email = user.getEmail();
 
-            db.collection("Users").whereEqualTo("Email", email).get()
+            db.collection("Users").whereEqualTo("email", email).get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
                                 QuerySnapshot documents = task.getResult();
-                                userID = documents.getDocuments().get(0).getId();
+                                if (documents.getDocuments().size() > 0) {
+                                    userID = documents.getDocuments().get(0).getId();
 
-                                getFavoriteBirds("");
+                                    getFavoriteBirds("");
+                                }
                             }
                         }
                     });
@@ -104,7 +110,16 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                            QuerySnapshot querySnapshot = task.getResult();
+
+                            if (querySnapshot.getDocuments().size() > 0) {
+                                txt_no_favorites.setText("");
+                            } else {
+                                txt_no_favorites.setText("\tNo Birds have been added to favorites.\n\tAdd Birds to your favorites from\n\tBird's Profile page.");
+                            }
+
+                            for (QueryDocumentSnapshot document : querySnapshot) {
 
                                 final String birdName = document.getString("bird_name");
 
