@@ -36,7 +36,6 @@ private ImageView imgcollect;
 FirebaseFirestore db;
     StorageReference storageReference;
     private ArrayList< String > myImages;
-    static final List<UserCollectionitem> ITEMS = new ArrayList<>();
 
     public ImagesCollectionFragment() {
         // Required empty public constructor
@@ -79,7 +78,7 @@ FirebaseFirestore db;
         } catch (IOException e) {
             e.printStackTrace ();
         }
-        listFiles ();
+        //listFiles ();
     }
 
 
@@ -125,7 +124,7 @@ FirebaseFirestore db;
     }
 
 
-    private  void listFiles()
+   /* private  void listFiles()
     {
          storageReference = FirebaseStorage.getInstance().getReference("pictures/");
 
@@ -148,7 +147,6 @@ FirebaseFirestore db;
                           //  myImages.add (item.toString ());
                           //  String birdImageURL = document.getString("birdimgUrl");
                             myImages.add(item.toString ());
-                            UserCollectionitem userCollectionitem=new UserCollectionitem ();
                             System.out.println (myImages);
                          //   imgcollect.setImageURI(Uri.fromFile(localFile));
 
@@ -164,5 +162,5 @@ FirebaseFirestore db;
                         // Uh-oh, an error occurred!
                     }
                 });
-    }
+    }*/
 }

@@ -69,10 +69,10 @@ public class SoundsCollectionFragment extends Fragment {
         // storageReference = FirebaseStorage.getInstance().getReference("pictures/JPEG_20200607_200707_1933836298.jpg");
         // storageReference = FirebaseStorage.getInstance().getReference("pictures/");
 
-        listFiles ();
+       // listFiles ();
     }
 
-    private  void listFiles()
+   /* private  void listFiles()
     {
         storageReference = FirebaseStorage.getInstance().getReference("audio/");
 
@@ -87,7 +87,6 @@ public class SoundsCollectionFragment extends Fragment {
 
                         for (StorageReference item : listResult.getItems()) {
                             // All the items under listRef.
-                         //   UserCollectionitem userCollectionitem=new UserCollectionitem ();
                             System.out.println (item);
                             Toast.makeText (getActivity (),"successfully loaded the Sounds",Toast.LENGTH_LONG).show ();
 
@@ -102,5 +101,5 @@ public class SoundsCollectionFragment extends Fragment {
                         // Uh-oh, an error occurred!
                     }
                 });
-    }
+    }*/
 }
