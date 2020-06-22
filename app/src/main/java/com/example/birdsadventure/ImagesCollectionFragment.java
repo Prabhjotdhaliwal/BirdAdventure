@@ -1,5 +1,6 @@
 package com.example.birdsadventure;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,10 +35,17 @@ import java.util.List;
 public class ImagesCollectionFragment extends Fragment {
 private RecyclerView recyclerView;
 ImageAdapter adapter;
-private ImageView imgcollect;
 FirebaseFirestore db;
     StorageReference storageReference;
-    private ArrayList< String > myImages;
+    GridView simpleImageGrid;
+    int birdPictures[] = {R.drawable.b1, R.drawable.b2, R.drawable.b4, R.drawable.b5,
+            R.drawable.b6,R.drawable.b8, R.drawable.b16, R.drawable.birddemothiumnail, R.drawable.b11,
+            R.drawable.b12, R.drawable.b1, R.drawable.b15, R.drawable.b16,R.drawable.b18};
+    String birdPicturesnames[] = {"bird1", "bird2", "bird3", "bird4",
+            "bird5","bird6", "bird7", "bird8", "bird9",
+            "bird10", "bird11", "bird12", "bird13","bird14"};
+
+
 
     public ImagesCollectionFragment() {
         // Required empty public constructor
@@ -62,105 +72,21 @@ FirebaseFirestore db;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated (view, savedInstanceState);
         db = FirebaseFirestore.getInstance();
- imgcollect=view.findViewById (R.id.imagecollect1);
-        recyclerView=view.findViewById (R.id.imagesCollection_recyclerView);
-    recyclerView.setHasFixedSize (true);
-    recyclerView.setLayoutManager (new LinearLayoutManager (getActivity ()));
-
-    myImages=new ArrayList< String > () ;
-
-        //
-
-
-       // storageReference = FirebaseStorage.getInstance().getReference("pictures/");
-       try {
-            getimages ();
-        } catch (IOException e) {
-            e.printStackTrace ();
-        }
-        //listFiles ();
-    }
-
-
-
-    private void getimages() throws IOException {
-
-
-        // storageReference = storageReference.child("pictures/JPEG_20200609_042028_2114832967.jpg");
-      //  storageReference = storageReference.child("pictures/JPEG_20200609_042028_2114832967.jpg");
-
-        final File localFile = File.createTempFile("images", "jpg");
-        storageReference = FirebaseStorage.getInstance().getReference("pictures/JPEG_20200607_200707_1933836298.jpg");
-
-        storageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener< FileDownloadTask.TaskSnapshot>() {
+        simpleImageGrid = view.findViewById(R.id.simpleGridView); // init GridView
+        // Create an object of CustomAdapter and set Adapter to GirdView
+        ImageAdapter imageAdapter = new ImageAdapter (getActivity (), birdPictures,birdPicturesnames);
+        simpleImageGrid.setAdapter(imageAdapter);
+        // implement setOnItemClickListener event on GridView
+        simpleImageGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                // Local temp file has been created
-                //imgcollect.setImageResource ();
-                imgcollect.setImageURI(Uri.fromFile(localFile));
-
-                //get the shareable url
-                storageReference.child("pictures/JPEG_20200609_042028_2114832967.jpg").getDownloadUrl().
-                        addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                // Got the download URL for 'users/me/profile.png'
-                                //  System.out.println (uri);
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle any errors
-                    }
-                });
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText (getActivity (),"bird image selected" ,Toast.LENGTH_LONG).show ();
+                // set an Intent to Another Activity
+             //  Intent intent = new Intent(getActivity (), GalleryImageviewFragment.class);
+              //  intent.putExtra("image", birdPictures[position]); // put image data in Intent
+              //  getActivity().startActivity(intent); // start Intent
             }
         });
+
     }
-
-
-   /* private  void listFiles()
-    {
-         storageReference = FirebaseStorage.getInstance().getReference("pictures/");
-
-        storageReference.listAll()
-                .addOnSuccessListener(new OnSuccessListener< ListResult >() {
-                    @Override
-                    public void onSuccess(ListResult listResult) {
-                        for (StorageReference prefix : listResult.getPrefixes()) {
-                            // All the prefixes under listRef.
-                            // You may call listAll() recursively on them.
-                        }
-
-                        for (StorageReference item : listResult.getItems()) {
-                            // All the items under listRef.
-                          //  UserCollectionitem userCollectionitem=new UserCollectionitem ();
-                            System.out.println (item);
-                            Toast.makeText (getActivity (),"successfully loaded the images",Toast.LENGTH_LONG).show ();
-                            System.out.println ("Jottttttttttttttttttttttttttttttttttttttttttttttttttt");
-
-                          //  myImages.add (item.toString ());
-                          //  String birdImageURL = document.getString("birdimgUrl");
-                            myImages.add(item.toString ());
-                            System.out.println (myImages);
-                         //   imgcollect.setImageURI(Uri.fromFile(localFile));
-
-                            adapter=new ImageAdapter (getActivity (),myImages);
-                      recyclerView.setAdapter (adapter);
-
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Uh-oh, an error occurred!
-                    }
-                });
-    }*/
 }

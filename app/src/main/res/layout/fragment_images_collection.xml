@@ -6,14 +6,17 @@
     android:background="@drawable/darkgradient"
     tools:context=".ImagesCollectionFragment">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imagecollect1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <!-- TODO: Update blank fragment layout -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/imagesCollection_recyclerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <GridView
+        android:id="@+id/simpleGridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:columnWidth="100dp"
+        android:numColumns="3"
+        android:footerDividersEnabled="false"
+        android:padding="1dp"
+        android:verticalSpacing="24dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="spacingWidthUniform"/>
 
 </FrameLayout>

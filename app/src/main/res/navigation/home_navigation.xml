@@ -107,4 +107,9 @@
         android:name="com.example.birdsadventure.SoundsCollectionFragment"
         android:label="fragment_sounds_collection"
         tools:layout="@layout/fragment_sounds_collection" />
+    <fragment
+        android:id="@+id/galleryImageviewFragment"
+        android:name="com.example.birdsadventure.GalleryImageviewFragment"
+        android:label="fragment_gallery_imageview"
+        tools:layout="@layout/fragment_gallery_imageview" />
 </navigation>

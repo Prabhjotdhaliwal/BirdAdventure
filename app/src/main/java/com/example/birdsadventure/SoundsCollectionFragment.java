@@ -30,7 +30,6 @@ public class SoundsCollectionFragment extends Fragment {
     private ImageView imgcollect;
     FirebaseFirestore db;
     StorageReference storageReference;
-    private List< StorageReference > myImages;
 
     public SoundsCollectionFragment() {
         // Required empty public constructor
@@ -57,49 +56,10 @@ public class SoundsCollectionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated (view, savedInstanceState);
         db = FirebaseFirestore.getInstance();
-        imgcollect=view.findViewById (R.id.imagecollect1);
-        recyclerView=view.findViewById (R.id.imagesCollection_recyclerView);
-        recyclerView.setHasFixedSize (true);
-        recyclerView.setLayoutManager (new LinearLayoutManager (getActivity ()));
-
-        myImages=new ArrayList< StorageReference > ();
-        //
+//
 
 
-        // storageReference = FirebaseStorage.getInstance().getReference("pictures/JPEG_20200607_200707_1933836298.jpg");
-        // storageReference = FirebaseStorage.getInstance().getReference("pictures/");
-
-       // listFiles ();
     }
 
-   /* private  void listFiles()
-    {
-        storageReference = FirebaseStorage.getInstance().getReference("audio/");
 
-        storageReference.listAll()
-                .addOnSuccessListener(new OnSuccessListener< ListResult >() {
-                    @Override
-                    public void onSuccess(ListResult listResult) {
-                        for (StorageReference prefix : listResult.getPrefixes()) {
-                            // All the prefixes under listRef.
-                            // You may call listAll() recursively on them.
-                        }
-
-                        for (StorageReference item : listResult.getItems()) {
-                            // All the items under listRef.
-                            System.out.println (item);
-                            Toast.makeText (getActivity (),"successfully loaded the Sounds",Toast.LENGTH_LONG).show ();
-
-                            myImages.add (item);
-
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Uh-oh, an error occurred!
-                    }
-                });
-    }*/
 }

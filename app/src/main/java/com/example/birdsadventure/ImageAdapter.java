@@ -1,64 +1,47 @@
 package com.example.birdsadventure;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
+import com.example.birdsadventure.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
+public class ImageAdapter extends BaseAdapter {
+    Context context;
+    int birdpictures[];
+    String   birdpicturesnames[];
 
-public class ImageAdapter extends RecyclerView.Adapter <ImageAdapter.ImageViewHolder>{
-private Context mContext;
-private ArrayList< String > mUploads;
-
-    public ImageAdapter(Context mContext, ArrayList< String > mUploads) {
-        this.mContext = mContext;
-        this.mUploads = mUploads;
+    LayoutInflater inflter;
+    public ImageAdapter(Context applicationContext, int[] birdpictures,String []birdpicturesnames) {
+        this.context = applicationContext;
+        this.birdpictures = birdpictures;
+        this.birdpicturesnames=birdpicturesnames;
+        inflter = (LayoutInflater.from(applicationContext));
     }
-
-    @NonNull
     @Override
-    public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-     View v=   LayoutInflater.from (parent.getContext ()).inflate (R.layout.birds_recycler_item, parent, false);
-    return  new ImageViewHolder (v);
-
+    public int getCount() {
+        return birdpictures.length;
     }
-
     @Override
-    public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
-//UserCollectionitem currentUserCollectionitem=mUploads.get (position);
-    holder.textViewName.setText (mUploads.get (position));
-    //Glide.with(mContext).load(mUploads.get (position)).into(holder.imageView);
-        Picasso.get().load (mUploads.get (position)).fit ().into (holder.imageView);
-
-        //Picasso.get().load (currentUserCollectionitem.getItemImage ()).fit ().into (holder.imageView);
-       // Glide.with(mContext).load(currentUserCollectionitem.getImageURL()).into(holder.imageView);
-
-
+    public Object getItem(int i) {
+        return null;
     }
-
     @Override
-    public int getItemCount() {
-        return mUploads.size ();
+    public long getItemId(int i) {
+        return 0;
     }
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        view = inflter.inflate( R.layout.row_items, null); // inflate the layout
+        ImageView icon = (ImageView) view.findViewById(R.id.imageLibrary); // get the reference of ImageView
+        icon.setImageResource(birdpictures[i]); // set logo images
 
-    public  class ImageViewHolder extends RecyclerView.ViewHolder{
-public TextView textViewName;
-public ImageView imageView;
-        public ImageViewHolder(@NonNull View itemView) {
-            super (itemView);
-            textViewName=itemView.findViewById (R.id.card_title);
-            imageView=itemView.findViewById (R.id.card_image);
-
-        }
+        TextView imagename=(TextView)view.findViewById (R.id.imageLibraryName );
+        imagename.setText ( birdpicturesnames[i] );
+        return view;
     }
 }
