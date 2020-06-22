@@ -2,5 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/caesar_dressing</item>
+        <item>@font/chewy</item>
+        <item>@font/luckiest_guy</item>
     </array>
 </resources>

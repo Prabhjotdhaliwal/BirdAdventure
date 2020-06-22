@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Birds Adventure</string>
 
-    <string name="welcome">"Welcome"</string>
+    <string name="welcome">"Welcome : "</string>
     <string name="txt_home_welcome">    WELCOME TO BIRDS ADVENTURE APP</string>
 
     <!-- Login & Register -->
@@ -17,7 +17,7 @@
     <string name="prompt_new_password">New Password</string>
     <string name="prompt_confirm__new_password">Confirm New Password</string>
     <string name="prompt_confirm_password">Confirm Password</string>
-    <string name="prompt_login">Please Login \n to continue.</string>
+    <string name="prompt_login">Please Login  to \ncontinue.</string>
     <string name="guest">Click here to explore as guest. </string>
     <string name="prompt_sign_up">Not registered? \n Please sign up.</string>
     <string name="action_login">Login</string>
@@ -57,14 +57,14 @@
     <string name="tab_text_2">Media</string>
     <string name="tab_text_3">Location</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="birdDescription">Description</string>
-    <string name="birdLocation">Location</string>
+    <string name="birdDescription">    Description</string>
+    <string name="birdLocation">    Location</string>
     <string name="birdCity">City</string>
     <string name="birdRegion">Region</string>
-    <string name="birdBiome">Biome</string>
-    <string name="birdHabitat">Habitat</string>
-    <string name="birdDiet">Diet</string>
-    <string name="BirdAppearance">Appearance</string>
+    <string name="birdBiome">    Biome</string>
+    <string name="birdHabitat">    Habitat</string>
+    <string name="birdDiet">    Diet</string>
+    <string name="BirdAppearance">    Appearance</string>
     <string name="birdColour">Colour</string>
     <string name="birdHeight">Height</string>
     <string name="birdWeight">Weight</string>

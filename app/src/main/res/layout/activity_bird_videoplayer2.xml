@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BirdVideoplayerActivity2"
-    android:background="@drawable/gradient_bg"
-    android:orientation="vertical"
-android:padding="20dp" >
+    android:background="@drawable/darkgradient"
+    android:padding="15dp"
+    android:orientation="vertical">
+
+
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/youtubeview"
         android:layout_width="match_parent"
@@ -16,10 +18,15 @@ android:padding="20dp" >
 
     <Button
         android:id="@+id/videoplaybutton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
         android:text="play"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/rounded" />
+        android:textColor="@color/whitish"
+        android:backgroundTint="@color/textcolor1"/>
+
+
+
 </RelativeLayout>

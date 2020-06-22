@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,7 +16,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 public class LibraryFragment extends Fragment implements View.OnClickListener {
-Button imagefolderbtn,videofolderbtn,soundsfolderbtn;
+ImageButton imagefolderbtn,videofolderbtn,soundsfolderbtn;
     private NavController navController;
 
     public LibraryFragment() {

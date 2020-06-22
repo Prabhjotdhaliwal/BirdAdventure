@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradientcolor1"
+    android:background="@drawable/darkgradient"
     android:orientation="vertical"
     tools:context=".UploadVideoFragment">
 
@@ -25,6 +25,9 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/borderred"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
             android:layout_weight="1"
             android:gravity="center">
 
@@ -39,6 +42,9 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/borderred"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
             android:layout_weight="1"
             android:gravity="center">
 
@@ -52,6 +58,9 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
+            android:background="@drawable/borderred"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">

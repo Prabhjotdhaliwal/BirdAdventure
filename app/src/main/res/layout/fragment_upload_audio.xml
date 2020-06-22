@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradientcolor1"
+    android:background="@drawable/darkgradient"
     android:orientation="vertical"
     tools:context=".UploadAudioFragment">
 
@@ -27,11 +27,12 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAudioPlay"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/rounded"
-            android:text="Play"
-            android:textSize="15sp" />
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:background="@drawable/loginbuttongradient"
+            android:text="Play" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -45,11 +46,13 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAudioRecord"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/rounded"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:background="@drawable/loginbuttongradient"
             android:text="Record"
-            android:textSize="15sp" />
+            />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -63,11 +66,12 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAudioStop"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/rounded"
-            android:text="Stop"
-            android:textSize="15sp" />
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:background="@drawable/loginbuttongradient"
+            android:text="Stop" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

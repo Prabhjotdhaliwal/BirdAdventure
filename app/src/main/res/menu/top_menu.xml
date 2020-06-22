@@ -11,9 +11,8 @@
     <item
         android:id="@+id/featured_bird"
         android:icon="@drawable/ic_more"
-        android:title="Featured Birds"
-        />
-    <item
+        android:title="Featured Birds"/>
+<item
         android:id="@+id/news"
         android:icon="@drawable/ic_more"
         android:title="News"

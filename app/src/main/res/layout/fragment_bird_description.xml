@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_bg"
+    android:background="@drawable/darkgradient"
     android:orientation="vertical"
     tools:context=".BirdDescriptionFragment">
 
@@ -16,14 +16,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/textcolor1">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="@string/birdDescription"
+        android:textSize="25sp"
+        android:layout_marginLeft="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/whitish"/>
+</LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:background="@color/txtviewcolor"
-                android:text="@string/birdDescription"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
@@ -35,18 +41,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/textcolor"
-                    android:textSize="15dp" />
+                    android:textColor="@color/whitish"
+                    android:textSize="20sp" />
 
             </androidx.core.widget.NestedScrollView>
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:background="@color/txtviewcolor"
-                android:text="@string/birdLocation"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:background="@color/textcolor1">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:textColor="@color/whitish"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/birdLocation"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -60,8 +72,8 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:text="@string/birdCity"
-                    android:textColor="@color/textcolor"
-                    android:textSize="15sp" />
+                    android:textColor="@color/whitish"
+                    android:textSize="20sp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/bird_desc_city"
@@ -70,7 +82,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:text="city"
-                    android:textColor="@color/textcolor" />
+                    android:textSize="20sp"
+                    android:textColor="@color/whitish" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -86,8 +99,8 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:text="@string/birdRegion"
-                    android:textColor="@color/textcolor"
-                    android:textSize="15sp" />
+                    android:textColor="@color/whitish"
+                    android:textSize="20sp"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/bird_desc_region"
@@ -95,18 +108,27 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
+                    android:textSize="20sp"
                     android:text="region"
-                    android:textColor="@color/textcolor" />
+                    android:textColor="@color/whitish" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:background="@color/txtviewcolor"
-                android:text="@string/birdBiome"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:background="@color/textcolor1">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:textColor="@color/whitish"
+                    android:text="@string/birdBiome"
+                    android:textSize="25sp"
+                    android:layout_marginLeft="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/bird_desc_biome"
@@ -115,17 +137,26 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="5dp"
+                android:textSize="20sp"
                 android:layout_marginBottom="2dp"
                 android:text="biome"
-                android:textColor="@color/textcolor" />
+                android:textColor="@color/whitish" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:background="@color/txtviewcolor"
-                android:text="@string/birdHabitat"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:background="@color/textcolor1">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:textColor="@color/whitish"
+                    android:text="@string/birdHabitat"
+                    android:textSize="25sp"
+                    android:layout_marginLeft="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/bird_desc_habitat"
@@ -135,16 +166,25 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="2dp"
+                android:textSize="20sp"
                 android:text="Habitat"
-                android:textColor="@color/textcolor" />
+                android:textColor="@color/whitish" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:background="@color/txtviewcolor"
-                android:text="@string/birdDiet"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:background="@color/textcolor1">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:textColor="@color/whitish"
+                    android:text="@string/birdDiet"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/bird_desc_diet"
@@ -155,15 +195,23 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="2dp"
                 android:text="diet"
-                android:textColor="@color/textcolor" />
+                android:textSize="20sp"
+                android:textColor="@color/whitish" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:background="@color/txtviewcolor"
-                android:text="@string/BirdAppearance"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:background="@color/textcolor1">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:text="@string/BirdAppearance"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/whitish"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -177,17 +225,18 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:text="@string/birdColour"
-                    android:textColor="@color/textcolor"
-                    android:textSize="15sp" />
+                    android:textColor="@color/whitish"
+                    android:textSize="20sp"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/bird_desc_colour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:text="Color"
-                    android:textColor="@color/textcolor" />
+                    android:textColor="@color/whitish" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -203,8 +252,8 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:text="@string/birdHeight"
-                    android:textColor="@color/textcolor"
-                    android:textSize="15sp" />
+                    android:textSize="20sp"
+                    android:textColor="@color/whitish" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/bird_desc_height"
@@ -212,8 +261,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
+                    android:textSize="20sp"
                     android:text="Height"
-                    android:textColor="@color/textcolor" />
+                    android:textColor="@color/whitish" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -229,8 +279,8 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:text="@string/birdWeight"
-                    android:textColor="@color/textcolor"
-                    android:textSize="15sp" />
+                    android:textColor="@color/whitish"
+                    android:textSize="20sp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/bird_desc_weight"
@@ -238,8 +288,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
+                    android:textSize="20sp"
                     android:text="Weight"
-                    android:textColor="@color/textcolor" />
+                    android:textColor="@color/whitish" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

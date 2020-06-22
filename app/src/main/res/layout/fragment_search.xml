@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_bg"
+    android:background="@drawable/darkgradient"
     android:orientation="vertical"
     tools:context=".SearchFragment">
 
@@ -13,24 +13,22 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin">
+        android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
             android:text="@string/prompt_location"
-            android:textSize="20sp" />
+            android:textColor="@color/whitish"
+            android:textStyle="bold"
+            android:textSize="30sp" />
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner_locations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#F86666"
-            android:popupBackground="#F86666" />
+            android:background="@drawable/loginbuttongradient"
+            android:popupBackground="#FFFFFF" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -39,32 +37,38 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin">
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_margin="5dp"
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:layout_height="wrap_content">
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/text_search_place"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_bird_name" />
+                android:hint="@string/prompt_bird_name"
+                android:textColor="@color/whitish"
+                android:textColorHint="@color/whitish"
+                android:textSize="20sp"
+                />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="center"
-            android:layout_height="30dp">
+            android:layout_height="40dp">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_search"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/rounded"
-                android:text="@string/btn_search" />
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/loginbuttongradient"
+                android:text="@string/btn_search"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/textcolor"/>
         </LinearLayout>
 
 

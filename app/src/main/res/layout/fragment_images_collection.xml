@@ -3,16 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_bg"
+    android:background="@drawable/darkgradient"
     tools:context=".ImagesCollectionFragment">
-<androidx.appcompat.widget.AppCompatImageView
-    android:id="@+id/imagecollect1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"></androidx.appcompat.widget.AppCompatImageView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imagecollect1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/imagesCollection_recyclerView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="wrap_content" />
 
 </FrameLayout>

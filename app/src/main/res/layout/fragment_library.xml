@@ -5,83 +5,103 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
   android:orientation="vertical"
-    android:background="@drawable/gradient_bg"
+    android:background="@drawable/darkgradient"
     tools:context=".HomeFragment">
 
     <RelativeLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:background="@drawable/borderred"
         android:layout_margin="10dp">
-        <Button
+        <ImageButton
             android:id="@+id/image_btn"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_margin="5dp"
-            android:background="@mipmap/picture" />
+            android:layout_margin="15dp"
+            android:background="@drawable/ic_baseline_collections_24"
+            />
 
         <TextView
             android:id="@+id/txt_picture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/image_btn"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="35dp"
+            android:gravity="center"
             android:text="Pictures \n XXX"
-            android:textColor="#ffffff"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="20sp"
+            android:textSize="25sp"
+            android:textColor="@color/textcolor"
+            android:background="@drawable/loginbuttongradient"
             />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:background="@drawable/borderred"
         android:layout_margin="10dp"
         >
-        <Button
+
+        <ImageButton
             android:id="@+id/video_btn"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_margin="5dp"
-            android:background="@mipmap/video" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/video" />
 
         <TextView
             android:id="@+id/txt_videos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_toRightOf="@id/video_btn"
             android:layout_marginTop="35dp"
-            android:textColor="#ffffff"
+           android:gravity="center"
             android:text="Videos \n XXX"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="20sp" />
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/textcolor"
+            android:background="@drawable/loginbuttongradient"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_height="wrap_content"
+        android:background="@drawable/borderred"
         android:layout_width="match_parent"
         android:layout_margin="10dp"
         >
-        <Button
+        <ImageButton
             android:id="@+id/sound_btn"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginTop="5dp"
-            android:background="@mipmap/soundclip" />
+            android:layout_margin="15dp"
+            android:background="@drawable/ic_baseline_music_video_24"
+           />
         <TextView
             android:id="@+id/txt_sounds"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             android:layout_toRightOf="@id/sound_btn"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:textColor="#ffffff"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+           android:gravity="center"
             android:text="Sounds \n XXX"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="20sp" />
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/textcolor"
+            android:background="@drawable/loginbuttongradient" />
+
+
     </RelativeLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

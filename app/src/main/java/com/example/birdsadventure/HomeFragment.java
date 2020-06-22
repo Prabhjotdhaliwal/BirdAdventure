@@ -8,12 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,6 +35,7 @@ import java.util.ArrayList;
  */
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
+
     /**
      * TextView for the user to see
      */
@@ -75,6 +78,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+
 
         db = FirebaseFirestore.getInstance();
 
@@ -173,7 +179,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void fillRecyclerView() {
 
         recyclerView = getActivity().findViewById(R.id.recycler_featured_birds);
-        recyclerLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 2);
         recyclerAdapter = new BirdsRecyclerAdapter(birdsList, false);
         recyclerView.setLayoutManager(recyclerLayoutManager);
         recyclerView.setAdapter(recyclerAdapter);
@@ -199,3 +205,4 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
 }
+

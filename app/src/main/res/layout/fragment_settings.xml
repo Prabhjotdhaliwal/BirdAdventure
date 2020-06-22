@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_bg"
+    android:background="@drawable/darkgradient"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingStart="48dp"
@@ -25,15 +25,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/receive_featured_notifications"
-            android:textColor="@color/txtColor"
-            android:textSize="14sp" />
+            android:textColor="@color/whitish"
+            android:textSize="20sp" />
 
         <androidx.appcompat.widget.AppCompatToggleButton
             android:id="@+id/featured_notification_toggle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:background="@drawable/rounded"
+            android:background="@drawable/loginbuttongradient"
             android:textColor="@color/textcolor" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -50,15 +50,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/receive_favorites_notifications"
-            android:textColor="@color/txtColor"
-            android:textSize="14sp" />
+            android:textColor="@color/whitish"
+            android:textSize="20sp" />
 
         <androidx.appcompat.widget.AppCompatToggleButton
             android:id="@+id/favorites_notification_toggle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:background="@drawable/rounded"
+            android:background="@drawable/loginbuttongradient"
             android:textColor="@color/textcolor" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -74,8 +74,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:text="@string/proximity_radius"
-            android:textColor="@color/txtColor"
-            android:textSize="@dimen/txt_normal" />
+            android:textColor="@color/whitish"
+            android:textSize="20sp" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/txt_proximity_radius"
@@ -85,7 +85,8 @@
             android:imeOptions="actionDone"
             android:inputType="numberDecimal"
             android:selectAllOnFocus="true"
-            android:textColor="@color/txtColor" />
+            android:textSize="20sp"
+            android:textColor="@color/textcolor1" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
@@ -93,8 +94,8 @@
             android:layout_weight="9"
             android:text="km"
             android:gravity="right"
-            android:textColor="@color/txtColor"
-            android:textSize="@dimen/txt_normal" />
+            android:textColor="@color/whitish"
+            android:textSize="20sp"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -109,7 +110,7 @@
             android:id="@+id/btnSaveSettings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded"
+            android:background="@drawable/loginbuttongradient"
             android:enabled="true"
             android:text="@string/action_save"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -128,7 +129,7 @@
             android:id="@+id/btnResetSettings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded"
+            android:background="@drawable/loginbuttongradient"
             android:enabled="true"
             android:text="@string/action_reset"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"

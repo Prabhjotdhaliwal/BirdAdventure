@@ -10,11 +10,13 @@
     <item android:id="@+id/uploadFragment"
         android:icon="@drawable/ic_add_circle_black_24dp"
         android:title="Upload"/>
-    <item android:id="@+id/libraryFragment"
-        android:icon="@drawable/ic_local_library_black_24dp"
-        android:title="Library"/>
     <item android:id="@+id/notificationsFragment"
         android:icon="@drawable/notificationimg"
         android:title="Notifications"/>
+    <item android:id="@+id/libraryFragment"
+        android:icon="@drawable/ic_local_library_black_24dp"
+        android:title="Library"/>
+
+
 
 </menu>
