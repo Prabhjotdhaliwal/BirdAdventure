@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,7 +39,11 @@ private RecyclerView recyclerView;
 ImageAdapter adapter;
 FirebaseFirestore db;
     StorageReference storageReference;
+    private ArrayList<Media> MediaList;
+    NavController navController;
     GridView simpleImageGrid;
+
+
     int birdPictures[] = {R.drawable.b1, R.drawable.b2, R.drawable.b4, R.drawable.b5,
             R.drawable.b6,R.drawable.b8, R.drawable.b16, R.drawable.birddemothiumnail, R.drawable.b11,
             R.drawable.b12, R.drawable.b1, R.drawable.b15, R.drawable.b16,R.drawable.b18};
@@ -72,19 +78,26 @@ FirebaseFirestore db;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated (view, savedInstanceState);
         db = FirebaseFirestore.getInstance();
+        navController = Navigation.findNavController(getActivity (), R.id.nav_host_fragment);
         simpleImageGrid = view.findViewById(R.id.simpleGridView); // init GridView
         // Create an object of CustomAdapter and set Adapter to GirdView
         ImageAdapter imageAdapter = new ImageAdapter (getActivity (), birdPictures,birdPicturesnames);
         simpleImageGrid.setAdapter(imageAdapter);
+
+
+
         // implement setOnItemClickListener event on GridView
         simpleImageGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText (getActivity (),"bird image selected" ,Toast.LENGTH_LONG).show ();
-                // set an Intent to Another Activity
-             //  Intent intent = new Intent(getActivity (), GalleryImageviewFragment.class);
-              //  intent.putExtra("image", birdPictures[position]); // put image data in Intent
-              //  getActivity().startActivity(intent); // start Intent
+
+               //send  selected image info to another actiivity
+
+               // Bundle b=new Bundle();
+               // b.putParcelable("media",MediaList.get(position));
+                navController.navigate(R.id.galleryImageviewFragment);
+
             }
         });
 

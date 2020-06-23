@@ -52,12 +52,14 @@ public class Bird implements Parcelable {
 
     public static final Creator<Bird> CREATOR = new Creator<Bird>() {
         @Override
-        public Bird createFromParcel(Parcel in) {
+        public Bird createFromParcel(Parcel in)
+        {
             return new Bird(in);
         }
 
         @Override
-        public Bird[] newArray(int size) {
+        public Bird[] newArray(int size)
+        {
             return new Bird[size];
         }
     };

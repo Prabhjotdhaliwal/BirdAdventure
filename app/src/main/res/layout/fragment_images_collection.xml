@@ -10,13 +10,12 @@
         android:id="@+id/simpleGridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:columnWidth="100dp"
-        android:numColumns="3"
         android:footerDividersEnabled="false"
-        android:padding="1dp"
-        android:verticalSpacing="24dp"
-        android:horizontalSpacing="10dp"
-        android:stretchMode="spacingWidthUniform"/>
+        android:gravity="center"
+        android:horizontalSpacing="2dp"
+        android:numColumns="3"
+        android:padding="2dp"
+        android:verticalSpacing="2dp" />
 
 </FrameLayout>
