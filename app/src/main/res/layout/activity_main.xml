@@ -38,16 +38,6 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/bird" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtBirdName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:text=""
-                android:textColor="@color/textcolor1"
-                android:textSize="13sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -57,51 +47,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/playSoundSample"
-                    android:layout_width="42dp"
-                    android:layout_height="47dp"
-                    android:background="@android:drawable/ic_media_play" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/txtSoundSample"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/loginbuttongradient"
-                    android:text="@string/action_sounds"
-                    android:textColor="@color/btnTxtColor" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/playVideoSample"
-                    android:layout_width="42dp"
-                    android:layout_height="47dp"
-                    android:background="@android:drawable/ic_media_play" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnVideoSample"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/loginbuttongradient"
-                    android:text="@string/action_videos" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
