@@ -30,11 +30,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             navigateToHome();
         }
 
-        birdNameSample = findViewById(R.id.txtBirdName);
+//        birdNameSample = findViewById(R.id.txtBirdName);
         btnLoginHome = findViewById(R.id.btnLoginHome);
         btnSignUpHome = findViewById(R.id.btnSignUpHome);
-        playVideoSample = findViewById(R.id.playVideoSample);
-        playSoundSample = findViewById(R.id.playSoundSample);
+//        playVideoSample = findViewById(R.id.playVideoSample);
+//        playSoundSample = findViewById(R.id.playSoundSample);
 
         btnLoginHome.setOnClickListener(this);
         btnSignUpHome.setOnClickListener(this);
@@ -73,12 +73,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnSignUpHome:
                 startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
                 break;
-            case R.id.playVideoSample:
-                btnVideoClick();
-                break;
-            case R.id.playSoundSample:
-                btnSoundClick();
-                break;
+//            case R.id.playVideoSample:
+//                btnVideoClick();
+//                break;
+//            case R.id.playSoundSample:
+//                btnSoundClick();
+//                break;
             default:
                 break;
 
