@@ -6,11 +6,17 @@
     android:background="@drawable/darkgradient"
     tools:context=".VideosCollectionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/videostxt"
+    <GridView
+        android:id="@+id/simpleGridView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:columnWidth="100dp"
+        android:footerDividersEnabled="false"
+        android:gravity="center"
+        android:horizontalSpacing="2dp"
+        android:numColumns="3"
+        android:padding="2dp"
+        android:verticalSpacing="2dp" />
+
 
 </FrameLayout>

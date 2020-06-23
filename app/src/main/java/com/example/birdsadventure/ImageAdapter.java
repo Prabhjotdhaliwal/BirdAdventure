@@ -13,13 +13,11 @@ import com.squareup.picasso.Picasso;
 public class ImageAdapter extends BaseAdapter {
     Context context;
     int birdpictures[];
-    String   birdpicturesnames[];
 
     LayoutInflater inflter;
-    public ImageAdapter(Context applicationContext, int[] birdpictures,String []birdpicturesnames) {
+    public ImageAdapter(Context applicationContext, int[] birdpictures) {
         this.context = applicationContext;
         this.birdpictures = birdpictures;
-        this.birdpicturesnames=birdpicturesnames;
         inflter = (LayoutInflater.from(applicationContext));
     }
     @Override
@@ -40,8 +38,8 @@ public class ImageAdapter extends BaseAdapter {
         ImageView icon = (ImageView) view.findViewById(R.id.imageLibrary); // get the reference of ImageView
         icon.setImageResource(birdpictures[i]); // set logo images
 
-        TextView imagename=(TextView)view.findViewById (R.id.imageLibraryName );
-        imagename.setText ( birdpicturesnames[i] );
+        //TextView imagename=(TextView)view.findViewById (R.id.imageLibraryName );
+       // imagename.setText ( birdpicturesnames[i] );
         return view;
     }
 }

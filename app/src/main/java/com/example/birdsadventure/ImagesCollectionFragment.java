@@ -47,10 +47,6 @@ FirebaseFirestore db;
     int birdPictures[] = {R.drawable.b1, R.drawable.b2, R.drawable.b4, R.drawable.b5,
             R.drawable.b6,R.drawable.b8, R.drawable.b16, R.drawable.birddemothiumnail, R.drawable.b11,
             R.drawable.b12, R.drawable.b1, R.drawable.b15, R.drawable.b16,R.drawable.b18};
-    String birdPicturesnames[] = {"bird1", "bird2", "bird3", "bird4",
-            "bird5","bird6", "bird7", "bird8", "bird9",
-            "bird10", "bird11", "bird12", "bird13","bird14"};
-
 
 
     public ImagesCollectionFragment() {
@@ -81,7 +77,7 @@ FirebaseFirestore db;
         navController = Navigation.findNavController(getActivity (), R.id.nav_host_fragment);
         simpleImageGrid = view.findViewById(R.id.simpleGridView); // init GridView
         // Create an object of CustomAdapter and set Adapter to GirdView
-        ImageAdapter imageAdapter = new ImageAdapter (getActivity (), birdPictures,birdPicturesnames);
+        ImageAdapter imageAdapter = new ImageAdapter (getActivity (), birdPictures);
         simpleImageGrid.setAdapter(imageAdapter);
 
 
@@ -97,9 +93,10 @@ FirebaseFirestore db;
                // Bundle b=new Bundle();
                // b.putParcelable("media",MediaList.get(position));
                 navController.navigate(R.id.galleryImageviewFragment);
-
             }
         });
 
     }
 }
+
+
