@@ -1,50 +1,56 @@
 package com.example.birdsadventure;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
 
 public class BirdLocationFragment extends Fragment {
 
+    FirebaseFirestore db;
+    SupportMapFragment mapFragment;
+    SharedPreferences sp;
 
-    public BirdLocationFragment() {
-        // Required empty public constructor
-    }
+    public BirdLocationFragment() { }
 
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layoout fragment
+    public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_bird_location, container, false);
-        SupportMapFragment mapFragment = null;
+        mapFragment = null;
+
+        db = FirebaseFirestore.getInstance();
+
+        //getBirdDetails();
+
         if (mapFragment == null) {
             mapFragment = SupportMapFragment.newInstance();
             mapFragment.getMapAsync(new OnMapReadyCallback() {
                 @Override
                 public void onMapReady(GoogleMap googleMap) {
-
 
 
                     LatLng latLng = new LatLng(1.289545, 103.849972);
@@ -61,6 +67,32 @@ public class BirdLocationFragment extends Fragment {
 
         return rootView;
     }
+
+    private void getBirdDetails() {
+
+        sp = getActivity().getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);
+        String birdID = sp.getString(MyVariables.keyBirdID, MyVariables.defaultBirdID);
+
+        if (birdID != null) {
+
+            if (birdID.equals("")) {
+                Toast.makeText(getActivity().getApplicationContext(), "Bird Data not found", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            db.collection("Birds").document(birdID).collection("media")
+                    .whereEqualTo("is_deleted", false).get().
+                    addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+
+                            }
+                        }
+                    });
+        }
+    }
+
 }
 
 

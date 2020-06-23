@@ -7,95 +7,111 @@
     android:background="@drawable/darkgradient"
     tools:context=".BirdMediaFragment">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/textcolor1">
-        <TextView
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/textcolor1">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="@string/birdimages"
+                android:textColor="@color/whitish"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text= "@string/birdimages"
-            android:textSize="25sp"
-            android:layout_marginLeft="15dp"
-            android:textStyle="bold"
-            android:textColor="@color/whitish" />
-    </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_height="250dp">
-            <ImageView
-                android:id="@+id/mediaImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:background="@mipmap/birdimgmedia"/>
-        </LinearLayout>
-        <LinearLayout
+            android:layout_margin="10dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/birdMediaImage"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:background="@mipmap/birdimgmedia"
+                android:scaleType="centerCrop" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/textcolor1">
-            <TextView
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text= "@string/birdvideos"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:text="@string/birdvideos"
                 android:textColor="@color/whitish"
-                />
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <ImageView
-            android:id="@+id/videothumnail"
-            android:layout_width="100dp"
-            android:layout_marginTop="5dp"
-            android:layout_height="100dp"
-            android:src="@drawable/birddemothiumnail">
-        </ImageView>
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/videoThumbnail"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/birddemothiumnail" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/textcolor1">
-            <TextView
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
-                android:text= "@string/birdsounds"
-                android:textSize="25sp"
-                android:layout_marginLeft="15dp"
-                android:textStyle="bold"
+                android:text="@string/birdsounds"
                 android:textColor="@color/whitish"
-                />
-        </LinearLayout>
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-        <LinearLayout
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/soundplaybtn"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSoundPlay"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@mipmap/playbtn" />
 
-            <SeekBar
-                android:layout_gravity="center"
-                android:id="@+id/seekbarProgress"
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/soundSeekBarProgress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
 
-        </LinearLayout>
-    </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </ScrollView>

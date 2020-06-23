@@ -72,6 +72,7 @@
     <string name="birdvideos">Videos</string>
     <string name="birdsounds">Sound Clips</string>
     <string name="prompt_location">Location</string>
+    <string name="play_video">Play</string>
 
 
 </resources>
