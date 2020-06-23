@@ -39,7 +39,7 @@ public class ImageAdapter extends BaseAdapter {
         icon.setImageResource(birdpictures[i]); // set logo images
 
         //TextView imagename=(TextView)view.findViewById (R.id.imageLibraryName );
-       // imagename.setText ( birdpicturesnames[i] );
+        //imagename.setText ( birdpicturesnames[i] );
         return view;
     }
 }

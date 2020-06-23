@@ -44,9 +44,9 @@ public class VideosCollectionFragment extends Fragment {
     GridView simpleVideoGrid;
 
 
-    int birdPictures[] = {R.drawable.b1, R.drawable.b2, R.drawable.b4, R.drawable.b5,
-            R.drawable.b6,R.drawable.b8, R.drawable.b16, R.drawable.birddemothiumnail, R.drawable.b11,
-            R.drawable.b12, R.drawable.b1, R.drawable.b15, R.drawable.b16,R.drawable.b18};
+    int birdPictures[] = {R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube,
+            R.drawable.youtube,R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube,
+            R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube,R.drawable.youtube};
 
 
     public VideosCollectionFragment() {
@@ -86,13 +86,13 @@ public class VideosCollectionFragment extends Fragment {
         simpleVideoGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText (getActivity (),"bird image selected" ,Toast.LENGTH_LONG).show ();
+                Toast.makeText (getActivity (),"bird video selected" ,Toast.LENGTH_LONG).show ();
 
                 //send  selected image info to another actiivity
 
                 // Bundle b=new Bundle();
                 // b.putParcelable("media",MediaList.get(position));
-                navController.navigate(R.id.galleryImageviewFragment);
+                navController.navigate(R.id.videoPlayerFragment);
             }
         });
 

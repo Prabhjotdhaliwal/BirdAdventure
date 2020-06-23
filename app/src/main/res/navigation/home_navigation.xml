@@ -112,4 +112,9 @@
         android:name="com.example.birdsadventure.GalleryImageviewFragment"
         android:label="fragment_gallery_imageview"
         tools:layout="@layout/fragment_gallery_imageview" />
+    <fragment
+        android:id="@+id/videoPlayerFragment"
+        android:name="com.example.birdsadventure.VideoPlayerFragment"
+        android:label="fragment_video_player"
+        tools:layout="@layout/fragment_video_player" />
 </navigation>
