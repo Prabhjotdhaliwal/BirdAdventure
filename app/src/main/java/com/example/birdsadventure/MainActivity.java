@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnSignUpHome, btnLoginHome, playVideoSample, playSoundSample;
-    TextView birdNameSample;
+//    TextView birdNameSample;
 
     SharedPreferences sp;
     SharedPreferences.Editor editor;
@@ -38,11 +38,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnLoginHome.setOnClickListener(this);
         btnSignUpHome.setOnClickListener(this);
-        playVideoSample.setOnClickListener(this);
-        playSoundSample.setOnClickListener(this);
+//        playVideoSample.setOnClickListener(this);
+//        playSoundSample.setOnClickListener(this);
 
         String birdName = "NAME OF THE BIRD";
-        birdNameSample.setText(birdName);
+//        birdNameSample.setText(birdName);
     }
 
     private boolean validateAutomaticLogin() {
