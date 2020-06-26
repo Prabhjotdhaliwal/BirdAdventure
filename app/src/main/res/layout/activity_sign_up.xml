@@ -3,92 +3,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     android:background="@drawable/darkgradient"
+    android:padding="10dp"
     tools:context=".SignUpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-      android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/bird"/>
+            android:src="@drawable/bird" />
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/txtNameSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/prompt_name"
-            android:inputType="textPersonName"
-            android:textColorHint="@color/whitish"
-            android:textColor="@color/whitish"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="40dp"/>
+            android:layout_marginRight="40dp"
+            android:hint="@string/prompt_name"
+            android:inputType="textPersonName"
+            android:textColor="@color/whitish"
+            android:textColorHint="@color/whitish" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/txtEmailSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/prompt_email"
-            android:inputType="textEmailAddress"
-            android:textColorHint="@color/whitish"
-            android:textColor="@color/whitish"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="40dp"/>
+            android:layout_marginRight="40dp"
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/whitish"
+            android:textColorHint="@color/whitish" />
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/txtPhoneSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="40dp"
             android:hint="@string/prompt_phone"
             android:imeOptions="actionDone"
             android:inputType="phone"
-            android:textColorHint="@color/whitish"
             android:textColor="@color/whitish"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="40dp"/>
+            android:textColorHint="@color/whitish" />
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/txtAddressSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="40dp"
             android:hint="@string/prompt_address"
             android:imeOptions="actionDone"
             android:inputType="textPostalAddress"
-            android:textColorHint="@color/whitish"
             android:textColor="@color/whitish"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="40dp"/>
+            android:textColorHint="@color/whitish" />
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/txtPasswordSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="40dp"
             android:hint="@string/prompt_password"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:textColorHint="@color/whitish"
             android:textColor="@color/whitish"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="40dp"/>
-        <android.inputmethodservice.ExtractEditText
+            android:textColorHint="@color/whitish" />
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/txtConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="40dp"
             android:hint="@string/prompt_confirm_password"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:textColorHint="@color/whitish"
             android:textColor="@color/whitish"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="40dp"/>
+            android:textColorHint="@color/whitish" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSignUp"
@@ -102,6 +107,7 @@
             android:enabled="true"
             android:text="@string/action_register"
             android:textSize="20sp" />
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
