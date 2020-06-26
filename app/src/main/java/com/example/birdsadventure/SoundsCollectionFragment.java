@@ -87,6 +87,13 @@ recyclerViewsounds.setAdapter(new soundCollectionAdapter(initdata()));
         itemList.add(new soundCollections("this is first sound"));
         itemList.add(new soundCollections("this is first sound"));
         itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+
 
 
      return itemList;
