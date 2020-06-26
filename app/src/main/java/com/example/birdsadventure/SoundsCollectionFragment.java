@@ -35,6 +35,11 @@ public class SoundsCollectionFragment extends Fragment {
         // Required empty public constructor
     }
 
+RecyclerView recyclerViewsounds;
+    List<soundCollections> itemList;
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,8 +53,43 @@ public class SoundsCollectionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate (R.layout.fragment_images_collection, container, false);
+       View view= inflater.inflate (R.layout.fragment_sounds_collection, container, false);
+        recyclerViewsounds=view.findViewById(R.id.recyler_View_soundscollection);
+        recyclerViewsounds.setHasFixedSize(true);
+       recyclerViewsounds.setLayoutManager(new LinearLayoutManager(getContext()));
+       //initdata();
 
+recyclerViewsounds.setAdapter(new soundCollectionAdapter(initdata()));
+
+       return  view;
+
+    }
+
+    private List<soundCollections> initdata() {
+
+        itemList =new ArrayList<>();
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+        itemList.add(new soundCollections("this is first sound"));
+
+
+     return itemList;
     }
 
     @Override
