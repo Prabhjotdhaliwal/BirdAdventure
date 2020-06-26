@@ -148,6 +148,24 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        RecyclerView recyclerView = getActivity().findViewById(R.id.recycler_view_search_birds);
+        RecyclerView.LayoutManager recyclerLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        BirdsRecyclerAdapter recyclerAdapter = new BirdsRecyclerAdapter(new ArrayList<Bird>(), true);
+        recyclerView.setLayoutManager(recyclerLayoutManager);
+        recyclerView.setAdapter(recyclerAdapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        getFavoriteBirds("");
+    }
+
     private void btnSearchClick(View v) {
 
         String searchText = txtSearchBird.getText().toString();

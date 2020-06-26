@@ -10,8 +10,8 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
         android:orientation="vertical">
 
@@ -34,9 +34,9 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_margin="5dp"
             android:background="@drawable/borders"
-            android:layout_margin="5dp">
+            android:gravity="center">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/birdMediaImage"
@@ -67,15 +67,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/borders"
-            android:layout_margin="10dp">
+            android:layout_margin="5dp"
+            android:background="@drawable/borders">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/videoThumbnail"
-                android:layout_width="80dp"
-                android:layout_height="60dp"
-                android:layout_margin="15dp"
-                 />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -100,8 +99,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/borders"
             android:orientation="horizontal">
@@ -109,16 +108,16 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSoundPlay"
                 android:layout_width="50dp"
-                android:layout_margin="10dp"
                 android:layout_height="50dp"
+                android:layout_margin="10dp"
                 android:background="@mipmap/playbtn" />
 
             <androidx.appcompat.widget.AppCompatSeekBar
                 android:id="@+id/soundSeekBarProgress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-              android:layout_marginRight="10dp"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

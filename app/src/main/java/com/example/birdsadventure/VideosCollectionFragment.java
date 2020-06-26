@@ -54,7 +54,6 @@ public class VideosCollectionFragment extends Fragment {
             R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube,
             R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube};
 
-
     public VideosCollectionFragment() {
         // Required empty public constructor
     }
@@ -164,6 +163,12 @@ public class VideosCollectionFragment extends Fragment {
                                  * Write here the code to get the list and display the videos, or thumbnails.
                                  * Or just show dummy thumbnails for videoList.size() times.
                                  */
+
+
+
+                                ImageAdapter imageAdapter = new ImageAdapter(getActivity(), videoList);
+                                simpleVideoGrid.setAdapter(imageAdapter);
+
                             }
                         }
                     });

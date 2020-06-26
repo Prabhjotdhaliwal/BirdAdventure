@@ -1,6 +1,5 @@
 package com.example.birdsadventure;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 
 public class BirdsRecyclerAdapter extends RecyclerView.Adapter<BirdsRecyclerAdapter.RecyclerViewHolder> {
 
-    private ArrayList< Bird > birdsList;
+    private ArrayList<Bird> birdsList;
 
     private boolean isVerticalList;
     private OnItemClickListener listenerAdapter;
@@ -35,17 +34,17 @@ public class BirdsRecyclerAdapter extends RecyclerView.Adapter<BirdsRecyclerAdap
         public TextView txtTitle, txtBody;
 
         public RecyclerViewHolder(@NonNull View itemView, final OnItemClickListener listenerView) {
-            super (itemView);
-            image = itemView.findViewById (R.id.card_image);
-            txtTitle = itemView.findViewById (R.id.card_title);
+            super(itemView);
+            image = itemView.findViewById(R.id.card_image);
+            txtTitle = itemView.findViewById(R.id.card_title);
 
-            itemView.setOnClickListener (new View.OnClickListener () {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (listenerView != null) {
-                        int position = getAdapterPosition ();
+                        int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
-                            listenerView.onItemClick (position);
+                            listenerView.onItemClick(position);
                         }
                     }
                 }
@@ -53,7 +52,7 @@ public class BirdsRecyclerAdapter extends RecyclerView.Adapter<BirdsRecyclerAdap
         }
     }
 
-    public BirdsRecyclerAdapter(ArrayList< Bird > birdsList, boolean isVerticalList) {
+    public BirdsRecyclerAdapter(ArrayList<Bird> birdsList, boolean isVerticalList) {
         this.birdsList = birdsList;
         this.isVerticalList = isVerticalList;
     }
@@ -63,26 +62,26 @@ public class BirdsRecyclerAdapter extends RecyclerView.Adapter<BirdsRecyclerAdap
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         if (this.isVerticalList) {
-            view = LayoutInflater.from (parent.getContext ()).inflate (R.layout.birds_recycler_list_item, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.birds_recycler_list_item, parent, false);
         } else {
-            view = LayoutInflater.from (parent.getContext ()).inflate (R.layout.birds_recycler_item, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.birds_recycler_item, parent, false);
         }
-        RecyclerViewHolder recyclerViewHolder = new RecyclerViewHolder (view, listenerAdapter);
+        RecyclerViewHolder recyclerViewHolder = new RecyclerViewHolder(view, listenerAdapter);
         return recyclerViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
 
-        Bird currentBird = birdsList.get (position);
+        Bird currentBird = birdsList.get(position);
 
-        holder.txtTitle.setText (currentBird.getName ());
-        Picasso.get ().load (currentBird.getImageURL ()).into (holder.image);
+        holder.txtTitle.setText(currentBird.getName());
+        Picasso.get().load(currentBird.getImageURL()).into(holder.image);
 
     }
 
     @Override
     public int getItemCount() {
-        return birdsList.size ();
+        return birdsList.size();
     }
 }
