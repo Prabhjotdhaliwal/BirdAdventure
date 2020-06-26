@@ -159,8 +159,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
                                 final String birdName = document.getString("name");
+                                String birdID = document.getId();
                                 String birdImageURL = document.getString("birdimgUrl");
-                                birdsList.add(new Bird(birdName, birdImageURL));
+                                birdsList.add(new Bird(birdID, birdName, birdImageURL));
 
                             }
                             fillRecyclerView();

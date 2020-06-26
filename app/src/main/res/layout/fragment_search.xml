@@ -45,7 +45,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content">
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/text_search_place"
+                android:id="@+id/text_search_bird"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_bird_name"

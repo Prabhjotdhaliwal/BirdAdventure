@@ -73,6 +73,7 @@
     <string name="birdsounds">Sound Clips</string>
     <string name="prompt_location">Location</string>
     <string name="play_video">Play</string>
-
+    <string name="add_to_favorites">Add To Favorites</string>
+    <string name="remove_from_favorites">Remove From Favorites</string>
 
 </resources>

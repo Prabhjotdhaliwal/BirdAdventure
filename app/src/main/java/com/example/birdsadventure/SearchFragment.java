@@ -32,7 +32,7 @@ import java.util.ArrayList;
 public class SearchFragment extends Fragment implements View.OnClickListener {
     //Database instance
     FirebaseFirestore db;
-    EditText txtSearchDrink;
+    EditText txtSearchBird;
     Button btnSearch;
     Spinner spinnerLocation;
     ArrayList<Location> locationList;
@@ -62,7 +62,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         db = FirebaseFirestore.getInstance();
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        txtSearchDrink = getActivity().findViewById(R.id.text_search_place);
+        txtSearchBird = getActivity().findViewById(R.id.text_search_bird);
         btnSearch = getActivity().findViewById(R.id.button_search);
         spinnerLocation = (Spinner) getActivity().findViewById(R.id.spinner_locations);
 
@@ -159,7 +159,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
         Location location = (Location) spinnerLocation.getSelectedItem();
 
-        String searchText = txtSearchDrink.getText().toString();
+        String searchText = txtSearchBird.getText().toString();
         getAllBirds(searchText, location.getLocationName());
     }
 

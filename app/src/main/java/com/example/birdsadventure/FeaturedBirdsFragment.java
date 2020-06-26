@@ -34,7 +34,7 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
     /**
      * Declaration of Edit Text box for search
      */
-    EditText txtSearchDrink;
+    EditText txtSearchBird;
 
     /**
      * Declaration of search button
@@ -102,7 +102,7 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
-        txtSearchDrink = getActivity().findViewById(R.id.text_search_place);
+        txtSearchBird = getActivity().findViewById(R.id.text_search_featured);
         btnSearch = getActivity().findViewById(R.id.button_search);
 
         btnSearch.setOnClickListener(this);
@@ -131,8 +131,9 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
                                 final String birdName = document.getString("name");
 
                                 if (birdName.contains(searchText)) {
+                                    String birdID = document.getId();
                                     String birdImageURL = document.getString("birdimgUrl");
-                                    birdsList.add(new Bird(birdName, birdImageURL));
+                                    birdsList.add(new Bird(birdID, birdName, birdImageURL));
                                 }
                             }
                             fillRecyclerView();
@@ -164,7 +165,7 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
      */
     private void btnSearchClick(View v) {
 
-        String searchText = txtSearchDrink.getText().toString();
+        String searchText = txtSearchBird.getText().toString();
         getFeaturedBirds(searchText);
     }
 

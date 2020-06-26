@@ -19,7 +19,7 @@
     android:layout_weight="5"
     android:gravity="left">
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/text_search_place"
+        android:id="@+id/text_search_favorites"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"

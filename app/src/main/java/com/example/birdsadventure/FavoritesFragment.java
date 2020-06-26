@@ -33,7 +33,7 @@ import java.util.ArrayList;
 
 public class FavoritesFragment extends Fragment implements View.OnClickListener {
 
-    EditText txtSearchDrink;
+    EditText txtSearchBird;
     Button btnSearch;
     TextView txt_no_favorites;
 
@@ -66,7 +66,7 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         txt_no_favorites = getActivity().findViewById(R.id.txt_no_favorites);
-        txtSearchDrink = getActivity().findViewById(R.id.text_search_place);
+        txtSearchBird = getActivity().findViewById(R.id.text_search_favorites);
         btnSearch = getActivity().findViewById(R.id.button_search);
         txt_no_favorites.setText("");
 
@@ -125,8 +125,10 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
                                 final String birdName = document.getString("bird_name");
 
                                 if (birdName.contains(searchText)) {
+                                    String birdID = document.getString("bird_id");
+
                                     String birdImageURL = document.getString("default_image");
-                                    birdsList.add(new Bird(birdName, birdImageURL));
+                                    birdsList.add(new Bird(birdID, birdName, birdImageURL));
                                 }
                             }
                             fillRecyclerView();
@@ -148,7 +150,7 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
     private void btnSearchClick(View v) {
 
-        String searchText = txtSearchDrink.getText().toString();
+        String searchText = txtSearchBird.getText().toString();
         getFavoriteBirds(searchText);
     }
 
