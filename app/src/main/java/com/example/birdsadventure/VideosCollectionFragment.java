@@ -97,7 +97,7 @@ public class VideosCollectionFragment extends Fragment {
                 Bundle b = new Bundle();
                 b.putString("libraryVideo", mediaList.get(position).url);
                 b.putString("mediaID", mediaList.get(position).media_id);
-                navController.navigate(R.id.videoPlayerFragment);
+                navController.navigate(R.id.videoPlayerFragment, b);
             }
         });
 
@@ -166,8 +166,8 @@ public class VideosCollectionFragment extends Fragment {
 
 
 
-                                ImageAdapter imageAdapter = new ImageAdapter(getActivity(), videoList);
-                                simpleVideoGrid.setAdapter(imageAdapter);
+                                VideoAdapter videoAdapter = new VideoAdapter(getActivity(), videoList);
+                                simpleVideoGrid.setAdapter(videoAdapter);
 
                             }
                         }
