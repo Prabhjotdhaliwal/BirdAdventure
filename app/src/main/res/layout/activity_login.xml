@@ -27,9 +27,9 @@
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             android:hint="Email ID"
-            android:textColorHint="@color/textcolor1"
+            android:textColorHint="@color/whitish"
             android:textStyle="bold"
-            android:textColor="@color/textcolor1"
+            android:textColor="@color/whitish"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             />
@@ -38,12 +38,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12dp"
-            android:textColorHint="@color/textcolor1"
+            android:textColorHint="@color/whitish"
             android:hint="@string/prompt_password"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="40dp"
-            android:textColor="@color/textcolor1"
+            android:textColor="@color/whitish"
             android:inputType="textPassword"
             />
 
