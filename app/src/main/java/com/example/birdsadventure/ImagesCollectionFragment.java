@@ -1,7 +1,7 @@
 package com.example.birdsadventure;
 
-import android.content.Intent;
-import android.net.Uri;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,44 +9,58 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.ListResult;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 
 public class ImagesCollectionFragment extends Fragment {
 private RecyclerView recyclerView;
 ImageAdapter adapter;
-FirebaseFirestore db;
+    String imageUrl;
+    String audioUrl;
+    String videoUrlID;
+    String userID;
+    User currentUser;
+
+
+
+    FirebaseUser user;
+    FirebaseFirestore db;
+
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+
     StorageReference storageReference;
     private ArrayList<Media> MediaList;
+    private ArrayList< String > imagesList;
+
     NavController navController;
     GridView simpleImageGrid;
 
 
-    int birdPictures[] = {R.drawable.b1, R.drawable.b2, R.drawable.b4, R.drawable.b5,
+   /* int birdPictures[] = {R.drawable.b1, R.drawable.b2, R.drawable.b4, R.drawable.b5,
             R.drawable.b6,R.drawable.b8, R.drawable.b16, R.drawable.birddemothiumnail, R.drawable.b11,
-            R.drawable.b12, R.drawable.b1, R.drawable.b15, R.drawable.b16,R.drawable.b18};
+            R.drawable.b12, R.drawable.b1, R.drawable.b15, R.drawable.b16,R.drawable.b18};*/
 
 
     public ImagesCollectionFragment() {
@@ -74,11 +88,12 @@ FirebaseFirestore db;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated (view, savedInstanceState);
         db = FirebaseFirestore.getInstance();
+
         navController = Navigation.findNavController(getActivity (), R.id.nav_host_fragment);
-        simpleImageGrid = view.findViewById(R.id.simpleGridView); // init GridView
+        simpleImageGrid = view.findViewById(R.id.simpleGridView); // init GridVie
+        getUserDetails ();
+// w
         // Create an object of CustomAdapter and set Adapter to GirdView
-        ImageAdapter imageAdapter = new ImageAdapter (getActivity (), birdPictures);
-        simpleImageGrid.setAdapter(imageAdapter);
 
 
 
@@ -96,6 +111,74 @@ FirebaseFirestore db;
             }
         });
 
+
+    }
+
+
+    private void getUserDetails() {
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+
+            String email = user.getEmail();
+
+            db.collection("Users").whereEqualTo("email", email)
+                    .whereEqualTo("status", true).get()
+                    .addOnCompleteListener(new OnCompleteListener< QuerySnapshot > () {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                QuerySnapshot documents = task.getResult();
+                                if (documents.getDocuments().size() > 0) {
+                                    userID = documents.getDocuments().get(0).getId();
+
+                                    sp = getActivity().getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);
+                                    editor = sp.edit();
+                                    editor.putString(MyVariables.keyUserDocID, userID);
+                                    editor.apply();
+                                    getuserCollectionMediaUrl ();
+
+                                }
+                            }
+                        }
+                    });
+        }
+    }
+
+
+    private void getuserCollectionMediaUrl()
+    {
+
+        if (userID != null)
+        {
+            db.collection("Users").document(userID).collection("Media")
+                    .whereEqualTo("is_deleted", false).get().
+                    addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    if (document.getBoolean("is_image"))
+                                    {
+                                      //  Log.d(TAG, document.getId() + " => " + document.getData());
+                                        imageUrl = document.getString("url");
+                                        Media media = new Media ( imageUrl, true, false,  false,  false) ;
+
+
+                                        //list of imageUrls
+                                       imagesList=new ArrayList<> ();
+                                       imagesList.add (imageUrl);
+                                    System.out.println ( imagesList );
+
+                                        ImageAdapter imageAdapter = new ImageAdapter (getActivity (), imagesList);
+                                       simpleImageGrid.setAdapter(imageAdapter);
+
+
+                                    } }
+                            }
+                        }
+                    });
+        }
     }
 }
 

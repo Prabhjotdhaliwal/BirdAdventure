@@ -27,6 +27,15 @@ public class Media implements Parcelable {
         this.is_deleted = is_deleted;
     }
 
+    public Media( String url, Boolean is_image, Boolean is_video, Boolean is_sound_clip, Boolean is_deleted) {
+        this.url = url;
+        this.media_id = media_id;
+        this.is_image = is_image;
+        this.is_video = is_video;
+        this.is_sound_clip = is_sound_clip;
+        this.is_deleted = is_deleted;
+    }
+
 
     public Media(String name, String imageURL) {
         this.title = name;

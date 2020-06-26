@@ -1,6 +1,10 @@
 package com.example.birdsadventure;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -12,6 +16,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +25,15 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
@@ -42,8 +53,18 @@ public class VideosCollectionFragment extends Fragment {
     private ArrayList<Media> MediaList;
     NavController navController;
     GridView simpleVideoGrid;
+ArrayList<String > videoList;
+    String imageUrl;
+    String audioUrl;
+    String videoUrlID;
+    String userID;
+    FirebaseUser user;
+
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
 
 
+    //demo data
     int birdPictures[] = {R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube,
             R.drawable.youtube,R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube,
             R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube,R.drawable.youtube};
@@ -77,10 +98,10 @@ public class VideosCollectionFragment extends Fragment {
         navController = Navigation.findNavController(getActivity (), R.id.nav_host_fragment);
          simpleVideoGrid= view.findViewById(R.id.simpleGridView1); // init GridView
         // Create an object of CustomAdapter and set Adapter to GirdView
-        ImageAdapter imageAdapter = new ImageAdapter (getActivity (), birdPictures);
-        simpleVideoGrid.setAdapter(imageAdapter);
+        //ImageAdapter imageAdapter = new ImageAdapter (getActivity (), birdPictures);
+       // simpleVideoGrid.setAdapter(imageAdapter);
 
-
+         getUserDetails ();
 
         // implement setOnItemClickListener event on GridView
         simpleVideoGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -96,6 +117,71 @@ public class VideosCollectionFragment extends Fragment {
             }
         });
 
+    }
+    private void getUserDetails() {
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+
+            String email = user.getEmail();
+
+            db.collection("Users").whereEqualTo("email", email)
+                    .whereEqualTo("status", true).get()
+                    .addOnCompleteListener(new OnCompleteListener< QuerySnapshot > ()
+                    {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                QuerySnapshot documents = task.getResult();
+                                if (documents.getDocuments().size() > 0) {
+                                    userID = documents.getDocuments().get(0).getId();
+
+
+                                    sp = getActivity().getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);
+                                    editor = sp.edit();
+                                    editor.putString(MyVariables.keyUserDocID, userID);
+                                    editor.apply();
+                                    getuserCollectionMediaUrl ();
+
+//
+                                }
+                            }
+                        }
+                    });
+        }
+    }
+
+
+    private void getuserCollectionMediaUrl( ) {
+
+        if (userID != null) {
+
+
+
+            db.collection("Users").document(userID).collection("Media")
+                    .whereEqualTo("is_deleted", false).get().
+                    addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    if (document.getBoolean("is_video"))
+                                    {
+                                        videoUrlID = document.getString("url");
+                                        Media media = new Media ( videoUrlID, false, true,  false,  false) ;
+
+                                        //list of video urls
+                                        videoList=new ArrayList<> ( );
+                                        videoList.add ( videoUrlID );
+                                        System.out.println ( videoUrlID );
+
+                                      
+                                    }
+                                }
+                            }
+                        }
+                    });
+        }
     }
 }
 
