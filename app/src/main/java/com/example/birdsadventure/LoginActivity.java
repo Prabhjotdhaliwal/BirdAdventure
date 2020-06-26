@@ -4,10 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,7 +26,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText txtEmail, txtPassword;           /** Declaration of edit text boxes */
+    EditText txtEmail, txtPassword;/** Declaration of edit text boxes */
+    TextView showPassword;
     Button btnLogin;                          /** Declaration of login button */
     FirebaseAuth firebaseAuth;                /* Declaration of firebase authentication to get backend services */
 
@@ -51,10 +56,48 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         /** To connect edit text boxes with the current activity */
         txtEmail = findViewById(R.id.txtEmailLogin);
         txtPassword = findViewById(R.id.txtPasswordLogin);
+txtPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
         /** To connect button with the current activity */
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this);
+        showPassword = findViewById(R.id.showPassword);
+        showPassword.setVisibility(View.GONE);
+        txtPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+if(txtPassword.getText().length() > 0){
+    showPassword.setVisibility(View.VISIBLE);
+} else{
+    showPassword.setVisibility(View.GONE);
+}
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        showPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(showPassword.getText() == "SHOW"){
+showPassword.setText("HIDE");
+txtPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+txtPassword.setSelection(txtPassword.length());
+                }else {
+                    showPassword.setText("SHOW");
+                    txtPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    txtPassword.setSelection(txtPassword.length());
+                }
+            }
+        });
     }
 
     @Override
