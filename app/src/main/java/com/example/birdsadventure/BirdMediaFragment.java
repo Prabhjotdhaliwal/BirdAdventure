@@ -79,6 +79,8 @@ public class BirdMediaFragment extends Fragment implements View.OnClickListener 
         videoThumbnail.setOnClickListener(this);
         btnSoundPlay.setOnClickListener(this);
 
+        //videoThumbnail.setVisibility(View.VISIBLE);
+
         sp = getActivity().getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);
         birdID = sp.getString(MyVariables.keyBirdID, MyVariables.defaultBirdID);
 
@@ -114,9 +116,9 @@ public class BirdMediaFragment extends Fragment implements View.OnClickListener 
                                         String videoUrl = document.getString("url");
 
                                         videoUrlID = videoUrl.substring(videoUrl.indexOf('=') + 1);
-                                        String thumbnail = "http://img.youtube.com/vi/" + videoUrlID + "/0.jpg";
+                                        //String thumbnail = "http://img.youtube.com/vi/" + videoUrlID + "/0.jpg";
 
-                                        Picasso.get().load(thumbnail).into(videoThumbnail);
+                                        //Picasso.get().load(thumbnail).into(videoThumbnail);
 
                                     } else if (document.getBoolean("is_sound_clip")) {
                                         audioUrl = document.getString("url");
