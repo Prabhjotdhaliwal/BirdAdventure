@@ -3,7 +3,9 @@ package com.example.birdsadventure;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -32,6 +34,8 @@ import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -52,9 +56,13 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
     TextView txtCaptureAudio;
     MediaController mediaController;
 
+    String userID;
     String currentVideoPath;
     StorageReference storageReference;
     private NavController navController;
+
+    FirebaseFirestore db;
+    SharedPreferences sp;
 
     public UploadVideoFragment() {
     }
@@ -72,6 +80,8 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        db = FirebaseFirestore.getInstance();
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
@@ -103,6 +113,9 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
         });
 
         videoViewCamera.start();
+
+        sp = getActivity().getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);
+        userID = sp.getString(MyVariables.keyUserDocID, MyVariables.defaultUserDocID);
     }
 
     @Override
@@ -223,11 +236,13 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
                     public void onSuccess(Uri uri) {
                         Log.d("tag", "onSuccess: Upload Image URI is " + uri);
 
+                        userCollectionUploadMediaUrl(uri);
+
 //                        videoViewCamera.setVideoURI(uri);
 //                        videoViewCamera.requestFocus();
                     }
                 });
-                Toast.makeText(getActivity(), "Video is uploaded", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getActivity(), "Video is uploaded", Toast.LENGTH_LONG).show();
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -236,6 +251,34 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
                 Toast.makeText(getActivity(), "Video upload failed - " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void userCollectionUploadMediaUrl(Uri uri) {
+        if (userID != null) {
+
+            Media media = new Media();
+            media.is_deleted = false;
+            media.is_image = false;
+            media.is_video = true;
+            media.is_sound_clip = false;
+            media.title = "Video";
+            media.url = uri.toString();
+
+            db.collection("Users").document(userID).collection("Media").add(media)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+
+                            Toast.makeText(getActivity().getApplicationContext(), "Video is Uploaded", Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity().getApplicationContext(), "Video could not be saved in User Media", Toast.LENGTH_LONG).show();
+                        }
+                    });
+        }
     }
 
     private String getFileExt(Uri contentUri) {

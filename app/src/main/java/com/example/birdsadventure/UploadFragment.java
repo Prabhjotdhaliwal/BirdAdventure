@@ -3,7 +3,9 @@ package com.example.birdsadventure;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,8 +30,15 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -50,9 +59,16 @@ public class UploadFragment extends Fragment implements View.OnClickListener {
     Button btnCameraImage, btnGalleryImage;
     TextView txtCaptureVideo;
 
+    String userID;
     String currentPhotoPath;
     StorageReference storageReference;
     private NavController navController;
+
+    FirebaseUser user;
+    FirebaseFirestore db;
+
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
 
     public UploadFragment() {
     }
@@ -71,6 +87,8 @@ public class UploadFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        db = FirebaseFirestore.getInstance();
+
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -84,6 +102,43 @@ public class UploadFragment extends Fragment implements View.OnClickListener {
         btnCameraImage.setOnClickListener(this);
         btnGalleryImage.setOnClickListener(this);
         txtCaptureVideo.setOnClickListener(this);
+
+        getUserDetails();
+    }
+
+    private void getUserDetails() {
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+
+            String email = user.getEmail();
+
+            db.collection("Users").whereEqualTo("email", email)
+                    .whereEqualTo("status", true).get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                QuerySnapshot documents = task.getResult();
+                                if (documents.getDocuments().size() > 0) {
+                                    userID = documents.getDocuments().get(0).getId();
+
+                                    sp = getActivity().getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);
+                                    editor = sp.edit();
+                                    editor.putString(MyVariables.keyUserDocID, userID);
+                                    editor.apply();
+
+//                                    db.collection("Users").document(userID).collection("Media").get()
+//                                            .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                                                @Override
+//                                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                                                    Toast.makeText(getActivity().getApplicationContext(), "true", Toast.LENGTH_SHORT).show();
+//                                                }
+//                                            });
+                                }
+                            }
+                        }
+                    });
+        }
     }
 
     @Override
@@ -176,9 +231,10 @@ public class UploadFragment extends Fragment implements View.OnClickListener {
                     public void onSuccess(Uri uri) {
                         Log.d("tag", "onSuccess: Upload Image URI is " + uri);
 
+                        userCollectionUploadMediaUrl(uri);
+
                     }
                 });
-                Toast.makeText(getActivity(), "image is uploaded", Toast.LENGTH_LONG).show();
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -187,6 +243,34 @@ public class UploadFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getActivity(), "failed upload", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void userCollectionUploadMediaUrl(Uri uri) {
+        if (userID != null) {
+
+            Media media = new Media();
+            media.is_deleted = false;
+            media.is_image = true;
+            media.is_video = false;
+            media.is_sound_clip = false;
+            media.title = "Image";
+            media.url = uri.toString();
+
+            db.collection("Users").document(userID).collection("Media").add(media)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+
+                            Toast.makeText(getActivity().getApplicationContext(), "Image is Uploaded", Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity().getApplicationContext(), "Image could not be saved in User Media", Toast.LENGTH_LONG).show();
+                        }
+                    });
+        }
     }
 
     private String getFileExt(Uri contentUri) {

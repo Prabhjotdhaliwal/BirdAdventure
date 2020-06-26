@@ -42,7 +42,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.4.3'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
-    implementation 'com.google.android.gms:play-services-plus:17.0.0'
+//    implementation 'com.google.android.gms:play-services-plus:17.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.github.armcha:SpaceNavigationView:1.6.0'
     testImplementation 'junit:junit:4.13'

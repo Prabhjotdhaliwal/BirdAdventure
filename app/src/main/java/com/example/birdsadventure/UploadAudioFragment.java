@@ -1,6 +1,8 @@
 package com.example.birdsadventure;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -22,6 +24,8 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -41,9 +45,13 @@ public class UploadAudioFragment extends Fragment implements View.OnClickListene
     private static MediaRecorder mediaRecorder;
     private static MediaPlayer mediaPlayer;
 
+    String userID;
     private String audioFilePath;
     private boolean isRecording;
     private StorageReference storageReference;
+
+    FirebaseFirestore db;
+    SharedPreferences sp;
 
     public UploadAudioFragment() {
     }
@@ -61,6 +69,8 @@ public class UploadAudioFragment extends Fragment implements View.OnClickListene
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        db = FirebaseFirestore.getInstance();
 
         isRecording = false;
 
@@ -91,6 +101,8 @@ public class UploadAudioFragment extends Fragment implements View.OnClickListene
             Toast.makeText(getActivity().getApplicationContext(), "Error: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
+        sp = getActivity().getSharedPreferences(MyVariables.cacheFile, Context.MODE_PRIVATE);
+        userID = sp.getString(MyVariables.keyUserDocID, MyVariables.defaultUserDocID);
     }
 
     private boolean hasMicrophone() {
@@ -218,9 +230,10 @@ public class UploadAudioFragment extends Fragment implements View.OnClickListene
                     @Override
                     public void onSuccess(Uri uri) {
                         Log.d("tag", "onSuccess: Upload Audio URI is " + uri);
+                        userCollectionUploadMediaUrl(uri);
                     }
                 });
-                Toast.makeText(getActivity(), "Audio is uploaded", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getActivity(), "Audio is uploaded", Toast.LENGTH_LONG).show();
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -229,6 +242,34 @@ public class UploadAudioFragment extends Fragment implements View.OnClickListene
                 Toast.makeText(getActivity(), "Audio upload failed - " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void userCollectionUploadMediaUrl(Uri uri) {
+        if (userID != null) {
+
+            Media media = new Media();
+            media.is_deleted = false;
+            media.is_image = false;
+            media.is_video = false;
+            media.is_sound_clip = true;
+            media.title = "Audio";
+            media.url = uri.toString();
+
+            db.collection("Users").document(userID).collection("Media").add(media)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+
+                            Toast.makeText(getActivity().getApplicationContext(), "Audio is Uploaded", Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity().getApplicationContext(), "Audio could not be saved in User Media", Toast.LENGTH_LONG).show();
+                        }
+                    });
+        }
     }
 
 }
