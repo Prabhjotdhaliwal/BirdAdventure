@@ -1,48 +1,32 @@
 package com.example.birdsadventure;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.media.ThumbnailUtils;
-import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.provider.MediaStore;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class VideosCollectionFragment extends Fragment {
@@ -53,7 +37,8 @@ public class VideosCollectionFragment extends Fragment {
     private ArrayList<Media> MediaList;
     NavController navController;
     GridView simpleVideoGrid;
-ArrayList<String > videoList;
+    ArrayList<String> videoList;
+    private ArrayList<Media> mediaList;
     String imageUrl;
     String audioUrl;
     String videoUrlID;
@@ -66,19 +51,18 @@ ArrayList<String > videoList;
 
     //demo data
     int birdPictures[] = {R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube,
-            R.drawable.youtube,R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube,
-            R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube,R.drawable.youtube};
+            R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube,
+            R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube, R.drawable.youtube};
 
 
     public VideosCollectionFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate (savedInstanceState);
-        if (getArguments () != null) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
         }
     }
 
@@ -87,37 +71,39 @@ ArrayList<String > videoList;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate (R.layout.fragment_videos_collection, container, false);
+        return inflater.inflate(R.layout.fragment_videos_collection, container, false);
 
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated (view, savedInstanceState);
+        super.onViewCreated(view, savedInstanceState);
         db = FirebaseFirestore.getInstance();
-        navController = Navigation.findNavController(getActivity (), R.id.nav_host_fragment);
-         simpleVideoGrid= view.findViewById(R.id.simpleGridView1); // init GridView
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        simpleVideoGrid = view.findViewById(R.id.simpleGridView1); // init GridView
         // Create an object of CustomAdapter and set Adapter to GirdView
         //ImageAdapter imageAdapter = new ImageAdapter (getActivity (), birdPictures);
-       // simpleVideoGrid.setAdapter(imageAdapter);
+        // simpleVideoGrid.setAdapter(imageAdapter);
 
-         getUserDetails ();
+        getUserDetails();
 
         // implement setOnItemClickListener event on GridView
         simpleVideoGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText (getActivity (),"bird video selected" ,Toast.LENGTH_LONG).show ();
+                Toast.makeText(getActivity(), "bird video selected", Toast.LENGTH_LONG).show();
 
                 //send  selected image info to another actiivity
 
-                // Bundle b=new Bundle();
-                // b.putParcelable("media",MediaList.get(position));
+                Bundle b = new Bundle();
+                b.putString("libraryVideo", mediaList.get(position).url);
+                b.putString("mediaID", mediaList.get(position).media_id);
                 navController.navigate(R.id.videoPlayerFragment);
             }
         });
 
     }
+
     private void getUserDetails() {
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -126,8 +112,7 @@ ArrayList<String > videoList;
 
             db.collection("Users").whereEqualTo("email", email)
                     .whereEqualTo("status", true).get()
-                    .addOnCompleteListener(new OnCompleteListener< QuerySnapshot > ()
-                    {
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
@@ -140,7 +125,7 @@ ArrayList<String > videoList;
                                     editor = sp.edit();
                                     editor.putString(MyVariables.keyUserDocID, userID);
                                     editor.apply();
-                                    getuserCollectionMediaUrl ();
+                                    getuserCollectionMediaUrl();
 
 //
                                 }
@@ -150,34 +135,35 @@ ArrayList<String > videoList;
         }
     }
 
-
-    private void getuserCollectionMediaUrl( ) {
+    private void getuserCollectionMediaUrl() {
 
         if (userID != null) {
 
-
-
             db.collection("Users").document(userID).collection("Media")
-                    .whereEqualTo("is_deleted", false).get().
+                    .whereEqualTo("is_deleted", false).whereEqualTo("is_video", true).get().
                     addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
 
+                                //list of video urls
+                                videoList = new ArrayList<>();
+                                mediaList = new ArrayList<Media>();
                                 for (QueryDocumentSnapshot document : task.getResult()) {
-                                    if (document.getBoolean("is_video"))
-                                    {
-                                        videoUrlID = document.getString("url");
-                                        Media media = new Media ( videoUrlID, false, true,  false,  false) ;
+                                    videoUrlID = document.getString("url");
+                                    String mediaID = document.getId();
+                                    //Media media = new Media(videoUrlID, false, true, false, false);
 
-                                        //list of video urls
-                                        videoList=new ArrayList<> ( );
-                                        videoList.add ( videoUrlID );
-                                        System.out.println ( videoUrlID );
+                                    videoList.add(videoUrlID);
+                                    mediaList.add(new Media("", videoUrlID, mediaID));
+                                    //System.out.println(videoUrlID);
 
-                                      
-                                    }
                                 }
+
+                                /**
+                                 * Write here the code to get the list and display the videos, or thumbnails.
+                                 * Or just show dummy thumbnails for videoList.size() times.
+                                 */
                             }
                         }
                     });

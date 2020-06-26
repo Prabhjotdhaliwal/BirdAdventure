@@ -5,16 +5,15 @@ import android.os.Parcelable;
 
 public class Media implements Parcelable {
 
-    String  title;
+    String title;
     String url;
     String media_id;
-    Boolean   is_image;
-    Boolean   is_video;
-    Boolean  is_sound_clip;
-    Boolean   is_deleted;
+    Boolean is_image;
+    Boolean is_video;
+    Boolean is_sound_clip;
+    Boolean is_deleted;
 
-    public Media()
-    {
+    public Media() {
     }
 
     public Media(String title, String url, String media_id, Boolean is_image, Boolean is_video, Boolean is_sound_clip, Boolean is_deleted) {
@@ -27,7 +26,7 @@ public class Media implements Parcelable {
         this.is_deleted = is_deleted;
     }
 
-    public Media( String url, Boolean is_image, Boolean is_video, Boolean is_sound_clip, Boolean is_deleted) {
+    public Media(String url, Boolean is_image, Boolean is_video, Boolean is_sound_clip, Boolean is_deleted) {
         this.url = url;
         this.media_id = media_id;
         this.is_image = is_image;
@@ -36,11 +35,17 @@ public class Media implements Parcelable {
         this.is_deleted = is_deleted;
     }
 
+    public Media(String title, String url, String media_id) {
+        this.title = title;
+        this.url = url;
+        this.media_id = media_id;
+    }
 
     public Media(String name, String imageURL) {
         this.title = name;
         this.url = imageURL;
     }
+
     public String getTitle() {
         return title;
     }
@@ -107,7 +112,7 @@ public class Media implements Parcelable {
     public static final Creator<Media> CREATOR = new Creator<Media>() {
         @Override
         public Media createFromParcel(Parcel in) {
-            return new Media (in);
+            return new Media(in);
         }
 
         @Override

@@ -2,35 +2,33 @@ package com.example.birdsadventure;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.MediaController;
-import android.widget.VideoView;
-
 import java.net.URL;
 
 public class VideoPlayerFragment extends Fragment implements View.OnClickListener {
     VideoView selectedVideo;
-    Button saveVideobtn,shareVideobtn;
+    Button saveVideobtn, shareVideobtn;
     ProgressDialog mProgressDialog;
     URL url;
+    String mediaID;
 
     public VideoPlayerFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate ( savedInstanceState );
+        super.onCreate(savedInstanceState);
 
     }
 
@@ -38,16 +36,16 @@ public class VideoPlayerFragment extends Fragment implements View.OnClickListene
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate ( R.layout.fragment_video_player, container, false );
+        return inflater.inflate(R.layout.fragment_video_player, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated ( view, savedInstanceState );
+        super.onViewCreated(view, savedInstanceState);
 
-        selectedVideo = view.findViewById (R.id.videoViewGallery); // init a ImageView
-        saveVideobtn = view.findViewById (R.id.savevideobtn);
-        shareVideobtn = view.findViewById (R.id.shareVideobtn);
+        selectedVideo = view.findViewById(R.id.videoViewGallery); // init a ImageView
+        saveVideobtn = view.findViewById(R.id.savevideobtn);
+        shareVideobtn = view.findViewById(R.id.shareVideobtn);
 
 
         //to get data from the parecelable such as img title & Url
@@ -57,19 +55,25 @@ public class VideoPlayerFragment extends Fragment implements View.OnClickListene
         // System.out.println("url"+media.getUrl ());
         // Picasso.get ().load (media.getUrl ()).into (selectedImage);
 
+        String birdVideoUrl = getArguments().getString("libraryVideo");
+        /**
+         * use this media id to delete this media from user/media collection.
+         */
+        mediaID = getArguments().getString("mediaID");
 
-        selectedVideo.setVideoPath("http://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4");
-        MediaController mediaController=new MediaController (getContext ());
-        mediaController.setAnchorView (selectedVideo);
-        selectedVideo.setMediaController (mediaController);
+
+        selectedVideo.setVideoPath(birdVideoUrl);
+        MediaController mediaController = new MediaController(getContext());
+        mediaController.setAnchorView(selectedVideo);
+        selectedVideo.setMediaController(mediaController);
         selectedVideo.start();
 
         //Button clicks
-        saveVideobtn.setOnClickListener (this);
-        shareVideobtn.setOnClickListener (this);
+        saveVideobtn.setOnClickListener(this);
+        shareVideobtn.setOnClickListener(this);
 
         //progress Dialog
-        mProgressDialog = new ProgressDialog (getActivity ());
+        mProgressDialog = new ProgressDialog(getActivity());
         mProgressDialog.setIndeterminate(true);
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mProgressDialog.setTitle("AsyncTask");
@@ -79,16 +83,15 @@ public class VideoPlayerFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        switch (v.getId ())
-        {
+        switch (v.getId()) {
             case R.id.savevideobtn:
                 //save video();
                 break;
             case R.id.shareVideobtn:
-               // sharevideo ();
+                // sharevideo ();
                 break;
             default:
                 break;
+        }
     }
-}
 }

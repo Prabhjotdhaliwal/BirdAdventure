@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="#fff"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
     android:orientation="vertical"
-tools:context=".GalleryImageviewFragment">
+    tools:context=".GalleryImageviewFragment">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp">
+
         <ImageView
             android:id="@+id/selectedImage"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_centerInParent="true"
-            android:scaleType="fitXY"
             android:padding="10dp"
-            android:background="@mipmap/birdimgmedia"/>
+            android:scaleType="fitXY" />
     </LinearLayout>
 
     <LinearLayout
@@ -25,24 +26,21 @@ tools:context=".GalleryImageviewFragment">
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp">
+
         <Button
             android:id="@+id/saveimgbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:text="Save"
-
-            >
-        </Button>
+            android:text="Save" />
 
         <Button
             android:id="@+id/shareimgbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
-            android:layout_marginRight="10dp"            android:text="Share"
-            >
-        </Button>
+            android:layout_marginRight="10dp"
+            android:text="Share" />
 
     </LinearLayout>
 </LinearLayout>
