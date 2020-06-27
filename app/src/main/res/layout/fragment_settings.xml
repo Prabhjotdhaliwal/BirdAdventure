@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:background="@drawable/loginbuttongradient"
+            android:background="@drawable/roundedwhite"
             android:textColor="@color/textcolor" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:background="@drawable/loginbuttongradient"
+            android:background="@drawable/roundedwhite"
             android:textColor="@color/textcolor" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -110,11 +110,11 @@
             android:id="@+id/btnSaveSettings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/loginbuttongradient"
+            android:background="@drawable/roundedwhite"
             android:enabled="true"
             android:text="@string/action_save"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@color/btnTxtColor" />
+            android:textSize="25sp"
+             android:textColor="@color/btnTxtColor" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -129,10 +129,10 @@
             android:id="@+id/btnResetSettings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/loginbuttongradient"
+            android:background="@drawable/roundedwhite"
             android:enabled="true"
             android:text="@string/action_reset"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="25sp"
             android:textColor="@color/btnTxtColor" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -81,13 +81,12 @@
             android:textStyle="bold"
             android:enabled="true"
             android:text="@string/action_save"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:layout_marginLeft="38dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="38dp"
             android:textColor="@color/textcolor"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/loginbuttongradient" />
+            android:background="@drawable/roundedwhite" />
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -99,12 +98,11 @@
             android:textColor="@color/textcolor"
             android:enabled="true"
             android:text="@string/action_reset"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:layout_marginLeft="38dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="38dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/loginbuttongradient" />
+            android:background="@drawable/roundedwhite" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </RelativeLayout>
 

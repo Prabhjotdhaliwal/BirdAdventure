@@ -2,6 +2,7 @@ package com.example.birdsadventure;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -219,9 +220,9 @@ public class BirdProfileActivity extends AppCompatActivity implements View.OnCli
 
         if (isFavorite) {
 
-            btnFavorites.setText(R.string.remove_from_favorites);
+            btnFavorites.setBackgroundResource(R.drawable.favfull);
         } else {
-            btnFavorites.setText(R.string.add_to_favorites);
+            btnFavorites.setBackgroundResource(R.drawable.fav);
         }
     }
 }

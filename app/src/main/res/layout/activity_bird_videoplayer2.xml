@@ -18,11 +18,12 @@
         android:id="@+id/btnVideoPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/youTubeView"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/roundedwhite"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-        android:backgroundTint="@color/textcolor1"
         android:text="@string/play_video"
-        android:textColor="@color/whitish" />
+        android:textColor="@color/black" />
 
 </RelativeLayout>
