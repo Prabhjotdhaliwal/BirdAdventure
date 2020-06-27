@@ -1,18 +1,28 @@
 package com.example.birdsadventure;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 
 public class VideoPlayerFragment extends Fragment implements View.OnClickListener {
@@ -85,7 +95,7 @@ public class VideoPlayerFragment extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.savevideobtn:
-                //save video();
+                saveVideo();
                 break;
             case R.id.shareVideobtn:
                 // sharevideo ();
@@ -93,5 +103,12 @@ public class VideoPlayerFragment extends Fragment implements View.OnClickListene
             default:
                 break;
         }
+    }
+
+    private void saveVideo()
+    {
+        // Toast.makeText(getActivity(), "Save button clicked", Toast.LENGTH_LONG).show();
+
+
     }
 }
