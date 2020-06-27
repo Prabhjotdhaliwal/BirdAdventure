@@ -46,7 +46,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     FirebaseFirestore db;
     private ArrayList<Bird> birdsList;
-
     private RecyclerView recyclerView;
     private BirdsRecyclerAdapter recyclerAdapter;
     private RecyclerView.LayoutManager recyclerLayoutManager;

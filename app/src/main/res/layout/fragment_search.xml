@@ -27,7 +27,7 @@
             android:id="@+id/spinner_locations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/loginbuttongradient"
+            android:background="@drawable/roundedwhite"
             android:popupBackground="#FFFFFF" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -49,6 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_bird_name"
+                android:inputType="text"
                 android:textColor="@color/whitish"
                 android:textColorHint="@color/whitish"
                 android:textSize="20sp"
@@ -64,10 +65,8 @@
                 android:id="@+id/button_search"
                 android:layout_width="80dp"
                 android:layout_height="40dp"
-                android:background="@drawable/loginbuttongradient"
+                android:background="@drawable/roundedwhite"
                 android:text="@string/btn_search"
-                android:textSize="15sp"
-                android:textStyle="bold"
                 android:textColor="@color/textcolor"/>
         </LinearLayout>
 

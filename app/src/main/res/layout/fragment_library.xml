@@ -23,19 +23,18 @@
 
         <TextView
             android:id="@+id/txt_picture"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/image_btn"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="35dp"
             android:gravity="center"
-            android:text="Pictures \n XXX"
+            android:text="Pictures"
             android:textStyle="bold"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="25sp"
             android:textColor="@color/textcolor"
-            android:background="@drawable/loginbuttongradient"
+            android:background="@drawable/roundedwhite"
             />
     </RelativeLayout>
 
@@ -58,19 +57,18 @@
 
         <TextView
             android:id="@+id/txt_videos"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginRight="20dp"
             android:layout_toRightOf="@id/video_btn"
             android:layout_marginTop="35dp"
            android:gravity="center"
-            android:text="Videos \n XXX"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:text="Videos"
             android:textSize="25sp"
             android:textStyle="bold"
             android:textColor="@color/textcolor"
-            android:background="@drawable/loginbuttongradient"/>
+            android:background="@drawable/roundedwhite"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_height="wrap_content"
@@ -87,19 +85,18 @@
            />
         <TextView
             android:id="@+id/txt_sounds"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             android:layout_toRightOf="@id/sound_btn"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginRight="20dp"
            android:gravity="center"
-            android:text="Sounds \n XXX"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:text="Sounds"
             android:textSize="25sp"
             android:textStyle="bold"
             android:textColor="@color/textcolor"
-            android:background="@drawable/loginbuttongradient" />
+            android:background="@drawable/roundedwhite" />
 
 
     </RelativeLayout>

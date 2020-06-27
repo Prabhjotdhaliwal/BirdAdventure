@@ -39,9 +39,7 @@
             android:id="@+id/button_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:background="@drawable/loginbuttongradient"
+            android:background="@drawable/roundedwhite"
             android:text="@string/btn_search" />
         </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
