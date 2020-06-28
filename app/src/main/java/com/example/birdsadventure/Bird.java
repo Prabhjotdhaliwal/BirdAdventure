@@ -18,7 +18,9 @@ public class Bird implements Parcelable {
     private String weight;
     private boolean isFavorite;
 
-    public Bird(String birdID, String name, String imageURL) {
+    public Bird(String birdID, String name, String imageURL)
+
+    {
         this.birdID = birdID;
         this.name = name;
         this.imageURL = imageURL;

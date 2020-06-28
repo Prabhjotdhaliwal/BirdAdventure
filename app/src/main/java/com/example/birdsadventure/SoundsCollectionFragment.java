@@ -6,11 +6,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +42,8 @@ public class SoundsCollectionFragment extends Fragment {
     User currentUser;
     ArrayList<String> soundList;
     private ArrayList<Media> mediaList;
+    NavController navController;
+    GridView simpleSoundGrid;
 
     FirebaseUser user;
     FirebaseFirestore db;
@@ -108,12 +115,30 @@ public class SoundsCollectionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         db = FirebaseFirestore.getInstance();
+        navController = Navigation.findNavController(getActivity (), R.id.nav_host_fragment);
+        simpleSoundGrid=view.findViewById ( R.id.simplesoundGridView1 );
 //
         getUserDetails();
 
-        recyclerViewsounds = view.findViewById(R.id.recyler_View_soundscollection);
-        recyclerViewsounds.setHasFixedSize(true);
-        recyclerViewsounds.setLayoutManager(new LinearLayoutManager(getContext()));
+        // implement setOnItemClickListener event on GridView
+        simpleSoundGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText (getActivity (),"bird image selected" ,Toast.LENGTH_LONG).show ();
+
+                //send  selected image info to another actiivity
+
+                Bundle b = new Bundle();
+                b.putString("librarySound", mediaList.get(position).url);
+                b.putString("mediaID", mediaList.get(position).media_id);
+                //  navController.navigate(R.id.soundplayerFragment, b);
+            }
+        });
+
+
+        //  recyclerViewsounds = view.findViewById(R.id.recyler_View_soundscollection);
+        //  recyclerViewsounds.setHasFixedSize(true);
+        //  recyclerViewsounds.setLayoutManager(new LinearLayoutManager(getContext()));
         //initdata();
 
 //        recyclerViewsounds=new soundCollectionAdapter (  );
@@ -158,6 +183,7 @@ public class SoundsCollectionFragment extends Fragment {
             db.collection("Users").document(userID).collection("Media")
                     .whereEqualTo("is_deleted", false).whereEqualTo("is_sound_clip", true).get().
                     addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
@@ -171,7 +197,12 @@ public class SoundsCollectionFragment extends Fragment {
                                     String mediaID = document.getId();
                                     mediaList.add(new Media("", audioUrl, mediaID));
                                     soundList.add(audioUrl);
-                                    //System.out.println(soundList);
+                                    System.out.println(soundList);
+
+                                    SoundAdapter  soundAdapter = new SoundAdapter (getActivity(), soundList);
+                                    simpleSoundGrid.setAdapter(soundAdapter);
+
+
                                 }
 
                                 /**
