@@ -6,9 +6,17 @@
     android:background="@drawable/darkgradient"
     tools:context=".SoundsCollectionFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <GridView
+        android:id="@+id/simplesoundGridView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyler_View_soundscollection"/>
+        android:columnWidth="100dp"
+        android:footerDividersEnabled="false"
+        android:gravity="center"
+        android:horizontalSpacing="2dp"
+        android:numColumns="3"
+        android:padding="2dp"
+        android:verticalSpacing="2dp" />
+
 
 </FrameLayout>
