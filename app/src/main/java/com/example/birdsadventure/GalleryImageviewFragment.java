@@ -1,7 +1,4 @@
 
-
-
-
 package com.example.birdsadventure;
 
 import android.app.ProgressDialog;
@@ -21,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
 import com.squareup.picasso.Picasso;
@@ -39,6 +37,7 @@ public class GalleryImageviewFragment extends Fragment implements View.OnClickLi
     ProgressDialog mProgressDialog;
     URL url;
     String mediaID;
+    String birdImgUrl;
     BitmapDrawable drawable;
     Bitmap bitmap;
 
@@ -77,7 +76,7 @@ public class GalleryImageviewFragment extends Fragment implements View.OnClickLi
 
         //to get data from the parecelable such as img title & Url
 
-        String birdImgUrl = getArguments().getString("libraryImage");
+         birdImgUrl = getArguments().getString("libraryImage");
         /**
          * use this media id to delete this media from user/media collection.
          */
@@ -120,9 +119,12 @@ public class GalleryImageviewFragment extends Fragment implements View.OnClickLi
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+    {
     }
 
+
+    //to save a picture in deice storage
     private void saveimagetogallery()
     {
         // Toast.makeText(getActivity(), "Save button clicked", Toast.LENGTH_LONG).show();
@@ -141,12 +143,12 @@ public class GalleryImageviewFragment extends Fragment implements View.OnClickLi
         directory.mkdir ();
         String fileName = String.format ( "%d.jpg",System.currentTimeMillis () );
         File outFile=new File(directory,fileName);
+        Toast.makeText (getActivity (),"image saved Successfully",Toast.LENGTH_LONG ).show ();
 
         try
         {
             outputStream=new FileOutputStream ( outFile );
             bitmap.compress ( Bitmap.CompressFormat.JPEG,100,outputStream );
-            Toast.makeText (getActivity (),"image saved Successfully",Toast.LENGTH_LONG ).show ();
             outputStream.flush ();
             outputStream.close ();
 
@@ -165,9 +167,48 @@ public class GalleryImageviewFragment extends Fragment implements View.OnClickLi
 
     }
 
+//to share an image in other applications such as Facebook,instagram etc..
+    private void shareimage()
+    {
+        drawable = (BitmapDrawable)SelectedImage.getDrawable ();
+        bitmap=drawable.getBitmap ();
 
-    private void shareimage() {
-        Toast.makeText(getActivity(), "Share button clicked", Toast.LENGTH_LONG).show();
+        FileOutputStream outputStream=null;
+        File sdCard= Environment.getExternalStorageDirectory ();
+        File directory =new File(sdCard.getAbsoluteFile ()+"/birds");
+        directory.mkdir ();
+        String fileName = String.format ( "%d.jpg",System.currentTimeMillis () );
+        File outFile=new File(directory,fileName);
 
+        try
+        {
+            outputStream=new FileOutputStream ( outFile );
+            bitmap.compress ( Bitmap.CompressFormat.JPEG,100,outputStream );
+            outputStream.flush ();
+            outputStream.close ();
+
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+            sharingIntent.setType("image/*");
+
+            Uri uri = Uri.fromFile(outFile);
+            System.out.println ( uri );
+           sharingIntent.putExtra(Intent.EXTRA_STREAM, uri);
+           sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+           sharingIntent.setType("image/jpg");
+
+
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+
+
+    }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace ();
+        } catch (IOException e)
+        {
+            e.printStackTrace ();
+        }
 
     }}
+

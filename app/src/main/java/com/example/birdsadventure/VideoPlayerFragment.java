@@ -1,12 +1,14 @@
 package com.example.birdsadventure;
 
 import android.app.ProgressDialog;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +22,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 
 public class VideoPlayerFragment extends Fragment implements View.OnClickListener {
@@ -105,10 +110,34 @@ public class VideoPlayerFragment extends Fragment implements View.OnClickListene
         }
     }
 
-    private void saveVideo()
-    {
+    private void saveVideo() {
         // Toast.makeText(getActivity(), "Save button clicked", Toast.LENGTH_LONG).show();
 
+        ContextWrapper cw = new ContextWrapper ( getActivity () );
+        File directory = cw.getDir ( "birds", getActivity ().MODE_PRIVATE );
+        String fileName = String.format ( "%d", System.currentTimeMillis () );
+
+        File mypath = new File ( directory, fileName + ".mp4" );
+
+        try {
+            FileOutputStream newFile = new FileOutputStream ( mypath );
+            //path 0 = current path of the video
+
+            Toast.makeText (getActivity (),"Video saved Successfully",Toast.LENGTH_LONG ).show ();
+
+            newFile.flush ();
+            newFile.close ();
+
+            //Send Broadcast to show an video in the Gallery
+            Intent intent= new Intent ( Intent.ACTION_MEDIA_SCANNER_SCAN_FILE );
+            intent.setData ( Uri.fromFile ( mypath ) );
+            getActivity ().sendBroadcast(intent);
+        } catch (FileNotFoundException e)
+        {
+            e.printStackTrace ();
+        } catch (IOException e) {
+            e.printStackTrace ();
+        }
 
     }
-}
+    }
