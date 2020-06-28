@@ -117,4 +117,9 @@
         android:name="com.example.birdsadventure.VideoPlayerFragment"
         android:label="fragment_video_player"
         tools:layout="@layout/fragment_video_player" />
+    <fragment
+        android:id="@+id/notificationBirdsFragment"
+        android:name="com.example.birdsadventure.NotificationBirdsFragment"
+        android:label="fragment_notification_birds"
+        tools:layout="@layout/fragment_notification_birds" />
 </navigation>

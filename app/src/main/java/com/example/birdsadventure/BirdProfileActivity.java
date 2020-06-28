@@ -2,7 +2,6 @@ package com.example.birdsadventure;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -135,6 +134,7 @@ public class BirdProfileActivity extends AppCompatActivity implements View.OnCli
                                         String name = document.getString("name");
                                         String region = document.getString("Location_name");
                                         String birdImageUrl = document.getString("birdimgUrl");
+                                        boolean isFeatured = document.getBoolean("is_Featured");
 
                                         Map<String, Object> docData = new HashMap<>();
                                         docData.put("Region", region);
@@ -142,6 +142,7 @@ public class BirdProfileActivity extends AppCompatActivity implements View.OnCli
                                         docData.put("bird_name", name);
                                         docData.put("default_image", birdImageUrl);
                                         docData.put("is_favorite", true);
+                                        docData.put("is_Featured", isFeatured);
                                         docData.put("user_id", userID);
 
 //                                        db.collection("favorite_birds").document().set(docData)

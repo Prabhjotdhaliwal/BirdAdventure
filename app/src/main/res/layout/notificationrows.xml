@@ -3,31 +3,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<androidx.cardview.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp">
-    
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/imageviewnotification"
-            android:src="@drawable/ic_launcher_background"
-            android:layout_margin="5dp" />
-
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textviewnotification"
-            android:layout_toRightOf="@id/imageviewnotification"
-            android:text="Description"
-            android:textSize="20dp"
-            android:layout_margin="5dp" />
+            android:layout_height="wrap_content">
 
-    </RelativeLayout>
-</androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/notificationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Title"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/notificationDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/notificationTitle"
+                android:layout_margin="5dp"
+                android:text="Description"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/notificationDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_toEndOf="@id/notificationTitle"
+                android:text="Date"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
 </RelativeLayout>

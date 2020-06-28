@@ -1,31 +1,55 @@
 package com.example.birdsadventure;
 
+import java.util.Date;
+
 public class Notifications {
-    int image;
-    String Description;
 
-    public int getImage() {
-        return image;
+    String notificationID;
+    Date dateReceived;
+    String region;
+    String locationID;
+    boolean isDeleted;
+
+    public Notifications() {
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public String getNotificationID() {
+        return notificationID;
     }
 
-    public String getDescription() {
-        return Description;
+    public void setNotificationID(String notificationID) {
+        this.notificationID = notificationID;
     }
 
-    public void setDescription(String description) {
-        Description = description;
+    public Date getDateReceived() {
+        return dateReceived;
     }
 
-    public Notifications(int image, String Description)
-    {
-this.image=image;
-this.Description=Description;
-
+    public void setDateReceived(Date dateReceived) {
+        this.dateReceived = dateReceived;
     }
 
+    public String getRegion() {
+        return region;
+    }
 
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getLocationID() {
+        return locationID;
+    }
+
+    public void setLocationID(String locationID) {
+        this.locationID = locationID;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
 }

@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     EditText txtSearchBird;
     Button btnSearch;
     Spinner spinnerLocation;
+    TextView txt_no_search;
+
     ArrayList<Location> locationList;
 
     private ArrayList<Bird> birdsList;
@@ -65,6 +68,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         txtSearchBird = getActivity().findViewById(R.id.text_search_bird);
         btnSearch = getActivity().findViewById(R.id.button_search);
         spinnerLocation = (Spinner) getActivity().findViewById(R.id.spinner_locations);
+        txt_no_search = getActivity().findViewById(R.id.txt_no_favorites);
+        txt_no_search.setText("");
 
         btnSearch.setOnClickListener(this);
 
@@ -129,7 +134,16 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                            QuerySnapshot querySnapshot = task.getResult();
+
+                            if (querySnapshot.getDocuments().size() > 0) {
+                                txt_no_search.setText("");
+                            } else {
+                                txt_no_search.setText("No birds found matching this Search Criteria.");
+                            }
+
+                            for (QueryDocumentSnapshot document :querySnapshot) {
 
                                 final String birdName = document.getString("name");
                                 if (birdName.contains(searchText)) {
