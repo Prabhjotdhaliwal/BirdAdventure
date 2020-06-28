@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Birds Adventure</string>
 
-    <string name="welcome">"Welcome : "</string>
+    <string name="welcome">"   Welcome : "</string>
     <string name="txt_home_welcome">    WELCOME TO BIRDS ADVENTURE APP</string>
 
     <!-- Login & Register -->
