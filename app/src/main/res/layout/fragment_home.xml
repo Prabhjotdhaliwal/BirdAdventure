@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,22 +28,23 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="160dp"
                         android:layout_height="wrap_content"
-                        android:text= "     Welcome :-"
+                        android:text= "@string/welcome"
                         android:textSize="25sp"
                         android:gravity="center"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textColor="@color/textcolor1" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/user_name"
-                        android:layout_width="match_parent"
-                        android:textColor="@color/whitish"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"
-                        android:layout_height="wrap_content"
-                        android:textSize="30sp"
-                        android:textStyle="italic" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/whitish"
+                    android:textSize="30sp"
+                    android:textStyle="italic"
+                    app:fontFamily="@font/lobster_two_bold_italic" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </LinearLayout>
@@ -204,15 +206,13 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
+          android:gravity="center"
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginBottom="10dp">
+                android:layout_weight="1">
                 <androidx.appcompat.widget.AppCompatTextView
-
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:text="    Featured Birds"
@@ -231,7 +231,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/txt_featured_birds_home"
                     android:text="See All"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
                     android:textColor="@color/whitish"
                     android:textSize="20sp" />
             </LinearLayout>
