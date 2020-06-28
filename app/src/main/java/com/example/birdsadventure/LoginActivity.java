@@ -174,7 +174,7 @@ txtPassword.setSelection(txtPassword.length());
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Toast.makeText(LoginActivity.this, "hello", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Successfully Logged in", Toast.LENGTH_SHORT).show();
 
 
                         if (task.isSuccessful()) {
