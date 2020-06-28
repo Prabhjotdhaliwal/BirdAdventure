@@ -68,7 +68,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         txtSearchBird = getActivity().findViewById(R.id.text_search_bird);
         btnSearch = getActivity().findViewById(R.id.button_search);
         spinnerLocation = (Spinner) getActivity().findViewById(R.id.spinner_locations);
-        txt_no_search = getActivity().findViewById(R.id.txt_no_favorites);
+        txt_no_search = getActivity().findViewById(R.id.txt_no_search);
         txt_no_search.setText("");
 
         btnSearch.setOnClickListener(this);

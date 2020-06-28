@@ -266,7 +266,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         if (isNotify) {
-
+            startBackgroundLocation();
             if (isFeatured) {
 
                 db.collection("Birds").whereEqualTo("is_Featured", true).get()
