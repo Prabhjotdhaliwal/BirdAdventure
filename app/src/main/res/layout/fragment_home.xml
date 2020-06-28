@@ -23,34 +23,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_marginRight="20dp"
-                    android:gravity="center">
+
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:text= "@string/welcome"
                         android:textSize="25sp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="30dp"
                         android:textStyle="bold"
                         android:textColor="@color/textcolor1" />
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:gravity="left">
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/user_name"
                         android:layout_width="match_parent"
                         android:textColor="@color/whitish"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
                         android:layout_height="wrap_content"
                         android:textSize="30sp"
                         android:textStyle="italic" />
-                </LinearLayout>
+
             </androidx.appcompat.widget.LinearLayoutCompat>
         </LinearLayout>
 

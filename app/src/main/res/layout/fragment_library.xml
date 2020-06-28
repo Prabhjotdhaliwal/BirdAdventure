@@ -36,6 +36,16 @@
             android:textColor="@color/textcolor"
             android:background="@drawable/roundedwhite"
             />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/image_btn"
+            android:layout_below="@+id/txt_picture"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:text="Click on the Image logo to open the Image library "
+            android:textColor="@color/whitish"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -69,6 +79,16 @@
             android:textStyle="bold"
             android:textColor="@color/textcolor"
             android:background="@drawable/roundedwhite"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/video_btn"
+            android:layout_below="@+id/txt_videos"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:text="Click on the Video logo to open the Video library "
+            android:textColor="@color/whitish"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_height="wrap_content"
@@ -97,7 +117,16 @@
             android:textStyle="bold"
             android:textColor="@color/textcolor"
             android:background="@drawable/roundedwhite" />
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/sound_btn"
+            android:layout_below="@+id/txt_sounds"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:text="Click on the Sound logo to open the Sound library "
+            android:textColor="@color/whitish"/>
 
     </RelativeLayout>
 

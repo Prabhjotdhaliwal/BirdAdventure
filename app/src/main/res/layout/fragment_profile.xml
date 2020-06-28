@@ -22,8 +22,7 @@
             android:inputType="textPersonName"
             android:selectAllOnFocus="true"
             android:textColorHint="@color/whitish"
-            android:textStyle="bold"
-            android:textSize="20sp"
+
             android:textColor="@color/whitish"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"/>
@@ -38,8 +37,6 @@
             android:layout_marginBottom="10dp"
             android:selectAllOnFocus="true"
             android:textColorHint="@color/whitish"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="@color/whitish"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"/>
@@ -54,9 +51,9 @@
             android:selectAllOnFocus="true"
             android:textColorHint="@color/whitish"
             android:layout_marginBottom="10dp"
-            android:textStyle="bold"
+
             android:textColor="@color/whitish"
-            android:textSize="20sp"
+
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"/>
 
@@ -77,8 +74,8 @@
             android:id="@+id/btnSaveProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textStyle="bold"
+            android:textSize="25sp"
+
             android:enabled="true"
             android:text="@string/action_save"
             android:layout_marginLeft="38dp"
@@ -93,8 +90,7 @@
             android:id="@+id/btnResetProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textStyle="bold"
+            android:textSize="25sp"
             android:textColor="@color/textcolor"
             android:enabled="true"
             android:text="@string/action_reset"

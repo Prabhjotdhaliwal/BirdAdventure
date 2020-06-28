@@ -76,6 +76,12 @@
                     android:layout_margin="15dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/youtube" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="Click on the Image button to go to video page"
+                    android:textColor="@color/whitish"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -97,7 +103,7 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="35dp"
                     android:background="@drawable/borders"
                     android:orientation="horizontal">
 
@@ -114,8 +120,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="10dp" />
-
                 </androidx.appcompat.widget.LinearLayoutCompat>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Click on the play button to listen to the audio"
+                    android:textColor="@color/whitish"/>
             </LinearLayout>
 
         </LinearLayout>
