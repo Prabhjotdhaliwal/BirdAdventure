@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,13 +15,13 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -39,7 +38,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     /**
      * TextView for the user to see
      */
-    TextView txtUserName, txt_featured_birds_home;
+    TextView txtUserName, txt_featured_birds_home, imageCount, videoCount, audioCount;
 
     FirebaseUser user;
     String userID;
@@ -78,9 +77,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-
-
         db = FirebaseFirestore.getInstance();
 
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
@@ -92,6 +88,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         txtUserName = getActivity().findViewById(R.id.user_name);
         txt_featured_birds_home = getActivity().findViewById(R.id.txt_featured_birds_home);
+        imageCount = getActivity().findViewById(R.id.imageCount);
+        videoCount = getActivity().findViewById(R.id.videoCount);
+        audioCount = getActivity().findViewById(R.id.audioCount);
+
 
         txt_featured_birds_home.setOnClickListener(this);
         getUserDetails();
@@ -133,6 +133,43 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                                     userID = documents.getDocuments().get(0).getId();
                                     String name = documents.getDocuments().get(0).getString("name");
                                     txtUserName.setText(name);
+
+                                    db.collection("Users").document(userID).collection("Media")
+                                            .whereEqualTo("is_deleted", false).get()
+                                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                    if (task.isSuccessful()) {
+                                                        QuerySnapshot documents = task.getResult();
+
+                                                        int images = 0, videos = 0, audios = 0;
+
+                                                        if (documents.getDocuments().size() > 0) {
+
+                                                            for (DocumentSnapshot document : documents) {
+
+                                                                if (document.getBoolean("is_image")) {
+                                                                    images++;
+                                                                }
+                                                                if (document.getBoolean("is_video")) {
+                                                                    videos++;
+                                                                }
+                                                                if (document.getBoolean("is_sound_clip")) {
+                                                                    audios++;
+                                                                }
+                                                            }
+                                                        }
+
+                                                        String strImage = "" + images;
+                                                        String strVideo = "" + videos;
+                                                        String strAudio = "" + audios;
+
+                                                        imageCount.setText(strImage);
+                                                        videoCount.setText(strVideo);
+                                                        audioCount.setText(strAudio);
+                                                    }
+                                                }
+                                            });
                                 }
                             }
                         }

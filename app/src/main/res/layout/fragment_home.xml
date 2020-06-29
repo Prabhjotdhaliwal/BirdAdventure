@@ -11,28 +11,30 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_margin="7dp"
-        android:orientation="vertical"
         android:id="@+id/r1"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:orientation="vertical">
+
         <LinearLayout
+            android:id="@+id/ll1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ll1">
+            android:layout_height="wrap_content">
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:text= "@string/welcome"
-                        android:textSize="25sp"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:textColor="@color/textcolor1" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/welcome"
+                    android:textColor="@color/textcolor1"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/user_name"
@@ -48,15 +50,17 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
             android:id="@+id/ll2"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1">
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
@@ -71,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,14 +83,13 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/imagecount"
+                        android:id="@+id/imageCount"
                         android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
                         android:textAlignment="center"
                         android:textColor="@color/textcolor1"
-                        android:layout_height="wrap_content"
                         android:textColorHint="@color/textcolor1"
-                        android:hint="XX"
-                        android:layout_alignParentLeft="true"
                         android:textSize="15sp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -93,12 +97,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:textColorHint="@color/whitish"
-                        android:textColor="@color/whitish"
                         android:hint="Images Uploaded"
+                        android:textColor="@color/whitish"
+                        android:textColorHint="@color/whitish"
                         android:textSize="15sp" />
 
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -106,14 +111,13 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/videocount"
+                        android:id="@+id/videoCount"
                         android:layout_width="50dp"
-                        android:textAlignment="center"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/textcolor1"
                         android:layout_alignParentLeft="true"
+                        android:textAlignment="center"
+                        android:textColor="@color/textcolor1"
                         android:textColorHint="@color/textcolor1"
-                        android:hint="XX"
                         android:textSize="15sp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -121,9 +125,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
+                        android:hint="Videos Uploaded"
                         android:textColor="@color/whitish"
                         android:textColorHint="@color/whitish"
-                        android:hint="Videos Uploaded"
                         android:textSize="15sp" />
 
                 </RelativeLayout>
@@ -135,14 +139,13 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/clipcount"
+                        android:id="@+id/audioCount"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:textAlignment="center"
                         android:textColor="@color/textcolor1"
                         android:textColorHint="@color/textcolor1"
-                        android:hint="XX"
                         android:textSize="15sp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -150,60 +153,67 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:textColorHint="@color/whitish"
-                        android:textColor="@color/whitish"
                         android:hint="Soundclip Uploaded"
+                        android:textColor="@color/whitish"
+                        android:textColorHint="@color/whitish"
                         android:textSize="15sp" />
 
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/borders"
-            android:layout_weight="1"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/borders"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text=" Get started with uploading picture"
-                android:textSize="20sp"
                 android:textColor="@color/whitish"
-                android:gravity="center"/>
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text=" by clicking on"
-                android:textSize="20sp"
                 android:textColor="@color/whitish"
-                android:gravity="center"/>
+                android:textSize="20sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
                 <ImageButton
+                    android:id="@+id/addupload"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:id="@+id/addupload"
                     android:layout_marginBottom="3dp"
-                    android:background="@drawable/ic_add_circle_black_24dp"
-                    />
+                    android:background="@drawable/ic_add_circle_black_24dp" />
             </LinearLayout>
         </LinearLayout>
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-          android:gravity="center"
+            android:gravity="center"
             android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -218,12 +228,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right">
+
                 <TextView
+                    android:id="@+id/txt_featured_birds_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txt_featured_birds_home"
                     android:text="See All"
-                    android:layout_marginRight="10dp"
                     android:textColor="@color/whitish"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -231,19 +241,20 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_below="@id/r1"
         android:layout_margin="7dp"
         android:gravity="center"
-        android:layout_below="@id/r1">
+        android:orientation="vertical">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_featured_birds"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
-
 
 
 </RelativeLayout>

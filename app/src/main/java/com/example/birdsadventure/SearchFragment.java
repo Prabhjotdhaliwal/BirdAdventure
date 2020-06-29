@@ -68,7 +68,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         txtSearchBird = getActivity().findViewById(R.id.text_search_bird);
         btnSearch = getActivity().findViewById(R.id.button_search);
         spinnerLocation = (Spinner) getActivity().findViewById(R.id.spinner_locations);
-        txt_no_search = getActivity().findViewById(R.id.txt_no_favorites);
+        txt_no_search = getActivity().findViewById(R.id.txt_no_search);
         txt_no_search.setText("");
 
         btnSearch.setOnClickListener(this);
@@ -137,13 +137,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
                             QuerySnapshot querySnapshot = task.getResult();
 
-                            if (querySnapshot.getDocuments().size() > 0) {
-                                txt_no_search.setText("");
-                            } else {
-                                txt_no_search.setText("No birds found matching this Search Criteria.");
-                            }
-
-                            for (QueryDocumentSnapshot document :querySnapshot) {
+                            for (QueryDocumentSnapshot document : querySnapshot) {
 
                                 final String birdName = document.getString("name");
                                 if (birdName.contains(searchText)) {
@@ -151,6 +145,11 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                                     String birdImageURL = document.getString("birdimgUrl");
                                     birdsList.add(new Bird(birdID, birdName, birdImageURL));
                                 }
+                            }
+                            if (birdsList.size() > 0) {
+                                txt_no_search.setText("");
+                            } else {
+                                txt_no_search.setText("No birds found matching this Search Criteria.");
                             }
                             fillRecyclerView();
                         } else {

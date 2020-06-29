@@ -6,10 +6,10 @@
     android:background="@drawable/darkgradient"
     tools:context=".BirdLocationFragment">
 
-<fragment
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/map_View"
-    android:name="com.google.android.gms.maps.SupportMapFragment"/>
+    <fragment
+        android:id="@+id/map_View"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

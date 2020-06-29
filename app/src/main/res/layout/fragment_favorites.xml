@@ -39,7 +39,7 @@
             android:layout_weight="1">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_search"
+                android:id="@+id/button_search_favorites"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/roundedwhite"

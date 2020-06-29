@@ -67,7 +67,7 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
         txt_no_favorites = getActivity().findViewById(R.id.txt_no_favorites);
         txtSearchBird = getActivity().findViewById(R.id.text_search_favorites);
-        btnSearch = getActivity().findViewById(R.id.button_search);
+        btnSearch = getActivity().findViewById(R.id.button_search_favorites);
         txt_no_favorites.setText("");
 
         btnSearch.setOnClickListener(this);
@@ -131,6 +131,11 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
                                     birdsList.add(new Bird(birdID, birdName, birdImageURL));
                                 }
                             }
+                            if (birdsList.size() > 0) {
+                                txt_no_favorites.setText("");
+                            } else {
+                                txt_no_favorites.setText("No birds found matching this Search Criteria.");
+                            }
                             fillRecyclerView();
                         } else {
                             Log.d("tag", "Error getting birds: ", task.getException());
@@ -143,7 +148,7 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.button_search) {
+        if (v.getId() == R.id.button_search_favorites) {
             btnSearchClick(v);
         }
     }
