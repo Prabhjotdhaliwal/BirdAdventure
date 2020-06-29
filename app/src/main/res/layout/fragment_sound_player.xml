@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SoundplayerFragment"
+    tools:context=".SoundPlayerFragment"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -33,6 +33,23 @@
         android:layout_marginTop="20dp"
         android:text="Click on the play button to listen to the audio"
         android:textColor="@color/whitish"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/saveSoundbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"></Button>
+        <Button
+            android:id="@+id/shareSoundbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="Share"></Button>
+
+
+    </LinearLayout>
 </LinearLayout>
-
-

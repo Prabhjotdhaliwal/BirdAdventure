@@ -143,7 +143,7 @@ public class GalleryImageviewFragment extends Fragment implements View.OnClickLi
         directory.mkdir ();
         String fileName = String.format ( "%d.jpg",System.currentTimeMillis () );
         File outFile=new File(directory,fileName);
-        Toast.makeText (getActivity (),"image saved Successfully",Toast.LENGTH_LONG ).show ();
+        Toast.makeText (getActivity (),"image saved ",Toast.LENGTH_LONG ).show ();
 
         try
         {

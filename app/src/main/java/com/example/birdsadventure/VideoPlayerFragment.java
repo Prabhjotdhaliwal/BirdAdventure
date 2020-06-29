@@ -1,13 +1,17 @@
 package com.example.birdsadventure;
 
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +23,7 @@ import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
 import java.io.File;
@@ -29,6 +34,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class VideoPlayerFragment extends Fragment implements View.OnClickListener {
     VideoView selectedVideo;
@@ -36,6 +43,9 @@ public class VideoPlayerFragment extends Fragment implements View.OnClickListene
     ProgressDialog mProgressDialog;
     URL url;
     String mediaID;
+String title="Video";
+
+    //
 
     public VideoPlayerFragment() {
         // Required empty public constructor
@@ -43,7 +53,7 @@ public class VideoPlayerFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate ( savedInstanceState );
 
     }
 
@@ -51,16 +61,16 @@ public class VideoPlayerFragment extends Fragment implements View.OnClickListene
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_video_player, container, false);
+        return inflater.inflate ( R.layout.fragment_video_player, container, false );
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        super.onViewCreated ( view, savedInstanceState );
 
-        selectedVideo = view.findViewById(R.id.videoViewGallery); // init a ImageView
-        saveVideobtn = view.findViewById(R.id.savevideobtn);
-        shareVideobtn = view.findViewById(R.id.shareVideobtn);
+        selectedVideo = view.findViewById ( R.id.videoViewGallery ); // init a ImageView
+        saveVideobtn = view.findViewById ( R.id.savevideobtn );
+        shareVideobtn = view.findViewById ( R.id.shareVideobtn );
 
 
         //to get data from the parecelable such as img title & Url
@@ -70,74 +80,90 @@ public class VideoPlayerFragment extends Fragment implements View.OnClickListene
         // System.out.println("url"+media.getUrl ());
         // Picasso.get ().load (media.getUrl ()).into (selectedImage);
 
-        String birdVideoUrl = getArguments().getString("libraryVideo");
+        String birdVideoUrl = getArguments ().getString ( "libraryVideo" );
         /**
          * use this media id to delete this media from user/media collection.
          */
-        mediaID = getArguments().getString("mediaID");
+        mediaID = getArguments ().getString ( "mediaID" );
 
 
-        selectedVideo.setVideoPath(birdVideoUrl);
-        MediaController mediaController = new MediaController(getContext());
-        mediaController.setAnchorView(selectedVideo);
-        selectedVideo.setMediaController(mediaController);
-        selectedVideo.start();
+        selectedVideo.setVideoPath ( birdVideoUrl );
+        MediaController mediaController = new MediaController ( getContext () );
+        mediaController.setAnchorView ( selectedVideo );
+        selectedVideo.setMediaController ( mediaController );
+        selectedVideo.start ();
 
         //Button clicks
-        saveVideobtn.setOnClickListener(this);
-        shareVideobtn.setOnClickListener(this);
+        saveVideobtn.setOnClickListener ( this );
+        shareVideobtn.setOnClickListener ( this );
 
         //progress Dialog
-        mProgressDialog = new ProgressDialog(getActivity());
-        mProgressDialog.setIndeterminate(true);
-        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        mProgressDialog.setTitle("AsyncTask");
-        mProgressDialog.setMessage("Please wait, we are downloading your image file...");
+        mProgressDialog = new ProgressDialog ( getActivity () );
+        mProgressDialog.setIndeterminate ( true );
+        mProgressDialog.setProgressStyle ( ProgressDialog.STYLE_SPINNER );
+        mProgressDialog.setTitle ( "AsyncTask" );
+        mProgressDialog.setMessage ( "Please wait, we are downloading your image file..." );
 
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        switch (v.getId ()) {
             case R.id.savevideobtn:
-                saveVideo();
+                saveVideo ();
                 break;
             case R.id.shareVideobtn:
-                // sharevideo ();
+                sharevideo ();
                 break;
             default:
                 break;
         }
     }
 
-    private void saveVideo() {
+    private void sharevideo() {
+
+        String birdVideoUrl = getArguments ().getString ( "libraryVideo" );
+
+
+        Uri uri = Uri.parse ( birdVideoUrl );
+
+        System.out.println ( url );
+        File file = new File ( (uri.getPath ()) );
+
+        Intent share = new Intent ( Intent.ACTION_SEND );
+        share.setType ( "video/*" );
+
+        share.putExtra ( Intent.EXTRA_STREAM, file );
+        startActivity ( Intent
+                .createChooser ( share, "Share video File" ) );
+
+        Toast.makeText ( getActivity (), "sharevideoSelected", Toast.LENGTH_LONG ).show ();
+    }
+
+    private void saveVideo()
+    {
         // Toast.makeText(getActivity(), "Save button clicked", Toast.LENGTH_LONG).show();
 
-        ContextWrapper cw = new ContextWrapper ( getActivity () );
-        File directory = cw.getDir ( "birds", getActivity ().MODE_PRIVATE );
-        String fileName = String.format ( "%d", System.currentTimeMillis () );
+        String birdVideoUrl = getArguments ().getString ( "libraryVideo" );
+downloadManager ( birdVideoUrl );
+    }
 
-        File mypath = new File ( directory, fileName + ".mp4" );
+    private void downloadManager(String url) {
 
-        try {
-            FileOutputStream newFile = new FileOutputStream ( mypath );
-            //path 0 = current path of the video
-
-            Toast.makeText (getActivity (),"Video saved Successfully",Toast.LENGTH_LONG ).show ();
-
-            newFile.flush ();
-            newFile.close ();
-
-            //Send Broadcast to show an video in the Gallery
-            Intent intent= new Intent ( Intent.ACTION_MEDIA_SCANNER_SCAN_FILE );
-            intent.setData ( Uri.fromFile ( mypath ) );
-            getActivity ().sendBroadcast(intent);
-        } catch (FileNotFoundException e)
-        {
-            e.printStackTrace ();
-        } catch (IOException e) {
-            e.printStackTrace ();
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+        request.setDescription("download");
+        request.setTitle(""+title);
+// in order for this if to run, you must use the android 3.2 to compile your app
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            request.allowScanningByMediaScanner();
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         }
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, ""+title+".mp4");
+
+// get download service and enqueue file
+        DownloadManager manager = (DownloadManager) getActivity ().getSystemService( Context.DOWNLOAD_SERVICE);
+        manager.enqueue(request);
+         Toast.makeText(getActivity(), "Video Saved", Toast.LENGTH_LONG).show();
 
     }
     }

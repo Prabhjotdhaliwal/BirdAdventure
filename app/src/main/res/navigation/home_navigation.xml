@@ -122,4 +122,9 @@
         android:name="com.example.birdsadventure.NotificationBirdsFragment"
         android:label="fragment_notification_birds"
         tools:layout="@layout/fragment_notification_birds" />
+    <fragment
+        android:id="@+id/soundPlayerFragment"
+        android:name="com.example.birdsadventure.SoundPlayerFragment"
+        android:label="fragment_sound_player"
+        tools:layout="@layout/fragment_sound_player" />
 </navigation>

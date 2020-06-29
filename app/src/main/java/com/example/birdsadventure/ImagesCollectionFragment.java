@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -89,6 +90,7 @@ public class ImagesCollectionFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //send  selected image info to another activity
+                Toast.makeText (getActivity (),"bird Image selected" ,Toast.LENGTH_LONG).show ();
 
                 Bundle b = new Bundle();
                 b.putString("libraryImage", mediaList.get(position).url);

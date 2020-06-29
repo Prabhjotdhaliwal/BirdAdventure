@@ -124,14 +124,14 @@ public class SoundsCollectionFragment extends Fragment {
         simpleSoundGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText (getActivity (),"bird image selected" ,Toast.LENGTH_LONG).show ();
+                Toast.makeText (getActivity (),"bird Sound selected" ,Toast.LENGTH_LONG).show ();
 
                 //send  selected image info to another actiivity
 
                 Bundle b = new Bundle();
                 b.putString("librarySound", mediaList.get(position).url);
                 b.putString("mediaID", mediaList.get(position).media_id);
-                //  navController.navigate(R.id.soundplayerFragment, b);
+                  navController.navigate(R.id.soundPlayerFragment, b);
             }
         });
 
