@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,21 +26,26 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:layout_width="wrap_content"
             android:id="@+id/saveimgbtn"
-          android:background="@drawable/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_marginStart="40dp"
-            android:layout_height="wrap_content"
-            />
+            android:background="@drawable/save"
+            android:text="SAVE"
+            android:textColor="@color/black"
+            app:backgroundTint="#FFFFFF" />
+
         <Button
-            android:layout_width="wrap_content"
             android:id="@+id/shareimgbtn"
-           android:background="@drawable/share"
-            android:layout_marginEnd="40dp"
-            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/share"
+            android:text="SHARE"
+            android:textColor="@color/black"
+            app:backgroundTint="#FFFFFF" />
 
     </RelativeLayout>
 </LinearLayout>

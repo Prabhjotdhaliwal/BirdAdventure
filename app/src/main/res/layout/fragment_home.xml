@@ -223,7 +223,6 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/txt_featured_birds_home"
                     android:text="See All"
-                    android:layout_marginRight="10dp"
                     android:textColor="@color/whitish"
                     android:textSize="20sp" />
             </LinearLayout>
