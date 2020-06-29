@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/roundedwhite"
-            android:popupBackground="#FFFFFF" />
+            />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -76,6 +76,7 @@
         android:id="@+id/txt_no_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/whitish"
         android:layout_margin="10dp"
         android:textSize="20sp" />
 
