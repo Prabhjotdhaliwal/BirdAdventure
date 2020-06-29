@@ -137,7 +137,7 @@ let setDoc2 = db.collection('Birds').doc('Bird2').set(Bird2);
    console.log('new Bird 2 has been added to the database')
 
    let Bird3 = {
-    name:"Neotropic Cormorant",
+    name:"Baltimore-oriole",
     Description:"The male has a beautiful flute-like song, which he performs throughout\
     the summer. The female’s song, in comparison, is shorter and simpler. While songs \
     vary slightly from one bird to the next, they always have the recognizable “hew-li”\
@@ -874,21 +874,20 @@ let setDoc31 = db.collection('Birds').doc('Bird31').set(Bird31);
 
 //bird32
  let Bird32 = {
-    name:"Black-capped Chickadee",
-    Description:"A bird almost universally considered “cute” thanks to its oversized round head, tiny body, and curiosity about \
-    everything, including humans. The chickadee’s black cap and bib; white cheeks; gray back, wings,\
-     and tail; and whitish underside with buffy sides are distinctive.",
-    birdimgUrl:"https://naturallycuriouswithmaryholland.files.wordpress.com/2013/11/11-20-13-black-capped-chickadee-img_01071.jpg",
+    name:"Neotropic Cormorant",
+    Description:"A nearly all-black waterbird with a snaky neck, the Neotropic Cormorant occurs in sheltered waters of southern U.S. states, the Caribbean, \
+    and Latin America. It is smaller and longer-tailed than other cormorants, but otherwise looks very similar to the Double-crested Cormorant, and the two\
+     species often flock together",
+    birdimgUrl:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Phalacrocorax_brasilianus_%28Costa_Rica%29.jpg/1200px-Phalacrocorax_brasilianus_%28Costa_Rica%29.jpg",
     is_Featured:false,
-    Height:"12-15 cm",
-    Weight:"9-14 g",
-    Diet:"The Black-capped Chickadee eats a mixture of seeds, insects and spiders.",
-    Location_name:"MacTaggart Sanctuary Trail Loop",
-    Region:"Prince George, Edmonton",
-    Colour:"Black, White, Gray",
-    Biome:"The Black-capped Chickadee lives in forests, orchards and other areas with lots of trees, including \
-    many urban areas. trees and finds the food it prefers.",
-    Habitat:"It lives in tree-covered areas — including woodlots and orchards — where it digs its nest-holes in the soft."
+    Height:"61 cm",
+    Weight:"1070-1500 g",
+    Diet:"Wrens eat primarily insects but will sample berries as well, particularly in the fall and winter when insects are scarcer",
+    Location_name:"Jasper National Park,Gasper",
+    Region:"Alberta",
+    Colour:"Black, White, Orange",
+    Biome:"Often rests in small flocks, near water’s edge on land, on islands, or in trees.",
+    Habitat:"Nests in trees or on bare ground next to water, often on barrier islands or small islands in lakes."
 };
 
 // Add a new document in collection "Birds" with ID 'Bird3'
@@ -1361,7 +1360,7 @@ let setVideo1 = db.collection('Birds').doc('Bird1')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/northern-cardinal/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/KZYUWIRZVH/XC439903-CARDINA_Northern%20No%203%20Uvalama%20400m%20071918%200711.mp3"
 };
 
 
@@ -1406,7 +1405,7 @@ let setVideo2 = db.collection('Birds').doc('Bird2')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/northern-cardinal/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/KZYUWIRZVH/XC439903-CARDINA_Northern%20No%203%20Uvalama%20400m%20071918%200711.mp3"
 };
 
 
@@ -1451,7 +1450,7 @@ let setVideo3 = db.collection('Birds').doc('Bird3')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/baltimore-oriole/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/QZOXFIKPFF/XC415889-BAOR%20-%20Song%20-%20Jon%20Duerr%20-%202018-05-18%2006_27_01.mp3"
 };
 
 
@@ -1495,7 +1494,7 @@ let setVideo4 = db.collection('Birds').doc('Bird4')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/black-capped-chickadee/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/QZOXFIKPFF/XC406662-BCCH%20-%20Song%20-%20Johnson%20Sauk%20Trail%20SP%20-%202018-30-18%2008_45_01.mp3"
 };
 
 
@@ -1543,7 +1542,7 @@ let setVideo5 = db.collection('Birds').doc('Bird5')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/burrowing-owl/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/FNIOJOZADD/XC296318-BurrowingOwl_Bolivia_043015_call.mp3"
 };
 
 
@@ -1587,7 +1586,7 @@ let setVideo6 = db.collection('Birds').doc('Bird6')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/burrowing-owl/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/FNIOJOZADD/XC296318-BurrowingOwl_Bolivia_043015_call.mp3"
 };
 
 
@@ -1631,7 +1630,7 @@ let setVideo7 = db.collection('Birds').doc('Bird7')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/common-redpoll/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/INCBVJJLBJ/XC208556-urpi.mp3"
 };
 
 
@@ -1675,7 +1674,7 @@ let setVideo8 = db.collection('Birds').doc('Bird1')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/common-redpoll/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/INCBVJJLBJ/XC208556-urpi.mp3"
 };
 
 
@@ -1719,7 +1718,7 @@ let setVideo9 = db.collection('Birds').doc('Bird9')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/gray-catbird/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/QZOXFIKPFF/XC315205-GRCA%20-%20Song%2C%20Call%20-%20Elsen%20-%202016-05-05%2006_10.mp3"
 };
 
 
@@ -1763,7 +1762,7 @@ let setVideo10 = db.collection('Birds').doc('Bird10')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/great-horned-owl/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/KGOCOOKTTU/XC342574-Great%20Horned%20Owl%2C%20Jim%20Green%20Trail%2C%20Atascadero%2C%20iXY%2011-13-16.mp3"
 };
 
 
@@ -1807,7 +1806,7 @@ let setVideo11 = db.collection('Birds').doc('Bird11')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/american-crow/"
+            "url": "Audio: https://www.xeno-canto.org/sounds/uploaded/RFTXRYBVBX/XC345874-American%20Crow%20-FL%2C%20River%20Lakes%2C%20December%2005%2C%202016%2C%200823%20AM.mp3"
 };
 
 
@@ -1851,7 +1850,7 @@ let setVideo12 = db.collection('Birds').doc('Bird12')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/american-crow/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/RFTXRYBVBX/XC345874-American%20Crow%20-FL%2C%20River%20Lakes%2C%20December%2005%2C%202016%2C%200823%20AM.mp3"
 };
 
 
@@ -1896,7 +1895,7 @@ let setVideo13 = db.collection('Birds').doc('Bird13')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/purple-martin"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/FIDXCHEYJO/XC317055-Purple_Martin_831.mp3"
 };
 
 
@@ -1940,7 +1939,7 @@ let setVideo14 = db.collection('Birds').doc('Bird14')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/red-breasted-nuthatch/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/RHARFLKISN/XC120877-Sitta%20canadensis%2C%20Red-breasted%20Nuthatch%2C%20Nickerson%20State%20Park%2C%20Brewster%2C%20MA%2C%20USA%2C%20May%2012%2C%20%202012.MP3"
 };
 
 
@@ -1984,7 +1983,7 @@ let setVideo15 = db.collection('Birds').doc('Bird15')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/red-winged-blackbird/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/YTUXOCTUEM/XC408980-Agelaius_phoeniceus_nom-FL%20song%20CadyRd%20Grasslake%20MI%2026Feb17%209.16am%20LS111655a.mp3"
 };
 
 
@@ -2028,7 +2027,7 @@ let setVideo16 = db.collection('Birds').doc('Bird16')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/rose-breasted-grosbeak/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/TGBFXDVERJ/XC420877-Pheucticus%20ludovicianus_Michigan_ML0282125.mp3"
 };
 
 
@@ -2072,7 +2071,7 @@ let setVideo17 = db.collection('Birds').doc('Bird17')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/ruby-throated-hummingbird/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/WCNFEBIHCJ/XC139835-RTHU002.mp3"
 };
 
 
@@ -2116,7 +2115,7 @@ let setVideo18 = db.collection('Birds').doc('Bird18')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/rufous-hummingbird/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/PVQOLRXXWL/XC331693-Rufous%20Hummingbird%207.4.16%20Antelope%20Dr%206.47%20.26_0375.mp3"
 };
 
 
@@ -2160,7 +2159,7 @@ let setVideo19 = db.collection('Birds').doc('Bird19')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/spotted-owl/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/PVQOLRXXWL/XC331693-Rufous%20Hummingbird%207.4.16%20Antelope%20Dr%206.47%20.26_0375.mp3"
 };
 
 
@@ -2198,8 +2197,632 @@ let setImage20 = db.collection('Birds').doc('Bird20')
 let setVideo20 = db.collection('Birds').doc('Bird20')
   .collection('media').doc('Video').set(Bird20mediaVideo);
 
+
 //bird1
  let Bird20mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/YTUXOCTUEM/XC408276-Colaptes_auratus_%5Bcafer%20Group%5D-FL%20song%20Mono%20Lake%20County%20Park%2010.35am%2020May15%20LS116590a.mp3"
+};
+
+
+let setSound20 = db.collection('Birds').doc('Bird20').collection('media').doc('Soundclip').set(Bird20mediaSound);
+
+
+
+//Mediabird21
+ let Bird21mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/White-crowned-Sparrow.jpg/1200px-White-crowned-Sparrow.jpg"
+};
+
+
+let setImage21 = db.collection('Birds').doc('Bird21')
+  .collection('media').doc('Image').set(Bird21mediaImage);
+
+
+//bird21
+ let Bird21mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=7fCBTMMcyuI"
+};
+
+
+let setVideo21 = db.collection('Birds').doc('Bird21')
+  .collection('media').doc('Video').set(Bird21mediaVideo);
+
+//bird21
+ let Bird21mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/WOPIRNCCSX/XC289834-Bon%20Desir-2015-05-16-06h15%20LS115292.mp3"
+};
+
+
+let setSound21 = db.collection('Birds').doc('Bird21')
+  .collection('media').doc('Soundclip').set(Bird21mediaSound);
+
+
+
+//Mediabird22
+ let Bird22mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Landsvale.jpg/1200px-Landsvale.jpg"
+};
+
+
+let setImage22 = db.collection('Birds').doc('Bird22')
+  .collection('media').doc('Image').set(Bird22mediaImage);
+
+
+//bird22
+ let Bird22mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=bjXdd9zQqiQ"
+};
+
+
+let setVideo22 = db.collection('Birds').doc('Bird22')
+  .collection('media').doc('Video').set(Bird22mediaVideo);
+
+//bird22
+ let Bird22mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/WOPIRNCCSX/XC289834-Bon%20Desir-2015-05-16-06h15%20LS115292.mp3"
+};
+
+
+let setSound22 = db.collection('Birds').doc('Bird22')
+  .collection('media').doc('Soundclip').set(Bird22mediaSound);
+
+
+
+//Mediabird23
+ let Bird23mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://fthmb.tqn.com/tvPe1GjuUCasntTK2maHH_0FBZo=/1280x853/filters:fill(auto,1)/gouldian-finch-188062467-resized-58a6ea6e5f9b58a3c9190af4.jpg"
+};
+
+
+let setImage23 = db.collection('Birds').doc('Bird23')
+  .collection('media').doc('Image').set(Bird23mediaImage);
+
+
+//bird23
+ let Bird23mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=HBAXA7P1RbU"
+};
+
+
+let setVideo23 = db.collection('Birds').doc('Bird23')
+  .collection('media').doc('Video').set(Bird23mediaVideo);
+
+//bird23
+ let Bird23mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/YTUXOCTUEM/XC408276-Colaptes_auratus_%5Bcafer%20Group%5D-FL%20song%20Mono%20Lake%20County%20Park%2010.35am%2020May15%20LS116590a.mp3"
+};
+
+
+let setSound23 = db.collection('Birds').doc('Bird23')
+  .collection('media').doc('Soundclip').set(Bird23mediaSound);
+
+
+//Mediabird24
+ let Bird24mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Dendroica-fusca-001.jpg/1200px-Dendroica-fusca-001.jpg"
+};
+
+
+let setImage24 = db.collection('Birds').doc('Bird24')
+  .collection('media').doc('Image').set(Bird24mediaImage);
+
+
+//bird24
+ let Bird24mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=bLQl32Y7rl4"
+};
+
+
+let setVideo24 = db.collection('Birds').doc('Bird24')
+  .collection('media').doc('Video').set(Bird24mediaVideo);
+
+//bird24
+ let Bird24mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/WZGPEVZHBJ/XC123405-corey_husic_black-throated_green.mp3"
+};
+
+
+let setSound24 = db.collection('Birds').doc('Bird24')
+  .collection('media').doc('Soundclip').set(Bird24mediaSound);
+
+
+
+
+
+
+  //Mediabird25
+ let Bird25mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Cyanocitta-cristata-004.jpg/1200px-Cyanocitta-cristata-004.jpg"
+};
+
+
+let setImage25 = db.collection('Birds').doc('Bird25')
+  .collection('media').doc('Image').set(Bird25mediaImage);
+
+
+//bird25
+ let Bird25mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=MlxC8ky4EO4"
+};
+
+
+let setVideo25 = db.collection('Birds').doc('Bird25')
+  .collection('media').doc('Video').set(Bird25mediaVideo);
+
+//bird25
+ let Bird25mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/AHYWLCEJLP/XC234669-150407_015.MP3"
+};
+
+
+let setSound25 = db.collection('Birds').doc('Bird25')
+  .collection('media').doc('Soundclip').set(Bird25mediaSound);
+
+
+//Mediabird26
+ let Bird26mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.audubon.org/sites/default/files/House_Wren_w27-4-011_l.jpg"
+};
+
+
+let setImage26 = db.collection('Birds').doc('Bird26')
+  .collection('media').doc('Image').set(Bird26mediaImage);
+
+
+//bird26
+ let Bird26mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=bSe3R1b8zak"
+};
+
+
+let setVideo26 = db.collection('Birds').doc('Bird26')
+  .collection('media').doc('Video').set(Bird26mediaVideo);
+
+//bird26
+ let Bird26mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/YTUXOCTUEM/XC352452-Troglodytes_aedon_%28cahooni%29-FL%20song%20km210%20Durango%20Highway%203.17pm%2012Apr15%20LS115434a.mp3"
+};
+
+
+let setSound26 = db.collection('Birds').doc('Bird26')
+  .collection('media').doc('Soundclip').set(Bird26mediaSound);
+
+
+//Mediabird27
+ let Bird27mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Common_tern_with_fish.jpg"
+};
+
+
+let setImage27 = db.collection('Birds').doc('Bird27')
+  .collection('media').doc('Image').set(Bird27mediaImage);
+
+
+//bird27
+ let Bird27mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=GtOcDCtayJc"
+};
+
+
+let setVideo27 = db.collection('Birds').doc('Bird27')
+  .collection('media').doc('Video').set(Bird27mediaVideo);
+
+//bird27
+ let Bird27mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/ZNCDXTUOFL/XC181436-Sterna_hirundo_Polska_Jarek_Matusiak_20140608_30.mp3/"
+};
+
+
+let setSound27 = db.collection('Birds').doc('Bird27')
+  .collection('media').doc('Soundclip').set(Bird27mediaSound);
+
+
+//Mediabird28
+ let Bird28mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Charadrius-melodus-004_edit.jpg/1200px-Charadrius-melodus-004_edit.jpg"
+};
+
+
+let setImage28 = db.collection('Birds').doc('Bird28')
+  .collection('media').doc('Image').set(Bird28mediaImage);
+
+
+//bird28
+ let Bird28mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=jk5y57EE3aI"
+};
+
+
+let setVideo28 = db.collection('Birds').doc('Bird28')
+  .collection('media').doc('Video').set(Bird8mediaVideo);
+
+//bird1
+ let Bird28mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/ZNCDXTUOFL/XC284824-Sieweczka_obro%C5%BCna_Charadrius_hiaticula_Poland_Jarek_Matusiak_20150920_63.mp3"
+};
+
+
+let setSound28 = db.collection('Birds').doc('Bird28')
+  .collection('media').doc('Soundclip').set(Bird28mediaSound);
+
+
+//Mediabird29
+ let Bird29mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Gavia_immer_-Minocqua%2C_Wisconsin%2C_USA_-swimming-8.jpg/1200px-Gavia_immer_-Minocqua%2C_Wisconsin%2C_USA_-swimming-8.jpg"
+};
+
+
+let setImage29 = db.collection('Birds').doc('Bird29')
+  .collection('media').doc('Image').set(Bird29mediaImage);
+
+
+//bird29
+ let Bird29mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=4ENNzjy8QjU"
+};
+
+
+let setVideo29 = db.collection('Birds').doc('Bird29')
+  .collection('media').doc('Video').set(Bird29mediaVideo);
+
+//bird29
+ let Bird29mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/ZNCDXTUOFL/XC284824-Sieweczka_obro%C5%BCna_Charadrius_hiaticula_Poland_Jarek_Matusiak_20150920_63.mp3"
+};
+
+
+let setSound29 = db.collection('Birds').doc('Bird29')
+  .collection('media').doc('Soundclip').set(Bird29mediaSound);
+
+
+//Mediabird30
+ let Bird30mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "http://2.bp.blogspot.com/-VzRzd4a0EMo/UMcozCNlxfI/AAAAAAAAZWk/GciLj1TiCXM/s1600/Cooper's+Hawk,+Tucson,+12-08-12-0937.jpg"
+};
+
+
+let setImage30 = db.collection('Birds').doc('Bird30')
+  .collection('media').doc('Image').set(Bird30mediaImage);
+
+
+//bird30
+ let Bird30mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=isKb_9MaZKo"
+};
+
+
+let setVideo30 = db.collection('Birds').doc('Bird30')
+  .collection('media').doc('Video').set(Bird30mediaVideo);
+
+//bird30
+ let Bird30mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/PJVICFDZGZ/XC308400-160323_0569%20Draper%20Twin%20Lake_COHA2.mp3"
+};
+
+
+let setSound30 = db.collection('Birds').doc('Bird30')
+  .collection('media').doc('Soundclip').set(Bird30mediaSound);
+
+
+//Mediabird31
+ let Bird31mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Black-headed_Grosbeak.jpg/220px-Black-headed_Grosbeak.jpg"
+};
+
+
+let setImage31 = db.collection('Birds').doc('Bird31')
+  .collection('media').doc('Image').set(Bird31mediaImage);
+
+
+//bird31
+ let Bird31mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=ATGSA-nOJhE"
+};
+
+
+let setVideo31 = db.collection('Birds').doc('Bird31')
+  .collection('media').doc('Video').set(Bird31mediaVideo);
+
+//bird31
+ let Bird31mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/AHYWLCEJLP/XC234669-150407_015.MP3"
+};
+
+
+let setSound31 = db.collection('Birds').doc('Bird31')
+  .collection('media').doc('Soundclip').set(Bird31mediaSound);
+
+
+//Mediabird32
+ let Bird32mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Phalacrocorax_brasilianus_%28Costa_Rica%29.jpg/1200px-Phalacrocorax_brasilianus_%28Costa_Rica%29.jpg"
+};
+
+
+let setImage32 = db.collection('Birds').doc('Bird32')
+  .collection('media').doc('Image').set(Bird32mediaImage);
+
+
+//bird32
+ let Bird32mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=o2wLlw7TzZg"
+};
+
+
+let setVideo32 = db.collection('Birds').doc('Bird32')
+  .collection('media').doc('Video').set(Bird32mediaVideo);
+
+//bird32
+ let Bird32mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/species/Phalacrocorax-brasil"
+};
+
+
+let setSound32 = db.collection('Birds').doc('Bird32')
+  .collection('media').doc('Soundclip').set(Bird32mediaSound);
+
+
+
+//Mediabird33
+ let Bird33mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://i.ytimg.com/vi/9d8DOhz2UkA/maxresdefault.jpg"
+};
+
+
+let setImage33 = db.collection('Birds').doc('Bird33')
+  .collection('media').doc('Image').set(Bird33mediaImage);
+
+
+//bird33
+ let Bird33mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=fto-HHHTqIg"
+};
+
+
+let setVideo33 = db.collection('Birds').doc('Bird33')
+  .collection('media').doc('Video').set(Bird33mediaVideo);
+
+//bird33
+ let Bird33mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/ZNCDXTUOFL/XC130063-Sturnus_vulgaris_Jablonna_Polska_Jarek_Matusiak_20130417_52.mp3"
+};
+
+
+let setSound33 = db.collection('Birds').doc('Bird33')
+  .collection('media').doc('Soundclip').set(Bird33mediaSound);
+
+
+//Mediabird34
+ let Bird34mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://i.ytimg.com/vi/cL-DNEHI21s/maxresdefault.jpg"
+};
+
+
+let setImage34 = db.collection('Birds').doc('Bird34')
+  .collection('media').doc('Image').set(Bird34mediaImage);
+
+
+//bird34
+ let Bird34mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=pG8ls-8LBTs"
+};
+
+
+let setVideo34 = db.collection('Birds').doc('Bird34')
+  .collection('media').doc('Video').set(Bird34mediaVideo);
+
+//bird34
+ let Bird34mediaSound = {
             "title": "SoundClip",
             "is_image": false,
             "is_video": false,
@@ -2209,11 +2832,674 @@ let setVideo20 = db.collection('Birds').doc('Bird20')
 };
 
 
-let setSound20 = db.collection('Birds').doc('Bird20').collection('media').doc('Soundclip').set(Bird20mediaSound);
+let setSound34 = db.collection('Birds').doc('Bird34')
+  .collection('media').doc('Soundclip').set(Bird34mediaSound);
+
+
+//Mediabird35
+ let Bird35mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.bird-sounds.net/images/house-finch.jpg"
+};
+
+
+let setImage35 = db.collection('Birds').doc('Bird35')
+  .collection('media').doc('Image').set(Bird35mediaImage);
+
+
+//bird35
+ let Bird35mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=G4zhGOX9L9g"
+};
+
+
+let setVideo35 = db.collection('Birds').doc('Bird35')
+  .collection('media').doc('Video').set(Bird35mediaVideo);
+
+//bird35
+ let Bird35mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/ILUHRFXDNU/XC428722-House%20Finch%20song%20male%20nabor%20july%2024%20746.mp3"
+};
+
+
+let setSound35 = db.collection('Birds').doc('Bird35')
+  .collection('media').doc('Soundclip').set(Bird35mediaSound);
+
+
+//Mediabird36
+ let Bird36mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.bird-sounds.net/images/bushtit.jpg"
+};
+
+
+let setImage36 = db.collection('Birds').doc('Bird36')
+  .collection('media').doc('Image').set(Bird36mediaImage);
+
+
+//bird36
+ let Bird36mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=ogl653elM5E"
+};
+
+
+let setVideo36 = db.collection('Birds').doc('Bird36')
+  .collection('media').doc('Video').set(Bird36mediaVideo);
+
+//bird36
+ let Bird36mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/KGOCOOKTTU/XC307863-2%20Bushtit%20Laguna%20Lake%2002-08-16.mp3"
+};
+
+
+let setSound36 = db.collection('Birds').doc('Bird36')
+  .collection('media').doc('Soundclip').set(Bird36mediaSound);
+
+
+//Mediabird37
+ let Bird37mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Anna%27s_hummingbird.jpg/1200px-Anna%27s_hummingbird.jpg"
+};
+
+
+let setImage37 = db.collection('Birds').doc('Bird37')
+  .collection('media').doc('Image').set(Bird37mediaImage);
+
+
+//bird37
+ let Bird37mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=uuQfNZp87u4"
+};
+
+
+let setVideo37 = db.collection('Birds').doc('Bird37')
+  .collection('media').doc('Video').set(Bird37mediaVideo);
+
+//bird37
+ let Bird37mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/WOEAFQRMUD/XC196691-Calypte%20anna1408234_T1153.mp3"
+};
+
+
+let setSound37 = db.collection('Birds').doc('Bird37')
+  .collection('media').doc('Soundclip').set(Bird37mediaSound);
+
+
+//Mediabird38
+ let Bird38mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://climate.audubon.org/sites/default/files/bird_photo_gallery_images/Rufous_Hummingbird_NicoleBeaulac:FlickrCC.jpg"
+};
+
+
+let setImage38 = db.collection('Birds').doc('Bird38')
+  .collection('media').doc('Image').set(Bird38mediaImage);
+
+
+//bird38
+ let Bird38mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=J-1rNBkjqxw"
+};
+
+
+let setVideo38 = db.collection('Birds').doc('Bird38')
+  .collection('media').doc('Video').set(Bird38mediaVideo);
+
+//bird38
+ let Bird38mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/YQNGFTBRRT/XC302569-SPTO_MtOrd_19Aug2013_Harter_02.mp3"
+};
+
+
+let setSound38 = db.collection('Birds').doc('Bird38')
+  .collection('media').doc('Soundclip').set(Bird38mediaSound);
+
+
+//Mediabird39
+ let Bird39mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://i.ytimg.com/vi/WFyzgFkQSRg/hqdefault.jpg"
+};
+
+
+let setImage39 = db.collection('Birds').doc('Bird39')
+  .collection('media').doc('Image').set(Bird19mediaImage);
+
+
+//bird1
+ let Bird39mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=l7vnp411GPo"
+};
+
+
+let setVideo39 = db.collection('Birds').doc('Bird39')
+  .collection('media').doc('Video').set(Bird39mediaVideo);
+
+//bird39
+ let Bird39mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/KADPGEQPZI/XC288251-CeWW%202015-11-01-0758.mp3"
+};
+
+
+let setSound39 = db.collection('Birds').doc('Bird39')
+  .collection('media').doc('Soundclip').set(Bird39mediaSound);
 
 
 
-//Mediabird50
+  //Mediabird40
+ let Bird40mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://i.ytimg.com/vi/wr5AQff-SXQ/maxresdefault.jpg"
+};
+
+
+let setImage40 = db.collection('Birds').doc('Bird40')
+  .collection('media').doc('Image').set(Bird40mediaImage);
+
+
+//bird40
+ let Bird40mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=9RArGl2vkG"
+};
+
+
+let setVideo40 = db.collection('Birds').doc('Bird40')
+  .collection('media').doc('Video').set(Bird40mediaVideo);
+
+//bird40
+ let Bird40mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/NPYDVIEFTA/XC192236-GAARMWAL_20140615_175045%20Bald%20Eagle.mp3"
+};
+
+
+let setSound40 = db.collection('Birds').doc('Bird40').collection('media').doc('Soundclip').set(Bird40mediaSound);
+
+
+
+//Mediabird41
+ let Bird41mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.borealbirds.org/sites/default/files/styles/lightbox_max_wh/public/bird_images/mew-gull.jpg?itok=uFO9VNia"
+};
+
+
+let setImage41 = db.collection('Birds').doc('Bird41')
+  .collection('media').doc('Image').set(Bird41mediaImage);
+
+
+//bird41
+ let Bird41mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=8eWtsoAIOnU"
+};
+
+
+let setVideo41 = db.collection('Birds').doc('Bird41')
+  .collection('media').doc('Video').set(Bird41mediaVideo);
+
+//bird41
+ let Bird41mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/ZNCDXTUOFL/XC128367-Larus_canus_Poland_Jarek_Matusiak_20130403wav.mp3"
+};
+
+
+let setSound41 = db.collection('Birds').doc('Bird41')
+  .collection('media').doc('Soundclip').set(Bird41mediaSound);
+
+
+//Mediabird42
+ let Bird42mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.bird-sounds.net/images/pine-siskin.jpg"
+};
+
+
+let setImage42 = db.collection('Birds').doc('Bird42')
+  .collection('media').doc('Image').set(Bird42mediaImage);
+
+
+//bird42
+ let Bird42mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=QDoF-HvsWqY"
+};
+
+
+let setVideo42 = db.collection('Birds').doc('Bird42')
+  .collection('media').doc('Video').set(Bird42mediaVideo);
+
+//bird42
+ let Bird42mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/FIDXCHEYJO/XC324998-Pine_Siskin_2068.mp3"
+};
+
+
+let setSound42 = db.collection('Birds').doc('Bird42')
+  .collection('media').doc('Soundclip').set(Bird42mediaSound);
+
+
+
+//Mediabird43
+ let Bird43mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://tx.audubon.org/sites/default/files/styles/bean_wysiwyg_full_width/public/great-blue-heron_rebecca-field.jpg?itok=oSQB_ZLO"
+};
+
+
+let setImage43 = db.collection('Birds').doc('Bird43')
+  .collection('media').doc('Image').set(Bird43mediaImage);
+
+
+//bird43
+ let Bird43mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=8meXF8k6r90"
+};
+
+
+let setVideo43 = db.collection('Birds').doc('Bird43')
+  .collection('media').doc('Video').set(Bird43mediaVideo);
+
+//bird43
+ let Bird43mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/UKNISVRBBF/XC187999-Heron%2C%20Great%20Blue%202014.07.19.mp3"
+};
+
+
+let setSound43 = db.collection('Birds').doc('Bird43')
+  .collection('media').doc('Soundclip').set(Bird43mediaSound);
+
+
+//Mediabird44
+ let Bird44mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://i.ytimg.com/vi/LbNcdRrrJHs/maxresdefault.jpg"
+};
+
+
+let setImage44 = db.collection('Birds').doc('Bird44')
+  .collection('media').doc('Image').set(Bird44mediaImage);
+
+
+//bird44
+ let Bird44mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=-FSKBnECkAA"
+};
+
+
+let setVideo44 = db.collection('Birds').doc('Bird44')
+  .collection('media').doc('Video').set(Bird44mediaVideo);
+
+//bird44
+ let Bird44mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/UKNISVRBBF/XC187999-Heron%2C%20Great%20Blue%202014.07.19.mp3"
+};
+
+
+let setSound44 = db.collection('Birds').doc('Bird44')
+  .collection('media').doc('Soundclip').set(Bird44mediaSound);
+
+
+//Mediabird45
+ let Bird45mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.larkwire.com/static/content/images/ipad/LBNA1/NorthernShrike.jpg"
+};
+
+
+let setImage45 = db.collection('Birds').doc('Bird45')
+  .collection('media').doc('Image').set(Bird45mediaImage);
+
+
+//bird45
+ let Bird45mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=Gmn0eZhr95U"
+};
+
+
+let setVideo45 = db.collection('Birds').doc('Bird45')
+  .collection('media').doc('Video').set(Bird45mediaVideo);
+
+//bird45
+ let Bird45mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/KADPGEQPZI/XC288251-CeWW%202015-11-01-0758.mp3"
+};
+
+
+let setSound45 = db.collection('Birds').doc('Bird45')
+  .collection('media').doc('Soundclip').set(Bird45mediaSound);
+
+
+//Mediabird46
+ let Bird46mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.bird-sounds.net/images/pine-grosbeak.jpg"
+};
+
+
+let setImage46 = db.collection('Birds').doc('Bird46')
+  .collection('media').doc('Image').set(Bird46mediaImage);
+
+
+//bird46
+ let Bird46mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=AE4rd224thE"
+};
+
+
+let setVideo46 = db.collection('Birds').doc('Bird46')
+  .collection('media').doc('Video').set(Bird46mediaVideo);
+
+//bird46
+ let Bird46mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/BPSDQEOJWG/XC125066-Tallbit-call-2013-02-23%2009.09-LS113043.mp3"
+};
+
+
+let setSound46 = db.collection('Birds').doc('Bird46')
+  .collection('media').doc('Soundclip').set(Bird46mediaSound);
+
+
+//Mediabird47
+ let Bird47mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.larkwire.com/static/content/images/ipad/LBNA1/LeastBittern.jpg"
+};
+
+
+let setImage47 = db.collection('Birds').doc('Bird47')
+  .collection('media').doc('Image').set(Bird47mediaImage);
+
+
+//bird47
+ let Bird47mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=GYPYXboGZ6M"
+};
+
+
+let setVideo47 = db.collection('Birds').doc('Bird47')
+  .collection('media').doc('Video').set(Bird47mediaVideo);
+
+//bird47
+ let Bird47mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/OHHTDSDNBT/XC341252-Exilis%20001.mp3"
+};
+
+
+let setSound47 = db.collection('Birds').doc('Bird47')
+  .collection('media').doc('Soundclip').set(Bird47mediaSound);
+
+
+//Mediabird48
+ let Bird48mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.bird-sounds.net/images/least-sandpiper.jpg"
+};
+
+
+let setImage48 = db.collection('Birds').doc('Bird48')
+  .collection('media').doc('Image').set(Bird48mediaImage);
+
+
+//bird48
+ let Bird48mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=zh0FdpmpcMI"
+};
+
+
+let setVideo48 = db.collection('Birds').doc('Bird48')
+  .collection('media').doc('Video').set(Bird48mediaVideo);
+
+//bird48
+ let Bird48mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/AHEASHOMCO/XC337948-Callla%20Cape%20May%20USA%20100916%20calls.mp3"
+};
+
+
+let setSound48 = db.collection('Birds').doc('Bird48')
+  .collection('media').doc('Soundclip').set(Bird48mediaSound);
+
+
+//Mediabird49
+ let Bird49mediaImage = {
+            "title": "Image",
+            "is_image": true,
+            "is_video": false,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.british-birdsongs.uk/images/mute-swan.jpg"
+};
+
+
+let setImage49 = db.collection('Birds').doc('Bird49')
+  .collection('media').doc('Image').set(Bird49mediaImage);
+
+
+//bird49
+ let Bird49mediaVideo = {
+            "title": "Video",
+            "is_image": false,
+            "is_video": true,
+            "is_sound_clip": false,
+            "is_deleted": false,
+            "url": "https://www.youtube.com/watch?v=tUoTA_QNE6A"
+};
+
+
+let setVideo49 = db.collection('Birds').doc('Bird49')
+  .collection('media').doc('Video').set(Bird49mediaVideo);
+
+//bird49
+ let Bird49mediaSound = {
+            "title": "SoundClip",
+            "is_image": false,
+            "is_video": false,
+            "is_sound_clip": true,
+            "is_deleted": false,
+            "url": "https://www.xeno-canto.org/sounds/uploaded/ILUHRFXDNU/XC428722-House%20Finch%20song%20male%20nabor%20july%2024%20746.mp3"
+};
+
+
+let setSound49 = db.collection('Birds').doc('Bird49')
+  .collection('media').doc('Soundclip').set(Bird49mediaSound);
+
+
+
+  //Mediabird50
  let Bird50mediaImage = {
             "title": "Image",
             "is_image": true,
@@ -2249,12 +3535,11 @@ let setVideo50 = db.collection('Birds').doc('Bird50')
             "is_video": false,
             "is_sound_clip": true,
             "is_deleted": false,
-            "url": "https://www.bird-sounds.net/osprey/"
+            "url": "https://www.xeno-canto.org/sounds/uploaded/ZNCDXTUOFL/XC190478-Pandion_haliaetus_Poland_Jarek_Matusiak_20140720_37.mp3"
 };
 
 
-let setSound50 = db.collection('Birds').doc('Bird50')
-  .collection('media').doc('Soundclip').set(Bird50mediaSound);
+let setSound50 = db.collection('Birds').doc('Bird50').collection('media').doc('Soundclip').set(Bird50mediaSound);
 
 
 
@@ -2381,26 +3666,13 @@ let user1Notifications = {
 let setuser1Notifications = db.collection('Users').doc('user1').collection('Notifications').doc('notifications').set(user1Notifications);
 
 
-//////Folder Collection///////
-
-
-let user1folder = {
-name:"sample",
-is_root_folder: true,
-is_default: true,
-is_deleted: false,
-folder_path: "sample",
-date_created: "sample",
-date_modified: "sample"
-    
-};
-
-
-let setuser1folder = db.collection('Users').doc('user1').collection('Folder').doc('folder').set(user1folder);
+//////User birdMedia Collection///////
 
 
 
-let user1foldermediaimage = {
+
+
+let user1mediaimage = {
 media_id:501,
 title: "sample",
 is_image: true,
@@ -2412,10 +3684,10 @@ is_deleted: false,
 };
 
 
-let setuser1foldermediaimage = db.collection('Users').doc('user1').collection('Folder').doc('folder').collection('media').doc('images').collection('Images').doc('media_id').set(user1foldermediaimage);
+let setuser1foldermediaimage = db.collection('Users').doc('user1').collection('Media').add(user1mediaimage);
 
 
-let user1foldermediavideo = {
+let user1mediavideo = {
 media_id:502,
 title: "sample",
 is_image: false,
@@ -2427,10 +3699,9 @@ is_deleted: false,
 };
 
 
-let setuser1foldermediavideo = db.collection('Users').doc('user1').collection('Folder').doc('folder').collection('media').doc('videos').collection('Videos').doc('media_id').set(user1foldermediavideo);
+let setuser1foldermediavideo = db.collection('Users').doc('user1').collection('Media').add(user1mediavideo);
 
-
-let user1foldermediaSound = {
+let user1mediaSound = {
 media_id:503,
 title: "sample",
 is_image: false,
@@ -2442,7 +3713,7 @@ is_deleted: false,
 };
 
 
-let setuser1foldermediasound = db.collection('Users').doc('user1').collection('Folder').doc('folder').collection('media').doc('sounds').collection('Sounds').doc('media_id').set(user1foldermediaSound);
+let setuser1foldermediasound = db.collection('Users').doc('user1').collection('Media').add(user1mediaSound);
 
  
 
@@ -2473,7 +3744,7 @@ let location01 = {
  Region: " Minnesota",
  latitude: "44° 51.336″N",
  longitude: "092° 46.484″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2485,7 +3756,7 @@ let location02 = {
  Region: "Central Ontario",
  latitude: "44° 2′ 48.12″N",
  longitude: "80° 4′ 36.84″W",
- proximity_radius: "0"
+ proximity: "0"
 
     
 };
@@ -2499,7 +3770,7 @@ let location03 = {
  Region: " British Columbia",
  latitude: "54° 30′ 55.08″N",
  longitude: "125° 42′ 0″W",
- proximity_radius: "0"
+ proximity: "0"
 
     
 };
@@ -2513,7 +3784,7 @@ let location04 = {
  Region: " Nova Scotia",
  latitude: "44° 44′ 38.02″N",
  longitude: " 65° 40′ 45.69″W",
- proximity_radius: "0"
+ proximity: "0"
 
     
 };
@@ -2527,7 +3798,7 @@ let location05 = {
  Region: " Manitoba",
  latitude: "50° 57′ 59″N",
  longitude: "101° 22′ 47″W",
- proximity_radius: "0"
+ proximity: "0"
 
     
 };
@@ -2539,7 +3810,7 @@ let location06 = {
  Location_name: "Heritage Park Historical Village",
  Region: "51° 15′ 6 ″N",
  longitude: "114° 23′ 13″W",
- proximity_radius: "0"
+ proximity: "0"
 
     
 };
@@ -2553,7 +3824,7 @@ let location07 = {
  Region: " Yukon",
  latitude: "64° 4′ 58.3 ″N",
  longitude: "138° 30′ 39.24 ″W",
- proximity_radius: "0"
+ proximity: "0"
 
     
 };
@@ -2566,7 +3837,7 @@ let location08 = {
  Region: " British Columbia",
  latitude: "53° 29′ 38.4 ″N ",
  longitude: "124° 12′ 57.6 ″W ",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2579,7 +3850,7 @@ let location09 = {
  Region: " Yukon",
  latitude: "63° 37' 59.99 ″N",
  longitude: "-135° 45' 59.99 ″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2591,7 +3862,7 @@ let location10 = {
  Region: " New Brunswick",
  latitude: "52.5954° ″N",
  longitude: "126.0711° ″W",
- proximity_radius: "0"
+ proximity: "0"
 
 };
 
@@ -2607,7 +3878,7 @@ let location11 = {
  Region: " Yukon",
  latitude: "52° 28' 5.7864 ″N",
  longitude: "131° 33' 29.6244 ″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2619,7 +3890,7 @@ let location12 = {
  Region: "  Prince Edward Island",
  latitude: "46° 25′ 0 ″N",
  longitude: "63° 4′ 30 ″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2631,7 +3902,7 @@ let location13 = {
  Region: " British Columbia",
  latitude: "54° 29′ 38 ″N",
  longitude: "124° 20′ 30 ″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2642,7 +3913,7 @@ let location14 = {
  Region: "western Alberta",
  latitude: "49.293072 ″N",
  longitude: "-124.574509 ″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2655,7 +3926,7 @@ let location15 = {
  Region: "western Alberta",
  latitude: "52.799999 ″N",
  longitude: "-117.900002 ″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2667,7 +3938,7 @@ let location16 = {
  Region: " Senneville",
  latitude: "45.432051″N",
  longitude: "-73.953186″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2679,7 +3950,7 @@ let location17 = {
  Region: " Montreal",
  latitude: "45.429419″N",
  longitude: "-73.593158″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2692,7 +3963,7 @@ let location18 = {
  Region: " Toronto",
  latitude: "43°37'36.9″N",
  longitude: "79°19'51.3″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2704,7 +3975,7 @@ let location19 = {
  Region: " New FoundLand",
  latitude: "47.523079″N",
  longitude: "-52.756310″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2716,7 +3987,7 @@ let location20 = {
  Region: "Saint Roch",
  latitude: "46.81382″N",
  longitude: "-71.203836″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2730,11 +4001,11 @@ let location21 = {
  Region: " Sudbury",
  latitude: "46°25'35.4″N",
  longitude: "81°05'47.4″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
-let setlocation21 = db.collection('Location').doc('location_21').set(location12);
+let setlocation21 = db.collection('Location').doc('location_21').set(location21);
 
 //location 22
 let location22 = {
@@ -2742,7 +4013,7 @@ let location22 = {
  Region: "Edmonton",
  latitude: "53°27'18.7″N",
  longitude: "113°32'51.9″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2753,9 +4024,9 @@ let setlocation22 = db.collection('Location').doc('location_22').set(location22)
 let location23 = {
  Location_name: "Le Sud-Ouest",
  Region: "Montreal",
- latitude: "45.444537",
- longitude: " -73.602452",
- proximity_radius: "0"
+ latitude: "45.444537″N",
+ longitude: " -73.602452″W",
+ proximity: "0"
     
 };
 
@@ -2768,7 +4039,7 @@ let location24 = {
  Region: " NorthTumberland",
  latitude: "44.623323″N",
  longitude: "-63.568579″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2779,9 +4050,9 @@ let setlocation24 = db.collection('Location').doc('location_24').set(location24)
 let location25 = {
  Location_name: "Rideau Heights",
  Region: " Kingston",
- latitude: "44.623323",
+ latitude: "44.623323″N",
  longitude: "-63.568579″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2793,7 +4064,7 @@ let location26 = {
  Region:"Abbotsford",
  latitude: "49°04'29.0″N",
  longitude: "122°16'46.0″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2806,7 +4077,7 @@ let location27 = {
  Region: " Nova Scotia",
  latitude: "46.738337″N",
  longitude: "-60.650983 ″W",
- proximity_radius: "0"
+ proximity: "0"
     
 };
 
@@ -2818,7 +4089,7 @@ let location28 = {
  Region: " British Columbia",
  latitude: " 50.041402″N ",
  longitude: " -125.319957″W",
- proximity_radius: "0"
+ proximity: "0"
   
 };
 
@@ -2831,7 +4102,7 @@ let location29 = {
  Region: " Kenora",
  latitude: "54.761705″N",
  longitude: "-83.038826″W",
- proximity_radius: "0"
+ proximity: "0"
    
 };
 
@@ -2843,7 +4114,7 @@ let location30 = {
  Region: " Montreal",
  latitude: "45.4857″N",
  longitude: "73.5957″W",
- proximity_radius: "0"
+ proximity: "0"
    
 };
 
@@ -2857,7 +4128,7 @@ let location31 = {
  Region: "Montreal",
  latitude: "45.491961″N",
  longitude: " -73.607241″W",
- proximity_radius: "0"
+ proximity: "0"
   
 
 };
@@ -2871,7 +4142,7 @@ let location32 = {
  Region: "perth",
  latitude: "43.374711″W",
  longitude: "-80.966995 ″W",
- proximity_radius: "0"
+ proximity: "0"
      
 };
 
@@ -2883,8 +4154,8 @@ let location33 = {
  Location_name: "EastPoint Park",
  Region: " Scarborough",
  latitude: "43.759610″N",
- longitude: "-79.159253",
- proximity_radius: "0"
+ longitude: "-79.159253″W",
+ proximity: "0"
     
 };
 
@@ -2897,7 +4168,7 @@ let location34 = {
  Region: " Montreal",
  latitude: " 45.432051″N",
  longitude: "-73.953186″W",
- proximity_radius: "0"
+ proximity: "0"
    
 };
 
@@ -2909,7 +4180,7 @@ let location35 = {
  Region:"Eeyou Istchee Baie-James",
  latitude: "49.784191″N",
  longitude: "-74.862144″W",
- proximity_radius: "0"
+ proximity: "0"
       
 };
 
@@ -2920,9 +4191,9 @@ let setlocation35 = db.collection('Location').doc('location_35').set(location35)
 let location36 = {
  Location_name: "Brandon",
  Region: "Manitoba",
- latitude: " 49.816171",
+ latitude: " 49.816171″N",
  longitude: "-99.866592″W",
- proximity_radius: "0"
+ proximity: "0"
    
 };
 
@@ -2934,7 +4205,7 @@ let location37 = {
  Region: "Thunder Bay",
  latitude: "48.380922″N ",
  longitude: "89.227822″W ",
- proximity_radius: "0"
+ proximity: "0"
      
 };
 
@@ -2947,11 +4218,22 @@ let location38 = {
  Region: " Union",
  latitude: "42°39'47.4″N",
  longitude: "81°10'12.5″W",
- proximity_radius: "0"
+ proximity: "0"
    
 };
 
 let setlocation38 = db.collection('Location').doc('location_38').set(location38);
+
+//location 01
+let location_39 = {
+ Location_name: "Jasper National Park,Gasper",
+ Region: " Alberta",
+ latitude: "52.869522″N",
+ longitude: "-118.075982″W",
+ proximity: "0"
+ };
+
+let setlocation_39 = db.collection('Location').doc('location_39').set(location_39);
 
 
 //////Birdlocation  Collection///////
@@ -2970,6 +4252,750 @@ bird_location_id: 701,
 
 
 let setbirdlocation = db.collection('Bird_Location').doc('bird_location_id').set(bird_location);
+
+
+
+//bird_location1
+let bird_location1 = {
+ bird_id: "Bird1",
+ location_id: "location_01",
+ bird_name: "Northern cardinal ",
+ location_name: "Afton State Park",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg/1200px-Northern_Cardinal_%28Cardinalis_cardinalis%29_male.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation1 = db.collection('Bird_Location').doc('bird_location_id1').set(bird_location1);
+
+
+//bird_location2
+let bird_location2 = {
+ bird_id: "Bird2",
+ location_id: "location_02",
+ bird_name: "Pileated woodpecker ",
+ location_name: "Mono Cliffs Provincial Park",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/PileatedWoodpeckerFeedingonTree%2C_crop.jpg/1200px-PileatedWoodpeckerFeedingonTree%2C_crop.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation2 = db.collection('Bird_Location').doc('bird_location_id2').set(bird_location2);
+
+
+//bird_location3
+let bird_location3 = {
+ bird_id: "Bird3",
+ location_id: "location_03",
+ bird_name: "Neotropic Cormorant",
+ location_name: "Babine Lake Marine Provincial Park",
+ bird_image: "https://www.allaboutbirds.org/guide/assets/og/75258971-1200px.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation3 = db.collection('Bird_Location').doc('bird_location_id3').set(bird_location3);
+
+
+//bird_location4
+let bird_location4 = {
+ bird_id: "Bird4",
+ location_id: "location_04",
+ bird_name: "Black-capped Chickadee",
+ location_name: "Fundy Provincial Park ",
+ bird_image: "https://naturallycuriouswithmaryholland.files.wordpress.com/2013/11/11-20-13-black-capped-chickadee-img_01071.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation4 = db.collection('Bird_Location').doc('bird_location_id4').set(bird_location4);
+
+
+//bird_location5
+let bird_location5 = {
+ bird_id: "Bird5",
+ location_id: "location_05",
+ bird_name: "Burrowing owl",
+ location_name: "Asessippi Provincial Park",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Brazilian_burrowing_owl_%28Athene_cunicularia_grallaria%29.jpg/1200px-Brazilian_burrowing_owl_%28Athene_cunicularia_grallaria%29.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation5 = db.collection('Bird_Location').doc('bird_location_id5').set(bird_location5);
+
+//bird_location6
+let bird_location6 = {
+ bird_id: "Bird6",
+ location_id: "location_06",
+ bird_name: "Cedar Waxwings",
+ location_name: "Heritage Park Historical Village",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Cedar_Waxwing_August_14_2012_Newfoundland_PA.jpg/1200px-Cedar_Waxwing_August_14_2012_Newfoundland_PA.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation6 = db.collection('Bird_Location').doc('bird_location_id6').set(bird_location6);
+
+
+//bird_location7
+let bird_location7 = {
+ bird_id: "Bird7",
+ location_id: "location_07",
+ bird_name: "Common redpoll",
+ location_name: "Asi Keyi Territorial park",
+ bird_image: "https://philipschwarzphotography.files.wordpress.com/2013/02/common-redpoll-female-13-1-_1566.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation7 = db.collection('Bird_Location').doc('bird_location_id7').set(bird_location7);
+
+
+//bird_location8
+let bird_location8 = {
+ bird_id: "Bird8",
+ location_id: "location_08",
+ bird_name: "Dark-eyed juncos",
+ location_name: "Finger-Tatuk Provincial Park",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Dark-eyed_Junco-27527-3.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation8 = db.collection('Bird_Location').doc('bird_location_id8').set(bird_location8);
+
+
+//bird_location9
+let bird_location9 = {
+ bird_id: "Bird9",
+ location_id: "location_09",
+ bird_name: "Gray Catbirds",
+ location_name: "Tombston Territorial park",
+ bird_image: "http://2.bp.blogspot.com/-Jct9xDnsdG4/UG_Mtw4l4_I/AAAAAAAAARU/CbSJMwwdPZo/s1600/Gray+Catbird.JPG",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation9 = db.collection('Bird_Location').doc('bird_location_id9').set(bird_location9);
+
+
+//bird_location10
+let bird_location10 = {
+ bird_id: "Bird10",
+ location_id: "location_04",
+ bird_name: "Great Horned Owl",
+ location_name: "Fundy Provincial Park ",
+ bird_image: "https://i.ytimg.com/vi/Cu3bgBVyrNw/maxresdefault.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation10 = db.collection('Bird_Location').doc('bird_location_id10').set(bird_location10);
+
+//bird_location11
+let bird_location11 = {
+ bird_id: "Bird11",
+ location_id: "location_11",
+ bird_name: "American crow",
+ location_name: "Kusawa Territorial park",
+ bird_image: "https://www.nps.gov/chat/learn/nature/images/american-crow.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation11 = db.collection('Bird_Location').doc('bird_location_id11').set(bird_location11);
+
+
+//bird_location12
+let bird_location12 = {
+ bird_id: "Bird12",
+ location_id: "location_12",
+ bird_name: "American robin",
+ location_name: "Prince Edward Island National Park",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Turdus-migratorius-002.jpg/1200px-Turdus-migratorius-002.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation12 = db.collection('Bird_Location').doc('bird_location_id12').set(bird_location12);
+
+
+//bird_location3
+let bird_location13 = {
+ bird_id: "Bird13",
+ location_id: "location_04",
+ bird_name: "Purple Martin",
+ location_name: "Fundy Provincial Park ",
+ bird_image: "http://www.audubon.org/sites/default/files/styles/hero_cover_bird_page/public/Purple%20Martin%20s60-5-005_V.jpg?itok=dlGL_tZc",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation13 = db.collection('Bird_Location').doc('bird_location_id13').set(bird_location13);
+
+
+//bird_location14
+let bird_location14 = {
+ bird_id: "Bird4",
+ location_id: "location_10",
+ bird_name: "Red-breasted Nuthatch",
+ location_name: "Tweedsmuir South Provincial Park",
+ bird_image: "http://www.wilddelight.com/wp-content/uploads/2013/01/RedBreastedNuthatch01.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation14 = db.collection('Bird_Location').doc('bird_location_id14').set(bird_location14);
+
+
+//bird_location15
+let bird_location15 = {
+ bird_id: "Bird15",
+ location_id: "location_11",
+ bird_name: "Red-winged blackbird ",
+ location_name: "Kusawa Territorial park",
+ bird_image: "https://mybluesunshine.files.wordpress.com/2015/05/6a00e5513924e68833017615996437970c.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation15 = db.collection('Bird_Location').doc('bird_location_id15').set(bird_location15);
+
+//bird_location16
+let bird_location16 = {
+ bird_id: "Bird1",
+ location_id: "location_13",
+ bird_name: "Rose-breasted grosbeak",
+ location_name: "Mount Pope Provincial Park",
+ bird_image: "https://www.animalspot.net/wp-content/uploads/2016/01/Rose-Breasted-Grosbeak-Female.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation16 = db.collection('Bird_Location').doc('bird_location_id16').set(bird_location16);
+
+
+//bird_location17
+let bird_location17 = {
+ bird_id: "Bird17",
+ location_id: "location_04",
+ bird_name: "Ruby-throated hummingbird",
+ location_name: "Fundy Provincial Park",
+ bird_image: "http://3.bp.blogspot.com/-4K3XRMSNmmA/T57Mq6ESL0I/AAAAAAAADhw/gWaZm_38c7M/s1600/rubythroatedhummingbird2.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation17 = db.collection('Bird_Location').doc('bird_location_id17').set(bird_location17);
+
+
+//bird_location18
+let bird_location18 = {
+ bird_id: "Bird18",
+ location_id: "location_06",
+ bird_name: "Rufous hummingbirds",
+ location_name: "Heritage Park Historical Village",
+ bird_image: "https://climate.audubon.org/sites/default/files/bird_photo_gallery_images/Rufous_Hummingbird_NicoleBeaulac:FlickrCC.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation18 = db.collection('Bird_Location').doc('bird_location_id18').set(bird_location18);
+
+
+//bird_location19
+let bird_location19 = {
+ bird_id: "Bird19",
+ location_id: "location_06",
+ bird_name: "Spotted Owl",
+ location_name: "Heritage Park Historical Village",
+ bird_image: "https://www.americanforests.org/wp-content/uploads/2012/07/northern-spotted-owl-2.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation19 = db.collection('Bird_Location').doc('bird_location_id19').set(bird_location19);
+
+
+//bird_location20
+let bird_location20 = {
+ bird_id: "Bird20",
+ location_id: "location_13",
+ bird_name: "Northern Flicker",
+ location_name: "Mount Pope Provincial Park",
+ bird_image: "https://mmeara.files.wordpress.com/2012/09/pic-flamb-male-aur1.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation20 = db.collection('Bird_Location').doc('bird_location_id20').set(bird_location20);
+
+
+ 
+//bird_location21
+let bird_location21 = {
+ bird_id: "Bird21",
+ location_id: "location_14",
+ bird_name: "White-crowned sparrow",
+ location_name: "Little Qualicum Falls Provincial Park",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/White-crowned-Sparrow.jpg/1200px-White-crowned-Sparrow.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation21 = db.collection('Bird_Location').doc('bird_location_id21').set(bird_location21);
+
+
+//bird_location22
+let bird_location22 = {
+ bird_id: "Bird22",
+ location_id: "location_15",
+ bird_name: "Swallows",
+ location_name: "Jasper National Park",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Landsvale.jpg/1200px-Landsvale.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation22 = db.collection('Bird_Location').doc('bird_location_id22').set(bird_location22);
+
+
+//bird_location23
+let bird_location23 = {
+ bird_id: "Bird23",
+ location_id: "location_07",
+ bird_name: "Finches",
+ location_name: "Asi Keyi Territorial park",
+ bird_image: "https://fthmb.tqn.com/tvPe1GjuUCasntTK2maHH_0FBZo=/1280x853/filters:fill(auto,1)/gouldian-finch-188062467-resized-58a6ea6e5f9b58a3c9190af4.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation23 = db.collection('Bird_Location').doc('bird_location_id23').set(bird_location23);
+
+
+//bird_location24
+let bird_location24 = {
+ bird_id: "Bird24",
+ location_id: "location_07",
+ bird_name: "Warblers",
+ location_name: "Asi Keyi Territorial park",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Dendroica-fusca-001.jpg/1200px-Dendroica-fusca-001.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation24 = db.collection('Bird_Location').doc('bird_location_id24').set(bird_location24);
+
+
+//bird_location25
+let bird_location25 = {
+ bird_id: "Bird25",
+ location_id: "location_10",
+ bird_name: "Blue Jay",
+ location_name: "Tweedsmuir South Provincial Park",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Cyanocitta-cristata-004.jpg/1200px-Cyanocitta-cristata-004.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation25 = db.collection('Bird_Location').doc('bird_location_id25').set(bird_location25);
+
+//bird_location26
+let bird_location26 = {
+ bird_id: "Bird6",
+ location_id: "location_16",
+ bird_name: "Wrens",
+ location_name: "Cap-Saint Jacques Nature Park",
+ bird_image: "https://www.audubon.org/sites/default/files/House_Wren_w27-4-011_l.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation26 = db.collection('Bird_Location').doc('bird_location_id26').set(bird_location26);
+
+
+//bird_location27
+let bird_location27 = {
+ bird_id: "Bird27",
+ location_id: "location_17",
+ bird_name: "Common Terns",
+ location_name: "La Salle",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Common_tern_with_fish.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation27 = db.collection('Bird_Location').doc('bird_location_id27').set(bird_location27);
+
+
+//bird_location28
+let bird_location28 = {
+ bird_id: "Bird28",
+ location_id: "location_18",
+ bird_name: "Piping Plovers",
+ location_name: "Tommy Thompson Park",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Charadrius-melodus-004_edit.jpg/1200px-Charadrius-melodus-004_edit.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation28 = db.collection('Bird_Location').doc('bird_location_id28').set(bird_location28);
+
+
+//bird_location29
+let bird_location29 = {
+ bird_id: "Bird29",
+ location_id: "location_19",
+ bird_name: "Common loon",
+ location_name: "Bowring park",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Gavia_immer_-Minocqua%2C_Wisconsin%2C_USA_-swimming-8.jpg/1200px-Gavia_immer_-Minocqua%2C_Wisconsin%2C_USA_-swimming-8.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation29 = db.collection('Bird_Location').doc('bird_location_id29').set(bird_location29);
+
+
+//bird_location30
+let bird_location30 = {
+ bird_id: "Bird30",
+ location_id: "location_20",
+ bird_name: "Cooper's Hawk",
+ location_name: "La Pointe-Aux-Lièvres",
+ bird_image: "http://2.bp.blogspot.com/-VzRzd4a0EMo/UMcozCNlxfI/AAAAAAAAZWk/GciLj1TiCXM/s1600/Cooper's+Hawk,+Tucson,+12-08-12-0937.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation30 = db.collection('Bird_Location').doc('bird_location_id30').set(bird_location30);
+
+//bird_location31
+let bird_location31 = {
+ bird_id: "Bird31",
+ location_id: "location_21",
+ bird_name: "Grosbeak",
+ location_name: "Field Bird Sanctuary",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Black-headed_Grosbeak.jpg/220px-Black-headed_Grosbeak.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation31 = db.collection('Bird_Location').doc('bird_location_id31').set(bird_location31);
+
+
+//bird_location32
+let bird_location32 = {
+ bird_id: "Bird32",
+ location_id: "location_39",
+ bird_name: "Neotropic Cormorant",
+ location_name: "Jasper National Park,Gasper",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Phalacrocorax_brasilianus_%28Costa_Rica%29.jpg/1200px-Phalacrocorax_brasilianus_%28Costa_Rica%29.jpg",
+ is_valid: true
+    
+};
+
+
+
+let setbirdlocation32 = db.collection('Bird_Location').doc('bird_location_id32').set(bird_location32);
+
+
+//bird_location33
+let bird_location33 = {
+ bird_id: "Bird33",
+ location_id: "location_23",
+ bird_name: "European Starling",
+ location_name: "Le Sud-Ouest",
+ bird_image: "https://i.ytimg.com/vi/9d8DOhz2UkA/maxresdefault.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation33 = db.collection('Bird_Location').doc('bird_location_id33').set(bird_location33);
+
+
+//bird_location34
+let bird_location34 = {
+ bird_id: "Bird34",
+ location_id: "location_24",
+ bird_name: "Northern Flickers",
+ location_name: "Miramichi",
+ bird_image: "https://i.ytimg.com/vi/cL-DNEHI21s/maxresdefault.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation34 = db.collection('Bird_Location').doc('bird_location_id34').set(bird_location34);
+
+
+//bird_location35
+let bird_location35 = {
+ bird_id: "Bird35",
+ location_id: "location_25",
+ bird_name: "House Finch",
+ location_name: "Rideau Heights",
+ bird_image: "https://www.bird-sounds.net/images/house-finch.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation35 = db.collection('Bird_Location').doc('bird_location_id35').set(bird_location35);
+
+//bird_location36
+let bird_location36 = {
+ bird_id: "Bird36",
+ location_id: "location_26",
+ bird_name: "Bushtit",
+ location_name: "Matsqui Prairie",
+ bird_image: "https://www.bird-sounds.net/images/bushtit.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation36 = db.collection('Bird_Location').doc('bird_location_id36').set(bird_location6);
+
+
+//bird_location37
+let bird_location37 = {
+ bird_id: "Bird37",
+ location_id: "location_27",
+ bird_name: "Anna’s Hummingbird",
+ location_name: "Victoria",
+ bird_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Anna%27s_hummingbird.jpg/1200px-Anna%27s_hummingbird.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation37 = db.collection('Bird_Location').doc('bird_location_id37').set(bird_location37);
+
+
+//bird_location38
+let bird_location38 = {
+ bird_id: "Bird38",
+ location_id: "location_28",
+ bird_name: "Spotted Towhee",
+ location_name: "Campbell River",
+ bird_image: "http://nathistoc.bio.uci.edu/birds/passeriformes/Pipilo%20maculatus/Spotted%20Towhee4_San%20Joaquin%20WS_E%20Chen.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation38 = db.collection('Bird_Location').doc('bird_location_id38').set(bird_location38);
+
+
+//bird_location39
+let bird_location39 = {
+ bird_id: "Bird39",
+ location_id: "location_29",
+ bird_name: "Cedar Waxwing",
+ location_name: "Kenora District",
+ bird_image: "https://i.ytimg.com/vi/WFyzgFkQSRg/hqdefault.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation39 = db.collection('Bird_Location').doc('bird_location_id39').set(bird_location39);
+
+
+//bird_location40
+let bird_location40 = {
+ bird_id: "Bird40",
+ location_id: "location_30",
+ bird_name: "Bald Eagle",
+ location_name: "Senneville",
+ bird_image: "https://i.ytimg.com/vi/wr5AQff-SXQ/maxresdefault.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation40 = db.collection('Bird_Location').doc('bird_location_id40').set(bird_location40);
+
+
+//bird_location41
+let bird_location41 = {
+ bird_id: "Bird41",
+ location_id: "location_31",
+ bird_name: "Mew Gull",
+ location_name: "westmount",
+ bird_image: "https://www.borealbirds.org/sites/default/files/styles/lightbox_max_wh/public/bird_images/mew-gull.jpg?itok=uFO9VNia",
+ is_valid: true
+    
+};
+
+let setbirdlocation41 = db.collection('Bird_Location').doc('bird_location_id41').set(bird_location41);
+
+
+//bird_location42
+let bird_location42 = {
+ bird_id: "Bird42",
+ location_id: "location_32",
+ bird_name: "Pine Siskin",
+ location_name: "Stratford",
+ bird_image: "https://www.bird-sounds.net/images/pine-siskin.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation42 = db.collection('Bird_Location').doc('bird_location_id42').set(bird_location42);
+
+
+//bird_location43
+let bird_location43 = {
+ bird_id: "Bird43",
+ location_id: "location_28",
+ bird_name: "Great Blue Heron",
+ location_name: "Campbell River",
+ bird_image: "https://www.google.com/search?q=Great+Blue+Heron&sxsrf=ALeKk00CjgBbVnlalF1F17ckrH15ILkC1w:1592108824935&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjavtDHu4DqAhUWXc0KHbWxAqUQ_AUoAXoECCEQAw&biw=650&bih=688#imgrc=6pM7ap8ksKv_dM",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation43 = db.collection('Bird_Location').doc('bird_location_id43').set(bird_location43);
+
+
+//bird_location44
+let bird_location44 = {
+ bird_id: "Bird44",
+ location_id: "location_33",
+ bird_name: "Bufflehead",
+ location_name: "EastPoint Park",
+ bird_image: "https://i.ytimg.com/vi/LbNcdRrrJHs/maxresdefault.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation44 = db.collection('Bird_Location').doc('bird_location_id44').set(bird_location44);
+
+
+//bird_location45
+let bird_location45 = {
+ bird_id: "Bird45",
+ location_id: "location_34",
+ bird_name: "Northern Shrike ",
+ location_name: "Morgsn Aboretum",
+ bird_image: "https://www.larkwire.com/static/content/images/ipad/LBNA1/NorthernShrike.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation45 = db.collection('Bird_Location').doc('bird_location_id45').set(bird_location45);
+
+//bird_location46
+let bird_location46 = {
+ bird_id: "Bird46",
+ location_id: "location_35",
+ bird_name: "Pine Grosbeak",
+ location_name: "Chapais",
+ bird_image: "https://www.bird-sounds.net/images/pine-grosbeak.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation46 = db.collection('Bird_Location').doc('bird_location_id46').set(bird_location46);
+
+
+//bird_location47
+let bird_location47 = {
+ bird_id: "Bird47",
+ location_id: "location_36",
+ bird_name: "Least Bittern",
+ location_name: "Brandon",
+ bird_image: "https://www.larkwire.com/static/content/images/ipad/LBNA1/LeastBittern.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation47 = db.collection('Bird_Location').doc('bird_location_id47').set(bird_location47);
+
+
+//bird_location48
+let bird_location48 = {
+ bird_id: "Bird48",
+ location_id: "location_37",
+ bird_name: "Least Sandpiper",
+ location_name: "Arthur park",
+ bird_image: "https://www.bird-sounds.net/images/least-sandpiper.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation48 = db.collection('Bird_Location').doc('bird_location_id48').set(bird_location48);
+
+
+//bird_location49
+let bird_location49 = {
+ bird_id: "Bird49",
+ location_id: "location_25",
+ bird_name: "Mute Swan",
+ location_name: "Rideau Heights",
+ bird_image: "https://www.british-birdsongs.uk/images/mute-swan.jpg",
+ is_valid: true
+    
+};
+
+let setbirdlocation49 = db.collection('Bird_Location').doc('bird_location_id49').set(bird_location49);
+
+
+//bird_location50
+let bird_location50 = {
+ bird_id: "Bird50",
+ location_id: "location_38",
+ bird_name: "Osprey",
+ location_name: "Hawk Cliff Rd",
+ bird_image: "https://i.ytimg.com/vi/f6UFcbJFwk0/hqdefault.jpg",
+ is_valid: true
+    
+};
+
+
+let setbirdlocation50 = db.collection('Bird_Location').doc('bird_location_id50').set(bird_location50);
 
 
   })
