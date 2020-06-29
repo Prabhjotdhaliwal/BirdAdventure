@@ -7,43 +7,42 @@
     android:background="@drawable/darkgradient">
 
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_margin="10dp">
 
-
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:background="@drawable/darkgradient"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/bird_profile_name"
+            <TextView
+                android:id="@+id/notificationTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:text="BirdName"
-                android:textSize="25sp"
-                android:textStyle="bold"/>
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/bird_default_profile_image"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:scaleType="centerCrop"
-                android:layout_gravity="center" />
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabs"
-                android:layout_width="match_parent"
-                app:tabTextColor="@color/white"
-                android:layout_height="30dp"
-                android:background="?attr/colorPrimary" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                android:layout_margin="5dp"
+                android:text="Title"
+                android:textSize="24dp" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <TextView
+                android:id="@+id/notificationDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/notificationTitle"
+                android:layout_margin="5dp"
+                android:text="Description"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/notificationDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_toEndOf="@id/notificationTitle"
+                android:text="Date"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>
