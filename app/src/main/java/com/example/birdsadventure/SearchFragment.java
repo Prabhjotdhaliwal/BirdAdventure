@@ -137,13 +137,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
                             QuerySnapshot querySnapshot = task.getResult();
 
-                            if (querySnapshot.getDocuments().size() > 0) {
-                                txt_no_search.setText("");
-                            } else {
-                                txt_no_search.setText("No birds found matching this Search Criteria.");
-                            }
-
-                            for (QueryDocumentSnapshot document :querySnapshot) {
+                            for (QueryDocumentSnapshot document : querySnapshot) {
 
                                 final String birdName = document.getString("name");
                                 if (birdName.contains(searchText)) {
@@ -151,6 +145,11 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                                     String birdImageURL = document.getString("birdimgUrl");
                                     birdsList.add(new Bird(birdID, birdName, birdImageURL));
                                 }
+                            }
+                            if (birdsList.size() > 0) {
+                                txt_no_search.setText("");
+                            } else {
+                                txt_no_search.setText("No birds found matching this Search Criteria.");
                             }
                             fillRecyclerView();
                         } else {

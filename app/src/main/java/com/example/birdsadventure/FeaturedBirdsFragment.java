@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -50,6 +51,7 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
      * Array List of birds
      */
     private ArrayList<Bird> birdsList;
+    TextView txt_no_search;
 
     /**
      * It is an container for rendering larger data set of views that can be recycled
@@ -103,7 +105,9 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         txtSearchBird = getActivity().findViewById(R.id.text_search_featured);
-        btnSearch = getActivity().findViewById(R.id.button_search);
+        btnSearch = getActivity().findViewById(R.id.button_search_featured);
+        txt_no_search = getActivity().findViewById(R.id.txt_no_featured);
+        txt_no_search.setText("");
 
         btnSearch.setOnClickListener(this);
 
@@ -136,6 +140,12 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
                                     birdsList.add(new Bird(birdID, birdName, birdImageURL));
                                 }
                             }
+
+                            if (birdsList.size() > 0) {
+                                txt_no_search.setText("");
+                            } else {
+                                txt_no_search.setText("No birds found matching this Search Criteria.");
+                            }
                             fillRecyclerView();
                         } else {
                             Log.d("tag", "Error getting birds: ", task.getException());
@@ -153,7 +163,7 @@ public class FeaturedBirdsFragment extends Fragment implements View.OnClickListe
      */
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.button_search) {
+        if (v.getId() == R.id.button_search_featured) {
             btnSearchClick(v);
         }
     }

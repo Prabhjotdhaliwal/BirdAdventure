@@ -25,6 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatToggleButton;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -65,6 +66,8 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+
+    public static final int FINE_LOCATION = 101;
 
     public SettingsFragment() {
     }
@@ -230,6 +233,30 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    //ask user to grant camera access permissions
+    private void askLocationPermission() {
+
+        if ((ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) &&
+                (ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
+
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, FINE_LOCATION);
+        } else {
+            startBackgroundLocation();
+        }
+    }
+
+    //check user's permissions to access camera
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == FINE_LOCATION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                startBackgroundLocation();
+            } else {
+                Toast.makeText(getActivity().getApplicationContext(), "Location permissions are required!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
     private void saveSettings() {
 
         isDefaultNotifications = false;
@@ -266,7 +293,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         if (isNotify) {
-            startBackgroundLocation();
+            askLocationPermission();
             if (isFeatured) {
 
                 db.collection("Birds").whereEqualTo("is_Featured", true).get()
