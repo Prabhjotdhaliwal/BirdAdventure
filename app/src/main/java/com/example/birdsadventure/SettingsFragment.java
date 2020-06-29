@@ -360,7 +360,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                             if (task.isSuccessful()) {
                                 final QuerySnapshot documents = task.getResult();
                                 if (documents.getDocuments().size() > 0) {
-                                    final String locationID = documents.getDocuments().get(0).getId();
+                                    final String locationID = documents.getDocuments().get(0).getString("location_id");
 
                                     db.collection("Location").document(locationID).get()
                                             .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
