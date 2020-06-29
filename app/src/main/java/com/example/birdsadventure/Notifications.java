@@ -10,6 +10,13 @@ public class Notifications {
     String locationID;
     boolean isDeleted;
 
+    /**
+     * here user get notification  by turn on button fron settings
+     * then according to te Radius Proximity user get notification about birds
+     * By Region and locationId
+     */
+
+
     public Notifications() {
     }
 
