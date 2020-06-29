@@ -33,8 +33,14 @@ import java.util.ArrayList;
 public class SearchFragment extends Fragment implements View.OnClickListener {
     //Database instance
     FirebaseFirestore db;
+    /**
+     *  Decleration of Edit Text boxes,Button
+     */
     EditText txtSearchBird;
     Button btnSearch;
+    /**
+     * Spinner is Display  Location Selected and for Selection
+     */
     Spinner spinnerLocation;
     TextView txt_no_search;
 
@@ -43,6 +49,9 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     private ArrayList<Bird> birdsList;
 
     private NavController navController;
+    /**
+     * This Method Show The Search Birds
+     */
 
     public SearchFragment() {
     }
@@ -57,6 +66,13 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         return inflater.inflate(R.layout.fragment_search, container, false);
 
     }
+    /**
+     * This Method Display the view where user can Search Places with Search button
+     * with Spinner user can Select the list of Location
+     * OnClickListener is set for Search Button to Display All Birds
+     * @param view
+     * @param savedInstanceState
+     */
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -77,7 +93,9 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
         getAllBirds("", "--All Locations--");
     }
-
+    /**
+     *This Method is to get the  Location Name with Spinner
+     */
     private void getAllLocations() {
 
         locationList = new ArrayList<Location>();
@@ -96,7 +114,9 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
                             ArrayAdapter<Location> locationArrayAdapter = new ArrayAdapter<Location>(getActivity().getApplicationContext(),
                                     android.R.layout.simple_spinner_item, locationList);
-
+                                 /**
+                                   * Set the  Selected Location in the Spinner
+                                   */
                             locationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
                             spinnerLocation.setAdapter(locationArrayAdapter);
@@ -108,6 +128,13 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                 });
 
     }
+    /**
+     *This metthos id to get birds list with region
+     * user see the search bird with name and image
+     * if not then it display the error
+     * @param searchText
+     * @param region
+     */
 
     private void getAllBirds(final String searchText, String region) {
 
@@ -161,12 +188,20 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    /**
+     * this method shows view where user can click on search button
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.button_search) {
             btnSearchClick(v);
         }
     }
+    /**
+     *  this method display the list of all birds with location
+     * @param v
+     */
 
     private void btnSearchClick(View v) {
 
@@ -175,6 +210,9 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         String searchText = txtSearchBird.getText().toString();
         getAllBirds(searchText, location.getLocationName());
     }
+    /**
+     * The RecyclerView Method  will Display the List of Birds in Vertically with Names
+     */
 
     private void fillRecyclerView() {
 

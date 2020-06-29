@@ -13,10 +13,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+/**
+ * This is upload page
+ * where user upload images and see galleery
+ */
+
 public class Upload extends AppCompatActivity {
     public static final int CAMERA_CODE = 007;
     ImageView imageView;
     Button camerabtn , gallerybtn;
+
+    /**
+     * To set the layout of the activity from which it is invoked
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
