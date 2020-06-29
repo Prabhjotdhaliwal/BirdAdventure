@@ -71,7 +71,7 @@ String title="Video";
         selectedVideo = view.findViewById ( R.id.videoViewGallery ); // init a ImageView
         saveVideobtn = view.findViewById ( R.id.savevideobtn );
         shareVideobtn = view.findViewById ( R.id.shareVideobtn );
-
+shareVideobtn.setVisibility(View.GONE);
 
         //to get data from the parecelable such as img title & Url
 

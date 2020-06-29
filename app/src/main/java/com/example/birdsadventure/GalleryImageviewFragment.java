@@ -72,6 +72,7 @@ public class GalleryImageviewFragment extends Fragment implements View.OnClickLi
         SelectedImage = view.findViewById(R.id.selectedImage); // init a ImageView
         saveImagebtn = view.findViewById(R.id.saveimgbtn);
         shareimagebtn = view.findViewById(R.id.shareimgbtn);
+        shareimagebtn.setVisibility(View.GONE);
 
 
         //to get data from the parecelable such as img title & Url

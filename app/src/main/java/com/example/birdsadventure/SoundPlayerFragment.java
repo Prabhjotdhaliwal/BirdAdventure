@@ -93,7 +93,7 @@ public class SoundPlayerFragment extends Fragment implements View.OnClickListene
               //  shareSound ();
             }
         } );
-
+shareSoundBtn.setVisibility(View.GONE);
     }
 
     @Override
