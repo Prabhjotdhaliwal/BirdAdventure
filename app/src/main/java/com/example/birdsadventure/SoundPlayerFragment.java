@@ -90,7 +90,7 @@ public class SoundPlayerFragment extends Fragment implements View.OnClickListene
             @Override
             public void onClick(View v)
             {
-                shareSound ();
+              //  shareSound ();
             }
         } );
 
@@ -124,7 +124,19 @@ public class SoundPlayerFragment extends Fragment implements View.OnClickListene
 
         String birdsoundUrl = getArguments().getString("librarySound");
 
-        Uri uri = Uri.parse(birdsoundUrl);
+        try {
+
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name");
+            String shareMessage= "\nLet me recommend you this application\n\n";
+            shareMessage = shareMessage + birdsoundUrl ;
+            shareIntent.putExtra(Intent.EXTRA_TEXT, birdsoundUrl);
+            startActivity(Intent.createChooser(shareIntent, "choose one"));
+        } catch(Exception e) {
+            //e.toString();
+        }
+      /*  Uri uri = Uri.parse(birdsoundUrl);
         File file = new File((uri.getPath()));
 
 
@@ -137,7 +149,7 @@ public class SoundPlayerFragment extends Fragment implements View.OnClickListene
         startActivity ( Intent
         .createChooser ( share,"Share sound File" ));
 
-        Toast.makeText ( getActivity (),"shareSoundSelected",Toast.LENGTH_LONG ).show ();
+        Toast.makeText ( getActivity (),"shareSoundSelected",Toast.LENGTH_LONG ).show ();*/
     }
 
     private void saveSound() {

@@ -124,7 +124,7 @@ public class SoundsCollectionFragment extends Fragment {
         simpleSoundGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText (getActivity (),"bird Sound selected" ,Toast.LENGTH_LONG).show ();
+              //  Toast.makeText (getActivity (),"bird Sound selected" ,Toast.LENGTH_LONG).show ();
 
                 //send  selected image info to another actiivity
 

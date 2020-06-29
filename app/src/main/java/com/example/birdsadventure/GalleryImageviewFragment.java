@@ -107,7 +107,7 @@ public class GalleryImageviewFragment extends Fragment implements View.OnClickLi
                 saveimagetogallery ();
                 break;
             case R.id.shareimgbtn:
-                shareimage();
+               // shareimage();
                 break;
             default:
                 break;

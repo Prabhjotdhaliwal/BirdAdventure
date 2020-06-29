@@ -37,7 +37,7 @@
             android:textColor="@color/black"
             app:backgroundTint="#FFFFFF" />
 
-        <Button
+       <Button
             android:id="@+id/shareimgbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -90,7 +90,7 @@ public class ImagesCollectionFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //send  selected image info to another activity
-                Toast.makeText (getActivity (),"bird Image selected" ,Toast.LENGTH_LONG).show ();
+              //  Toast.makeText (getActivity (),"bird Image selected" ,Toast.LENGTH_LONG).show ();
 
                 Bundle b = new Bundle();
                 b.putString("libraryImage", mediaList.get(position).url);
@@ -99,7 +99,7 @@ public class ImagesCollectionFragment extends Fragment {
             }
         });
     }
-
+///get user details
     private void getUserDetails() {
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -128,7 +128,7 @@ public class ImagesCollectionFragment extends Fragment {
                     });
         }
     }
-
+//get media url
     private void getUserCollectionMediaUrl() {
 
         if (userID != null) {

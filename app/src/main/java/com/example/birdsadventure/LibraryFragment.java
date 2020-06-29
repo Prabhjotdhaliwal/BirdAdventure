@@ -52,16 +52,16 @@ ImageButton imagefolderbtn,videofolderbtn,soundsfolderbtn;
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.image_btn:
-                Toast.makeText (getActivity (),"Images folder selected",Toast.LENGTH_LONG).show ();
+               // Toast.makeText (getActivity (),"Images folder selected",Toast.LENGTH_LONG).show ();
                 navController.navigate(R.id.imagesCollectionFragment);
                 break;
             case R.id.video_btn:
-                Toast.makeText (getActivity (),"Videos folder selected",Toast.LENGTH_LONG).show ();
+                //Toast.makeText (getActivity (),"Videos folder selected",Toast.LENGTH_LONG).show ();
                 navController.navigate(R.id.videosCollectionFragment);
 
                 break;
             case R.id.sound_btn:
-                Toast.makeText (getActivity (),"Sounds folder selected",Toast.LENGTH_LONG).show ();
+               // Toast.makeText (getActivity (),"Sounds folder selected",Toast.LENGTH_LONG).show ();
                 navController.navigate(R.id.soundsCollectionFragment);
                 break;
 

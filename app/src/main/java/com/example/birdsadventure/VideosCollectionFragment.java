@@ -90,7 +90,7 @@ public class VideosCollectionFragment extends Fragment {
         simpleVideoGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), "bird video selected", Toast.LENGTH_LONG).show();
+              //  Toast.makeText(getActivity(), "bird video selected", Toast.LENGTH_LONG).show();
 
                 //send  selected image info to another actiivity
 

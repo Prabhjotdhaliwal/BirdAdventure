@@ -113,17 +113,31 @@ String title="Video";
                 saveVideo ();
                 break;
             case R.id.shareVideobtn:
-                sharevideo ();
+             //   sharevideo ();
                 break;
             default:
                 break;
         }
     }
 
-    private void sharevideo() {
+    private void sharevideo()
+    {
+        try {
+            String birdVideoUrl = getArguments ().getString ( "libraryVideo" );
 
-        String birdVideoUrl = getArguments ().getString ( "libraryVideo" );
-
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name");
+            String shareMessage= "\nLet me recommend you this application\n\n";
+            shareMessage = shareMessage + birdVideoUrl ;
+            shareIntent.putExtra(Intent.EXTRA_TEXT, birdVideoUrl);
+            startActivity(Intent.createChooser(shareIntent, "choose one"));
+        } catch(Exception e) {
+            //e.toString();
+        }
+        /*String birdVideoUrl = getArguments ().getString ( "libraryVideo" );
+        String shareMessage= "\nLet me recommend you this application\n\n";
+        shareMessage = shareMessage + birdVideoUrl ;
 
         Uri uri = Uri.parse ( birdVideoUrl );
 
@@ -133,11 +147,11 @@ String title="Video";
         Intent share = new Intent ( Intent.ACTION_SEND );
         share.setType ( "video/*" );
 
-        share.putExtra ( Intent.EXTRA_STREAM, file );
+        share.putExtra ( Intent.EXTRA_STREAM, shareMessage );
         startActivity ( Intent
                 .createChooser ( share, "Share video File" ) );
 
-        Toast.makeText ( getActivity (), "sharevideoSelected", Toast.LENGTH_LONG ).show ();
+        Toast.makeText ( getActivity (), "sharevideoSelected", Toast.LENGTH_LONG ).show ();*/
     }
 
     private void saveVideo()
@@ -164,6 +178,7 @@ downloadManager ( birdVideoUrl );
         DownloadManager manager = (DownloadManager) getActivity ().getSystemService( Context.DOWNLOAD_SERVICE);
         manager.enqueue(request);
          Toast.makeText(getActivity(), "Video Saved", Toast.LENGTH_LONG).show();
+
 
     }
     }
