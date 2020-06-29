@@ -148,7 +148,7 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.button_search) {
+        if (v.getId() == R.id.button_search_favorites) {
             btnSearchClick(v);
         }
     }
