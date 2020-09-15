@@ -43,6 +43,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class UploadVideoFragment extends Fragment implements View.OnClickListener {
@@ -256,12 +257,21 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
     private void userCollectionUploadMediaUrl(Uri uri) {
         if (userID != null) {
 
+
+            Calendar c = Calendar.getInstance();
+            System.out.println("Current time => "+c.getTime());
+
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String formattedDate = df.format(c.getTime());
+            System.out.println ( formattedDate );
+
+
             Media media = new Media();
             media.is_deleted = false;
             media.is_image = false;
             media.is_video = true;
             media.is_sound_clip = false;
-            media.title = "Video";
+            media.title = formattedDate;
             media.url = uri.toString();
 
             db.collection("Users").document(userID).collection("Media").add(media)
@@ -298,7 +308,8 @@ public class UploadVideoFragment extends Fragment implements View.OnClickListene
         //  final File storageDir =     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
         File videoFile = File.createTempFile(
-                videoFileName,  /* prefix */
+                videoFileName,
+                /* prefix */
                 ".mp4",         /* suffix */
                 storageDir      /* directory */
         );

@@ -1,4 +1,3 @@
-
 package com.example.birdsadventure;
 
 import android.content.Intent;
@@ -114,12 +113,6 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
                             QuerySnapshot querySnapshot = task.getResult();
 
-                            if (querySnapshot.getDocuments().size() > 0) {
-                                txt_no_favorites.setText("");
-                            } else {
-                                txt_no_favorites.setText("\tNo Birds have been added to favorites.\n\tAdd Birds to your favorites from\n\tBird's Profile page.");
-                            }
-
                             for (QueryDocumentSnapshot document : querySnapshot) {
 
                                 final String birdName = document.getString("bird_name");
@@ -134,7 +127,11 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
                             if (birdsList.size() > 0) {
                                 txt_no_favorites.setText("");
                             } else {
-                                txt_no_favorites.setText("No birds found matching this Search Criteria.");
+                                if (querySnapshot.getDocuments().size() > 0) {
+                                    txt_no_favorites.setText("No birds found matching this Search Criteria.");
+                                } else {
+                                    txt_no_favorites.setText("\tNo Birds have been added to favorites.\n\tAdd Birds to your favorites from\n\tBird's Profile page.");
+                                }
                             }
                             fillRecyclerView();
                         } else {

@@ -46,6 +46,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class UploadFragment extends Fragment implements View.OnClickListener {
@@ -248,12 +249,20 @@ public class UploadFragment extends Fragment implements View.OnClickListener {
     private void userCollectionUploadMediaUrl(Uri uri) {
         if (userID != null) {
 
+            Calendar c = Calendar.getInstance();
+            System.out.println("Current time => "+c.getTime());
+
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String formattedDate = df.format(c.getTime());
+            System.out.println ( formattedDate );
+
+
             Media media = new Media();
             media.is_deleted = false;
             media.is_image = true;
             media.is_video = false;
             media.is_sound_clip = false;
-            media.title = "Image";
+            media.title = formattedDate;
             media.url = uri.toString();
 
             db.collection("Users").document(userID).collection("Media").add(media)
